@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local/application-model.schema.json",
+  "title": "Application Static Model",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "language",
+    "scope",
+    "summary",
+    "types",
+    "methods",
+    "calls",
+    "externalCalls"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 3
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "enum": ["production", "all"]
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "types",
+        "methods",
+        "internalCalls",
+        "externalCalls",
+        "excludedTestTypes",
+        "excludedTestMethods"
+      ],
+      "properties": {
+        "types": { "type": "integer", "minimum": 0 },
+        "methods": { "type": "integer", "minimum": 0 },
+        "internalCalls": { "type": "integer", "minimum": 0 },
+        "externalCalls": { "type": "integer", "minimum": 0 },
+        "excludedTestTypes": { "type": "integer", "minimum": 0 },
+        "excludedTestMethods": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "fullName",
+          "file",
+          "inheritsFrom",
+          "unresolvedBases"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "fullName": { "type": "string", "minLength": 1 },
+          "file": { "type": "string" },
+          "inheritsFrom": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "unresolvedBases": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "fullName",
+          "owner",
+          "file",
+          "line",
+          "conditions"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "fullName": { "type": "string", "minLength": 1 },
+          "owner": { "type": "string" },
+          "file": { "type": "string" },
+          "line": {
+            "type": ["integer", "null"]
+          },
+          "conditions": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "calls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "caller",
+          "callerOwner",
+          "file",
+          "line",
+          "code",
+          "declaredTarget",
+          "dispatchTargets",
+          "possibleTargets",
+          "unresolvedTargets",
+          "resolution"
+        ],
+        "properties": {
+          "caller": { "type": "string" },
+          "callerOwner": { "type": "string" },
+          "file": { "type": "string" },
+          "line": {
+            "type": ["integer", "null"]
+          },
+          "code": { "type": "string" },
+          "declaredTarget": {
+            "type": ["string", "null"]
+          },
+          "dispatchTargets": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "possibleTargets": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "unresolvedTargets": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "resolution": {
+            "enum": ["joern", "joern+hierarchy"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "externalCalls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "caller",
+          "callerOwner",
+          "file",
+          "line",
+          "code",
+          "target",
+          "targets",
+          "classification",
+          "internalOwner",
+          "unresolvedBaseHints"
+        ],
+        "properties": {
+          "caller": { "type": "string" },
+          "callerOwner": { "type": "string" },
+          "file": { "type": "string" },
+          "line": {
+            "type": ["integer", "null"]
+          },
+          "code": { "type": "string" },
+          "target": { "type": "string" },
+          "targets": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "classification": {
+            "enum": [
+              "external",
+              "unresolved-on-internal-type"
+            ]
+          },
+          "internalOwner": {
+            "type": ["string", "null"]
+          },
+          "unresolvedBaseHints": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

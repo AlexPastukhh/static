@@ -1,0 +1,178 @@
+STATIC APPLICATION MODEL
+========================
+
+Types:   10
+Methods: 10
+Calls:   24
+
+TYPES
+-----
+
+StaticLab.AuditService
+  file: Program.cs
+
+StaticLab.BankGateway
+  file: Program.cs
+  inherits/implements: StaticLab.IPaymentGateway
+
+StaticLab.CardGateway
+  file: Program.cs
+  inherits/implements: StaticLab.IPaymentGateway
+
+StaticLab.IPaymentGateway
+  file: Program.cs
+
+StaticLab.Order
+  file: Program.cs
+
+StaticLab.OrderRepository
+  file: Program.cs
+
+StaticLab.OrderService
+  file: Program.cs
+
+StaticLab.PaymentGatewayFactory
+  file: Program.cs
+
+StaticLab.Program
+  file: Program.cs
+
+StaticLab.UnsafeCli
+  file: Program.cs
+
+
+METHODS AND CALLS
+-----------------
+
+StaticLab.AuditService.FlagLargeOrder:System.Void(StaticLab.Order)
+  source: Program.cs:37
+  -> System.Console.WriteLine:System.Void(System.String) @ line 39
+     code: Console.WriteLine($"AUDIT {order.Id}")
+     possible targets:
+       - System.Console.WriteLine:System.Void(System.String)
+
+StaticLab.BankGateway.Pay:System.Void(StaticLab.Order)
+  source: Program.cs:21
+  -> System.Console.WriteLine:System.Void(System.String) @ line 23
+     code: Console.WriteLine($"BankGateway.pay order={order.Id} amount={order.Amount}")
+     possible targets:
+       - System.Console.WriteLine:System.Void(System.String)
+
+StaticLab.CardGateway.Pay:System.Void(StaticLab.Order)
+  source: Program.cs:13
+  -> System.Console.WriteLine:System.Void(System.String) @ line 15
+     code: Console.WriteLine($"CardGateway.pay order={order.Id} amount={order.Amount}")
+     possible targets:
+       - System.Console.WriteLine:System.Void(System.String)
+
+StaticLab.IPaymentGateway.Pay:System.Void(StaticLab.Order)
+  source: Program.cs:8
+
+StaticLab.OrderRepository.Save:System.Void(StaticLab.Order)
+  source: Program.cs:45
+  -> System.Console.WriteLine:System.Void(System.String) @ line 47
+     code: Console.WriteLine($"OrderRepository.save {order.Id}")
+     possible targets:
+       - System.Console.WriteLine:System.Void(System.String)
+
+StaticLab.OrderService.<init>:System.Void(StaticLab.IPaymentGateway,StaticLab.AuditService,StaticLab.OrderRepository)
+  source: Program.cs:57
+
+StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)
+  source: Program.cs:64
+  condition: if (order.Amount > 1000m)
+  -> StaticLab.IPaymentGateway.Pay:System.Void(Order) @ line 66
+     code: _gateway.Pay(order)
+     possible targets:
+       - StaticLab.IPaymentGateway.Pay:System.Void(Order)
+  -> StaticLab.OrderRepository.Save:System.Void(Order) @ line 73
+     code: _repository.Save(order)
+     possible targets:
+       - StaticLab.OrderRepository.Save:System.Void(Order)
+  -> StaticLab.AuditService.FlagLargeOrder:System.Void(Order) @ line 70
+     code: _audit.FlagLargeOrder(order)
+     possible targets:
+       - StaticLab.AuditService.FlagLargeOrder:System.Void(Order)
+
+StaticLab.PaymentGatewayFactory.Create:StaticLab.IPaymentGateway(System.String)
+  source: Program.cs:29
+  -> StaticLab.BankGateway.<init> @ line 31
+     code: new BankGateway()
+     possible targets:
+       - StaticLab.BankGateway.<init>
+  -> StaticLab.CardGateway.<init> @ line 31
+     code: new CardGateway()
+     possible targets:
+       - StaticLab.CardGateway.<init>
+
+StaticLab.Program.Main:System.Void(System.String[])
+  source: Program.cs:105
+  condition: if (args.Length >= 2 && args[0] == "--unsafe")
+  -> StaticLab.OrderService.PlaceOrder:System.Void(Order) @ line 117
+     code: service.PlaceOrder(order)
+     possible targets:
+       - StaticLab.OrderService.PlaceOrder:System.Void(Order)
+  -> System.Console.WriteLine:System.Void(System.String) @ line 118
+     code: Console.WriteLine($"DONE {order.Id}")
+     possible targets:
+       - System.Console.WriteLine:System.Void(System.String)
+  -> StaticLab.PaymentGatewayFactory.Create:IPaymentGateway(System.String) @ line 113
+     code: PaymentGatewayFactory.Create("card")
+     possible targets:
+       - StaticLab.PaymentGatewayFactory.Create:IPaymentGateway(System.String)
+  -> StaticLab.OrderService.<init> @ line 114
+     code: new OrderService(gateway, new AuditService(), new OrderRepository())
+     possible targets:
+       - StaticLab.OrderService.<init>
+  -> StaticLab.Order.<init> @ line 115
+     code: new Order("ORD-42", 125m)
+     possible targets:
+       - StaticLab.Order.<init>
+  -> StaticLab.UnsafeCli.Run:System.Void(System.String) @ line 109
+     code: UnsafeCli.Run(args[1])
+     possible targets:
+       - StaticLab.UnsafeCli.Run:System.Void(System.String)
+  -> StaticLab.AuditService.<init> @ line 114
+     code: new AuditService()
+     possible targets:
+       - StaticLab.AuditService.<init>
+  -> StaticLab.OrderRepository.<init> @ line 114
+     code: new OrderRepository()
+     possible targets:
+       - StaticLab.OrderRepository.<init>
+
+StaticLab.UnsafeCli.Run:System.Void(System.String)
+  source: Program.cs:80
+  condition: if (OperatingSystem.IsWindows())
+  -> <unresolvedNamespace>.Add:System.Void(TKey,TValue) @ line 97
+     code: psi.ArgumentList.Add(userInput)
+     possible targets:
+       - <unresolvedNamespace>.Add:System.Void(TKey,TValue)
+  -> System.Void.WaitForExit:<unresolvedSignature> @ line 99
+     code: process
+     possible targets:
+       - System.Void.WaitForExit:<unresolvedSignature>
+  -> ProcessStartInfo.<init> @ line 82
+     code: new ProcessStartInfo
+        {
+            FileName = OperatingSystem.IsWindows() ? "cmd.exe" : "/bin/sh",
+            UseShellExecute = false
+        }
+     possible targets:
+       - ProcessStartInfo.<init>
+  -> System.OperatingSystem.IsWindows:<unresolvedSignature> @ line 88
+     code: OperatingSystem.IsWindows()
+     possible targets:
+       - System.OperatingSystem.IsWindows:<unresolvedSignature>
+  -> <unresolvedNamespace>.Start:System.Void(System.Object) @ line 98
+     code: Process.Start(psi)
+     possible targets:
+       - <unresolvedNamespace>.Start:System.Void(System.Object)
+  -> <unresolvedNamespace>.Add:System.Void(TKey,TValue) @ line 90
+     code: psi.ArgumentList.Add("/c")
+     possible targets:
+       - <unresolvedNamespace>.Add:System.Void(TKey,TValue)
+  -> <unresolvedNamespace>.Add:System.Void(TKey,TValue) @ line 94
+     code: psi.ArgumentList.Add("-c")
+     possible targets:
+       - <unresolvedNamespace>.Add:System.Void(TKey,TValue)

@@ -1,0 +1,13 @@
+{
+  "name": "polyglot-static-node-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

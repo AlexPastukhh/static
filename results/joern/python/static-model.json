@@ -1,0 +1,1288 @@
+{
+  "schemaVersion": 1,
+  "summary": {
+    "types": 64,
+    "methods": 46,
+    "calls": 58
+  },
+  "types": [
+    {
+      "name": "<module>",
+      "fullName": "lab\\__init__.py:<module>",
+      "file": "lab\\__init__.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<module>",
+      "fullName": "lab\\main.py:<module>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "AuditService",
+      "fullName": "lab\\main.py:<module>.AuditService",
+      "file": "lab\\main.py",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.AuditService.<body>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.AuditService.<fakeNew>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.AuditService.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "flag_large_order",
+      "fullName": "lab\\main.py:<module>.AuditService.flag_large_order",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "flag_large_order<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.AuditService.flag_large_order<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "AuditService<meta>",
+      "fullName": "lab\\main.py:<module>.AuditService<meta>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "BankGateway",
+      "fullName": "lab\\main.py:<module>.BankGateway",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["lab\\main.py:<module>.PaymentGateway"]
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.BankGateway.<body>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.BankGateway.<fakeNew>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.BankGateway.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "pay",
+      "fullName": "lab\\main.py:<module>.BankGateway.pay",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "pay<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.BankGateway.pay<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "BankGateway<meta>",
+      "fullName": "lab\\main.py:<module>.BankGateway<meta>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "CardGateway",
+      "fullName": "lab\\main.py:<module>.CardGateway",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["lab\\main.py:<module>.PaymentGateway"]
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.CardGateway.<body>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.CardGateway.<fakeNew>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.CardGateway.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "pay",
+      "fullName": "lab\\main.py:<module>.CardGateway.pay",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "pay<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.CardGateway.pay<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "CardGateway<meta>",
+      "fullName": "lab\\main.py:<module>.CardGateway<meta>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "Order",
+      "fullName": "lab\\main.py:<module>.Order",
+      "file": "lab\\main.py",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.Order.<body>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.Order.<fakeNew>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.Order.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "Order<meta>",
+      "fullName": "lab\\main.py:<module>.Order<meta>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "OrderRepository",
+      "fullName": "lab\\main.py:<module>.OrderRepository",
+      "file": "lab\\main.py",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.OrderRepository.<body>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.OrderRepository.<fakeNew>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.OrderRepository.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "save",
+      "fullName": "lab\\main.py:<module>.OrderRepository.save",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "save<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.OrderRepository.save<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "OrderRepository<meta>",
+      "fullName": "lab\\main.py:<module>.OrderRepository<meta>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "OrderService",
+      "fullName": "lab\\main.py:<module>.OrderService",
+      "file": "lab\\main.py",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.OrderService.<body>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.OrderService.<fakeNew>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.OrderService.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "__init__",
+      "fullName": "lab\\main.py:<module>.OrderService.__init__",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "__init__<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.OrderService.__init__<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "place_order",
+      "fullName": "lab\\main.py:<module>.OrderService.place_order",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "place_order<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.OrderService.place_order<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "OrderService<meta>",
+      "fullName": "lab\\main.py:<module>.OrderService<meta>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "PaymentGateway",
+      "fullName": "lab\\main.py:<module>.PaymentGateway",
+      "file": "lab\\main.py",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.PaymentGateway.<body>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.PaymentGateway.<fakeNew>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.PaymentGateway.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "pay",
+      "fullName": "lab\\main.py:<module>.PaymentGateway.pay",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "pay<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.PaymentGateway.pay<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "PaymentGateway<meta>",
+      "fullName": "lab\\main.py:<module>.PaymentGateway<meta>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "PaymentGatewayFactory",
+      "fullName": "lab\\main.py:<module>.PaymentGatewayFactory",
+      "file": "lab\\main.py",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.PaymentGatewayFactory.<body>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.PaymentGatewayFactory.<fakeNew>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.PaymentGatewayFactory.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "create",
+      "fullName": "lab\\main.py:<module>.PaymentGatewayFactory.create",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "PaymentGatewayFactory<meta>",
+      "fullName": "lab\\main.py:<module>.PaymentGatewayFactory<meta>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "UnsafeCli",
+      "fullName": "lab\\main.py:<module>.UnsafeCli",
+      "file": "lab\\main.py",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.UnsafeCli.<body>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.UnsafeCli.<fakeNew>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.UnsafeCli.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "run",
+      "fullName": "lab\\main.py:<module>.UnsafeCli.run",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "UnsafeCli<meta>",
+      "fullName": "lab\\main.py:<module>.UnsafeCli<meta>",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "main",
+      "fullName": "lab\\main.py:<module>.main",
+      "file": "lab\\main.py",
+      "inheritsFrom": ["ANY"]
+    }
+  ],
+  "methods": [
+    {
+      "name": "<module>",
+      "fullName": "lab\\__init__.py:<module>",
+      "owner": "",
+      "file": "lab\\__init__.py",
+      "line": 1,
+      "conditions": []
+    },
+    {
+      "name": "<module>",
+      "fullName": "lab\\main.py:<module>",
+      "owner": "",
+      "file": "lab\\main.py",
+      "line": 1,
+      "conditions": ["if ... : ..."]
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.AuditService.<body>",
+      "owner": "lab\\main.py:<module>.AuditService",
+      "file": "lab\\main.py",
+      "line": 37,
+      "conditions": []
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.AuditService.<fakeNew>",
+      "owner": "lab\\main.py:<module>.AuditService<meta>",
+      "file": "lab\\main.py",
+      "line": 37,
+      "conditions": []
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.AuditService.<metaClassCallHandler>",
+      "owner": "lab\\main.py:<module>.AuditService<meta>",
+      "file": "lab\\main.py",
+      "line": 37,
+      "conditions": []
+    },
+    {
+      "name": "flag_large_order",
+      "fullName": "lab\\main.py:<module>.AuditService.flag_large_order",
+      "owner": "lab\\main.py:<module>.AuditService",
+      "file": "lab\\main.py",
+      "line": 38,
+      "conditions": []
+    },
+    {
+      "name": "flag_large_order<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.AuditService.flag_large_order<metaClassAdapter>",
+      "owner": "lab\\main.py:<module>.AuditService<meta>",
+      "file": "lab\\main.py",
+      "line": 38,
+      "conditions": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.BankGateway.<body>",
+      "owner": "lab\\main.py:<module>.BankGateway",
+      "file": "lab\\main.py",
+      "line": 26,
+      "conditions": []
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.BankGateway.<fakeNew>",
+      "owner": "lab\\main.py:<module>.BankGateway<meta>",
+      "file": "lab\\main.py",
+      "line": 26,
+      "conditions": []
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.BankGateway.<metaClassCallHandler>",
+      "owner": "lab\\main.py:<module>.BankGateway<meta>",
+      "file": "lab\\main.py",
+      "line": 26,
+      "conditions": []
+    },
+    {
+      "name": "pay",
+      "fullName": "lab\\main.py:<module>.BankGateway.pay",
+      "owner": "lab\\main.py:<module>.BankGateway",
+      "file": "lab\\main.py",
+      "line": 27,
+      "conditions": []
+    },
+    {
+      "name": "pay<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.BankGateway.pay<metaClassAdapter>",
+      "owner": "lab\\main.py:<module>.BankGateway<meta>",
+      "file": "lab\\main.py",
+      "line": 27,
+      "conditions": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.CardGateway.<body>",
+      "owner": "lab\\main.py:<module>.CardGateway",
+      "file": "lab\\main.py",
+      "line": 21,
+      "conditions": []
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.CardGateway.<fakeNew>",
+      "owner": "lab\\main.py:<module>.CardGateway<meta>",
+      "file": "lab\\main.py",
+      "line": 21,
+      "conditions": []
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.CardGateway.<metaClassCallHandler>",
+      "owner": "lab\\main.py:<module>.CardGateway<meta>",
+      "file": "lab\\main.py",
+      "line": 21,
+      "conditions": []
+    },
+    {
+      "name": "pay",
+      "fullName": "lab\\main.py:<module>.CardGateway.pay",
+      "owner": "lab\\main.py:<module>.CardGateway",
+      "file": "lab\\main.py",
+      "line": 22,
+      "conditions": []
+    },
+    {
+      "name": "pay<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.CardGateway.pay<metaClassAdapter>",
+      "owner": "lab\\main.py:<module>.CardGateway<meta>",
+      "file": "lab\\main.py",
+      "line": 22,
+      "conditions": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.Order.<body>",
+      "owner": "lab\\main.py:<module>.Order",
+      "file": "lab\\main.py",
+      "line": 10,
+      "conditions": []
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.Order.<fakeNew>",
+      "owner": "lab\\main.py:<module>.Order<meta>",
+      "file": "lab\\main.py",
+      "line": 10,
+      "conditions": []
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.Order.<metaClassCallHandler>",
+      "owner": "lab\\main.py:<module>.Order<meta>",
+      "file": "lab\\main.py",
+      "line": 10,
+      "conditions": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.OrderRepository.<body>",
+      "owner": "lab\\main.py:<module>.OrderRepository",
+      "file": "lab\\main.py",
+      "line": 42,
+      "conditions": []
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.OrderRepository.<fakeNew>",
+      "owner": "lab\\main.py:<module>.OrderRepository<meta>",
+      "file": "lab\\main.py",
+      "line": 42,
+      "conditions": []
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.OrderRepository.<metaClassCallHandler>",
+      "owner": "lab\\main.py:<module>.OrderRepository<meta>",
+      "file": "lab\\main.py",
+      "line": 42,
+      "conditions": []
+    },
+    {
+      "name": "save",
+      "fullName": "lab\\main.py:<module>.OrderRepository.save",
+      "owner": "lab\\main.py:<module>.OrderRepository",
+      "file": "lab\\main.py",
+      "line": 43,
+      "conditions": []
+    },
+    {
+      "name": "save<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.OrderRepository.save<metaClassAdapter>",
+      "owner": "lab\\main.py:<module>.OrderRepository<meta>",
+      "file": "lab\\main.py",
+      "line": 43,
+      "conditions": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.OrderService.<body>",
+      "owner": "lab\\main.py:<module>.OrderService",
+      "file": "lab\\main.py",
+      "line": 47,
+      "conditions": ["if ... : ..."]
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.OrderService.<fakeNew>",
+      "owner": "lab\\main.py:<module>.OrderService<meta>",
+      "file": "lab\\main.py",
+      "line": 49,
+      "conditions": []
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.OrderService.<metaClassCallHandler>",
+      "owner": "lab\\main.py:<module>.OrderService<meta>",
+      "file": "lab\\main.py",
+      "line": 49,
+      "conditions": []
+    },
+    {
+      "name": "__init__",
+      "fullName": "lab\\main.py:<module>.OrderService.__init__",
+      "owner": "lab\\main.py:<module>.OrderService",
+      "file": "lab\\main.py",
+      "line": 48,
+      "conditions": []
+    },
+    {
+      "name": "__init__<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.OrderService.__init__<metaClassAdapter>",
+      "owner": "lab\\main.py:<module>.OrderService<meta>",
+      "file": "lab\\main.py",
+      "line": 48,
+      "conditions": []
+    },
+    {
+      "name": "place_order",
+      "fullName": "lab\\main.py:<module>.OrderService.place_order",
+      "owner": "lab\\main.py:<module>.OrderService",
+      "file": "lab\\main.py",
+      "line": 58,
+      "conditions": ["if ... : ..."]
+    },
+    {
+      "name": "place_order<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.OrderService.place_order<metaClassAdapter>",
+      "owner": "lab\\main.py:<module>.OrderService<meta>",
+      "file": "lab\\main.py",
+      "line": 58,
+      "conditions": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.PaymentGateway.<body>",
+      "owner": "lab\\main.py:<module>.PaymentGateway",
+      "file": "lab\\main.py",
+      "line": 15,
+      "conditions": []
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.PaymentGateway.<fakeNew>",
+      "owner": "lab\\main.py:<module>.PaymentGateway<meta>",
+      "file": "lab\\main.py",
+      "line": 15,
+      "conditions": []
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.PaymentGateway.<metaClassCallHandler>",
+      "owner": "lab\\main.py:<module>.PaymentGateway<meta>",
+      "file": "lab\\main.py",
+      "line": 15,
+      "conditions": []
+    },
+    {
+      "name": "pay",
+      "fullName": "lab\\main.py:<module>.PaymentGateway.pay",
+      "owner": "lab\\main.py:<module>.PaymentGateway",
+      "file": "lab\\main.py",
+      "line": 17,
+      "conditions": []
+    },
+    {
+      "name": "pay<metaClassAdapter>",
+      "fullName": "lab\\main.py:<module>.PaymentGateway.pay<metaClassAdapter>",
+      "owner": "lab\\main.py:<module>.PaymentGateway<meta>",
+      "file": "lab\\main.py",
+      "line": 17,
+      "conditions": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.PaymentGatewayFactory.<body>",
+      "owner": "lab\\main.py:<module>.PaymentGatewayFactory",
+      "file": "lab\\main.py",
+      "line": 31,
+      "conditions": []
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.PaymentGatewayFactory.<fakeNew>",
+      "owner": "lab\\main.py:<module>.PaymentGatewayFactory<meta>",
+      "file": "lab\\main.py",
+      "line": 31,
+      "conditions": []
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.PaymentGatewayFactory.<metaClassCallHandler>",
+      "owner": "lab\\main.py:<module>.PaymentGatewayFactory<meta>",
+      "file": "lab\\main.py",
+      "line": 31,
+      "conditions": []
+    },
+    {
+      "name": "create",
+      "fullName": "lab\\main.py:<module>.PaymentGatewayFactory.create",
+      "owner": "lab\\main.py:<module>.PaymentGatewayFactory",
+      "file": "lab\\main.py",
+      "line": 33,
+      "conditions": []
+    },
+    {
+      "name": "<body>",
+      "fullName": "lab\\main.py:<module>.UnsafeCli.<body>",
+      "owner": "lab\\main.py:<module>.UnsafeCli",
+      "file": "lab\\main.py",
+      "line": 67,
+      "conditions": []
+    },
+    {
+      "name": "<fakeNew>",
+      "fullName": "lab\\main.py:<module>.UnsafeCli.<fakeNew>",
+      "owner": "lab\\main.py:<module>.UnsafeCli<meta>",
+      "file": "lab\\main.py",
+      "line": 67,
+      "conditions": []
+    },
+    {
+      "name": "<metaClassCallHandler>",
+      "fullName": "lab\\main.py:<module>.UnsafeCli.<metaClassCallHandler>",
+      "owner": "lab\\main.py:<module>.UnsafeCli<meta>",
+      "file": "lab\\main.py",
+      "line": 67,
+      "conditions": []
+    },
+    {
+      "name": "run",
+      "fullName": "lab\\main.py:<module>.UnsafeCli.run",
+      "owner": "lab\\main.py:<module>.UnsafeCli",
+      "file": "lab\\main.py",
+      "line": 69,
+      "conditions": []
+    },
+    {
+      "name": "main",
+      "fullName": "lab\\main.py:<module>.main",
+      "owner": "",
+      "file": "lab\\main.py",
+      "line": 74,
+      "conditions": ["if ... : ..."]
+    }
+  ],
+  "calls": [
+    {
+      "caller": "lab\\main.py:<module>",
+      "file": "lab\\main.py",
+      "line": 10,
+      "code": "def <body>(...)()",
+      "directTarget": "lab\\main.py:<module>.Order..__init__",
+      "possibleTargets": ["lab\\main.py:<module>.Order..__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>",
+      "file": "lab\\main.py",
+      "line": 15,
+      "code": "def <body>(...)()",
+      "directTarget": "lab\\main.py:<module>.PaymentGateway..__init__",
+      "possibleTargets": ["lab\\main.py:<module>.PaymentGateway..__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>",
+      "file": "lab\\main.py",
+      "line": 21,
+      "code": "def <body>(...)()",
+      "directTarget": "lab\\main.py:<module>.CardGateway..__init__",
+      "possibleTargets": ["lab\\main.py:<module>.CardGateway..__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>",
+      "file": "lab\\main.py",
+      "line": 26,
+      "code": "def <body>(...)()",
+      "directTarget": "lab\\main.py:<module>.BankGateway..__init__",
+      "possibleTargets": ["lab\\main.py:<module>.BankGateway..__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>",
+      "file": "lab\\main.py",
+      "line": 31,
+      "code": "def <body>(...)()",
+      "directTarget": "lab\\main.py:<module>.PaymentGatewayFactory..__init__",
+      "possibleTargets": ["lab\\main.py:<module>.PaymentGatewayFactory..__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>",
+      "file": "lab\\main.py",
+      "line": 37,
+      "code": "def <body>(...)()",
+      "directTarget": "lab\\main.py:<module>.AuditService..__init__",
+      "possibleTargets": ["lab\\main.py:<module>.AuditService..__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>",
+      "file": "lab\\main.py",
+      "line": 42,
+      "code": "def <body>(...)()",
+      "directTarget": "lab\\main.py:<module>.OrderRepository..__init__",
+      "possibleTargets": ["lab\\main.py:<module>.OrderRepository..__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>",
+      "file": "lab\\main.py",
+      "line": 47,
+      "code": "def <body>(...)()",
+      "directTarget": "lab\\main.py:<module>.OrderService..__init__",
+      "possibleTargets": ["lab\\main.py:<module>.OrderService..__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>",
+      "file": "lab\\main.py",
+      "line": 67,
+      "code": "def <body>(...)()",
+      "directTarget": "lab\\main.py:<module>.UnsafeCli..__init__",
+      "possibleTargets": ["lab\\main.py:<module>.UnsafeCli..__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>",
+      "file": "lab\\main.py",
+      "line": 90,
+      "code": "main()",
+      "directTarget": "lab\\main.py:<module>.main",
+      "possibleTargets": ["lab\\main.py:<module>.main"],
+      "internalTargets": ["lab\\main.py:<module>.main"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.AuditService.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 37,
+      "code": "__newInstance.__init__()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.AuditService.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 37,
+      "code": "class AuditService<meta>(...).<fakeNew>()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.AuditService.flag_large_order",
+      "file": "lab\\main.py",
+      "line": 39,
+      "code": "print(f\"AUDIT {order.id}\")",
+      "directTarget": "__builtin.print",
+      "possibleTargets": ["__builtin.print"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.AuditService.flag_large_order<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "line": 38,
+      "code": "flag_large_order(self, order)",
+      "directTarget": "lab\\main.py:<module>.AuditService.flag_large_order",
+      "possibleTargets": ["lab\\main.py:<module>.AuditService.flag_large_order"],
+      "internalTargets": ["lab\\main.py:<module>.AuditService.flag_large_order"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.BankGateway.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 26,
+      "code": "__newInstance.__init__()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.BankGateway.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 26,
+      "code": "class BankGateway<meta>(...).<fakeNew>()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.BankGateway.pay",
+      "file": "lab\\main.py",
+      "line": 28,
+      "code": "print(f\"BankGateway.pay order={order.id} amount={order.amount:g}\")",
+      "directTarget": "__builtin.print",
+      "possibleTargets": ["__builtin.print"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.BankGateway.pay<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "line": 27,
+      "code": "pay(self, order)",
+      "directTarget": "lab\\main.py:<module>.BankGateway.pay",
+      "possibleTargets": ["lab\\main.py:<module>.BankGateway.pay"],
+      "internalTargets": ["lab\\main.py:<module>.BankGateway.pay"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.CardGateway.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 21,
+      "code": "__newInstance.__init__()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.CardGateway.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 21,
+      "code": "class CardGateway<meta>(...).<fakeNew>()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.CardGateway.pay",
+      "file": "lab\\main.py",
+      "line": 23,
+      "code": "print(f\"CardGateway.pay order={order.id} amount={order.amount:g}\")",
+      "directTarget": "__builtin.print",
+      "possibleTargets": ["__builtin.print"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.CardGateway.pay<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "line": 22,
+      "code": "pay(self, order)",
+      "directTarget": "lab\\main.py:<module>.CardGateway.pay",
+      "possibleTargets": ["lab\\main.py:<module>.CardGateway.pay"],
+      "internalTargets": ["lab\\main.py:<module>.CardGateway.pay"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.Order.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 10,
+      "code": "__newInstance.__init__()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.Order.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 10,
+      "code": "class Order<meta>(...).<fakeNew>()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.OrderRepository.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 42,
+      "code": "__newInstance.__init__()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.OrderRepository.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 42,
+      "code": "class OrderRepository<meta>(...).<fakeNew>()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.OrderRepository.save",
+      "file": "lab\\main.py",
+      "line": 44,
+      "code": "print(f\"OrderRepository.save {order.id}\")",
+      "directTarget": "__builtin.print",
+      "possibleTargets": ["__builtin.print"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.OrderRepository.save<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "line": 43,
+      "code": "save(self, order)",
+      "directTarget": "lab\\main.py:<module>.OrderRepository.save",
+      "possibleTargets": ["lab\\main.py:<module>.OrderRepository.save"],
+      "internalTargets": ["lab\\main.py:<module>.OrderRepository.save"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.OrderService.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 49,
+      "code": "__newInstance.__init__(gateway, audit, repository)",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.OrderService.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 49,
+      "code": "class OrderService<meta>(...).<fakeNew>(gateway, audit, repository)",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.OrderService.__init__<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "line": 48,
+      "code": "__init__(self, gateway, audit, repository)",
+      "directTarget": "lab\\main.py:<module>.OrderService.__init__",
+      "possibleTargets": ["lab\\main.py:<module>.OrderService.__init__"],
+      "internalTargets": ["lab\\main.py:<module>.OrderService.__init__"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.OrderService.place_order",
+      "file": "lab\\main.py",
+      "line": 59,
+      "code": "self.gateway.pay(order)",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": ["lab\\main.py:<module>.BankGateway.pay","lab\\main.py:<module>.CardGateway.pay"],
+      "internalTargets": ["lab\\main.py:<module>.BankGateway.pay","lab\\main.py:<module>.CardGateway.pay"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.OrderService.place_order",
+      "file": "lab\\main.py",
+      "line": 64,
+      "code": "self.repository.save(order)",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": ["lab\\main.py:<module>.OrderRepository.save"],
+      "internalTargets": ["lab\\main.py:<module>.OrderRepository.save"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.OrderService.place_order",
+      "file": "lab\\main.py",
+      "line": 62,
+      "code": "self.audit.flag_large_order(order)",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": ["lab\\main.py:<module>.AuditService.flag_large_order"],
+      "internalTargets": ["lab\\main.py:<module>.AuditService.flag_large_order"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.OrderService.place_order<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "line": 58,
+      "code": "place_order(self, order)",
+      "directTarget": "lab\\main.py:<module>.OrderService.place_order",
+      "possibleTargets": ["lab\\main.py:<module>.OrderService.place_order"],
+      "internalTargets": ["lab\\main.py:<module>.OrderService.place_order"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.PaymentGateway.<body>",
+      "file": "lab\\main.py",
+      "line": 16,
+      "code": "abstractmethod(def pay(...))",
+      "directTarget": "abc.py:<module>.abstractmethod",
+      "possibleTargets": ["abc.py:<module>.abstractmethod"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.PaymentGateway.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 15,
+      "code": "__newInstance.__init__()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.PaymentGateway.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 15,
+      "code": "class PaymentGateway<meta>(...).<fakeNew>()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.PaymentGateway.pay<metaClassAdapter>",
+      "file": "lab\\main.py",
+      "line": 17,
+      "code": "pay(self, order)",
+      "directTarget": "lab\\main.py:<module>.PaymentGateway.pay",
+      "possibleTargets": ["lab\\main.py:<module>.PaymentGateway.pay"],
+      "internalTargets": ["lab\\main.py:<module>.PaymentGateway.pay"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.PaymentGatewayFactory.<body>",
+      "file": "lab\\main.py",
+      "line": 32,
+      "code": "staticmethod(def create(...))",
+      "directTarget": "__builtin.staticmethod",
+      "possibleTargets": ["__builtin.staticmethod"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.PaymentGatewayFactory.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 31,
+      "code": "__newInstance.__init__()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.PaymentGatewayFactory.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 31,
+      "code": "class PaymentGatewayFactory<meta>(...).<fakeNew>()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.PaymentGatewayFactory.create",
+      "file": "lab\\main.py",
+      "line": 34,
+      "code": "BankGateway()",
+      "directTarget": "lab\\main.py:<module>.BankGateway.__init__",
+      "possibleTargets": ["lab\\main.py:<module>.BankGateway.__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.PaymentGatewayFactory.create",
+      "file": "lab\\main.py",
+      "line": 34,
+      "code": "CardGateway()",
+      "directTarget": "lab\\main.py:<module>.CardGateway.__init__",
+      "possibleTargets": ["lab\\main.py:<module>.CardGateway.__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.UnsafeCli.<body>",
+      "file": "lab\\main.py",
+      "line": 68,
+      "code": "staticmethod(def run(...))",
+      "directTarget": "__builtin.staticmethod",
+      "possibleTargets": ["__builtin.staticmethod"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.UnsafeCli.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 67,
+      "code": "__newInstance.__init__()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.UnsafeCli.<metaClassCallHandler>",
+      "file": "lab\\main.py",
+      "line": 67,
+      "code": "class UnsafeCli<meta>(...).<fakeNew>()",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": [],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.UnsafeCli.run",
+      "file": "lab\\main.py",
+      "line": 71,
+      "code": "subprocess.run(user_input, shell = True, check = False)",
+      "directTarget": "subprocess.py:<module>.run",
+      "possibleTargets": ["subprocess.py:<module>.run"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.main",
+      "file": "lab\\main.py",
+      "line": 85,
+      "code": "service.place_order(order)",
+      "directTarget": "lab\\main.py:<module>.OrderService.place_order",
+      "possibleTargets": ["lab\\main.py:<module>.OrderService.place_order"],
+      "internalTargets": ["lab\\main.py:<module>.OrderService.place_order"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.main",
+      "file": "lab\\main.py",
+      "line": 86,
+      "code": "print(f\"DONE {order.id}\")",
+      "directTarget": "__builtin.print",
+      "possibleTargets": ["__builtin.print"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.main",
+      "file": "lab\\main.py",
+      "line": 75,
+      "code": "list(sys.argv[1:] if argv is None else argv)",
+      "directTarget": "__builtin.list<meta>",
+      "possibleTargets": ["__builtin.list<meta>"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.main",
+      "file": "lab\\main.py",
+      "line": 81,
+      "code": "PaymentGatewayFactory.create(\"card\")",
+      "directTarget": "lab\\main.py:<module>.PaymentGatewayFactory.create",
+      "possibleTargets": ["lab\\main.py:<module>.PaymentGatewayFactory.create"],
+      "internalTargets": ["lab\\main.py:<module>.PaymentGatewayFactory.create"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.main",
+      "file": "lab\\main.py",
+      "line": 82,
+      "code": "OrderService(gateway, AuditService(), OrderRepository())",
+      "directTarget": "lab\\main.py:<module>.OrderService.__init__",
+      "possibleTargets": ["lab\\main.py:<module>.OrderService.__init__"],
+      "internalTargets": ["lab\\main.py:<module>.OrderService.__init__"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.main",
+      "file": "lab\\main.py",
+      "line": 83,
+      "code": "Order(\"ORD-42\", 125)",
+      "directTarget": "lab\\main.py:<module>.Order.__init__",
+      "possibleTargets": ["lab\\main.py:<module>.Order.__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.main",
+      "file": "lab\\main.py",
+      "line": 78,
+      "code": "UnsafeCli.run(args[1])",
+      "directTarget": "lab\\main.py:<module>.UnsafeCli.run",
+      "possibleTargets": ["lab\\main.py:<module>.UnsafeCli.run"],
+      "internalTargets": ["lab\\main.py:<module>.UnsafeCli.run"]
+    },
+    {
+      "caller": "lab\\main.py:<module>.main",
+      "file": "lab\\main.py",
+      "line": 82,
+      "code": "AuditService()",
+      "directTarget": "lab\\main.py:<module>.AuditService.__init__",
+      "possibleTargets": ["lab\\main.py:<module>.AuditService.__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.main",
+      "file": "lab\\main.py",
+      "line": 82,
+      "code": "OrderRepository()",
+      "directTarget": "lab\\main.py:<module>.OrderRepository.__init__",
+      "possibleTargets": ["lab\\main.py:<module>.OrderRepository.__init__"],
+      "internalTargets": []
+    },
+    {
+      "caller": "lab\\main.py:<module>.main",
+      "file": "lab\\main.py",
+      "line": 77,
+      "code": "len(args)",
+      "directTarget": "__builtin.len",
+      "possibleTargets": ["__builtin.len"],
+      "internalTargets": []
+    }
+  ]
+}

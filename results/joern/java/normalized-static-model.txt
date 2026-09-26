@@ -1,0 +1,91 @@
+APPLICATION STATIC MODEL
+========================
+
+Schema:   3
+Language: java
+Scope:    production
+
+Types:          10
+Methods:        20
+Internal calls: 20
+External calls: 10
+
+APPLICATION CALL GRAPH
+----------------------
+
+lab.AuditService.flagLargeOrder:void(lab.Order)
+  -> order.id() [line 33]
+     declared: lab.Order.id:java.lang.String()
+     resolution: joern
+
+lab.BankGateway.pay:void(lab.Order)
+  -> order.id() [line 21]
+     declared: lab.Order.id:java.lang.String()
+     resolution: joern
+  -> order.amount() [line 21]
+     declared: lab.Order.amount:double()
+     resolution: joern
+
+lab.CardGateway.pay:void(lab.Order)
+  -> order.id() [line 14]
+     declared: lab.Order.id:java.lang.String()
+     resolution: joern
+  -> order.amount() [line 14]
+     declared: lab.Order.amount:double()
+     resolution: joern
+
+lab.Main.main:void(java.lang.String[])
+  -> new OrderService(gateway, new AuditService(), new OrderRepository()) [line 84]
+     declared: lab.OrderService.<init>:void(lab.PaymentGateway,lab.AuditService,lab.OrderRepository)
+     resolution: joern
+  -> new Order("ORD-42", 125.0) [line 85]
+     declared: lab.Order.<init>:void(java.lang.String,double)
+     resolution: joern
+  -> service.placeOrder(order) [line 87]
+     declared: lab.OrderService.placeOrder:void(lab.Order)
+     resolution: joern
+  -> PaymentGatewayFactory.create("card") [line 82]
+     declared: lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)
+     resolution: joern
+  -> UnsafeCli.run(args[1]) [line 78]
+     declared: lab.UnsafeCli.run:void(java.lang.String)
+     resolution: joern
+  -> new AuditService() [line 84]
+     declared: lab.AuditService.<init>:void()
+     resolution: joern
+  -> new OrderRepository() [line 84]
+     declared: lab.OrderRepository.<init>:void()
+     resolution: joern
+  -> order.id() [line 88]
+     declared: lab.Order.id:java.lang.String()
+     resolution: joern
+
+lab.OrderRepository.save:void(lab.Order)
+  -> order.id() [line 39]
+     declared: lab.Order.id:java.lang.String()
+     resolution: joern
+
+lab.OrderService.placeOrder:void(lab.Order)
+  -> this.gateway.pay(order) [line 55]
+     declared: lab.PaymentGateway.pay:void(lab.Order)
+     dispatch:
+       - lab.BankGateway.pay:void(lab.Order)
+       - lab.CardGateway.pay:void(lab.Order)
+     resolution: joern
+  -> this.repository.save(order) [line 61]
+     declared: lab.OrderRepository.save:void(lab.Order)
+     resolution: joern
+  -> order.amount() [line 57]
+     declared: lab.Order.amount:double()
+     resolution: joern
+  -> this.audit.flagLargeOrder(order) [line 58]
+     declared: lab.AuditService.flagLargeOrder:void(lab.Order)
+     resolution: joern
+
+lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)
+  -> new BankGateway() [line 27]
+     declared: lab.BankGateway.<init>:void()
+     resolution: joern
+  -> new CardGateway() [line 27]
+     declared: lab.CardGateway.<init>:void()
+     resolution: joern

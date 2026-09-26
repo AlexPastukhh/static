@@ -1,0 +1,56 @@
+digraph "placeOrder" {  
+node [shape="rect"];  
+"107374182415" [label = <METHOD, 54<BR/>placeOrder> ]
+"111669149721" [label = <PARAM, 54<BR/>this> ]
+"111669149722" [label = <PARAM, 54<BR/>Order order> ]
+"25769803793" [label = <BLOCK, 54<BR/>&lt;empty&gt;> ]
+"30064771110" [label = <pay, 55<BR/>this.gateway.pay(order)> ]
+"30064771111" [label = <&lt;operator&gt;.fieldAccess, 55<BR/>this.gateway> ]
+"68719476765" [label = <IDENTIFIER, 55<BR/>this<BR/>this.gateway.pay(order)> ]
+"55834574859" [label = <FIELD_IDENTIFIER, 55<BR/>gateway> ]
+"68719476766" [label = <IDENTIFIER, 55<BR/>order<BR/>this.gateway.pay(order)> ]
+"47244640256" [label = <CONTROL_STRUCTURE, 57<BR/>IF<BR/>if (order.amount() &gt; 1000.0)> ]
+"30064771112" [label = <&lt;operator&gt;.greaterThan, 57<BR/>order.amount() &gt; 1000.0> ]
+"30064771113" [label = <amount, 57<BR/>order.amount()> ]
+"68719476767" [label = <IDENTIFIER, 57<BR/>order<BR/>order.amount()> ]
+"90194313221" [label = <LITERAL, 57<BR/>1000.0<BR/>order.amount() &gt; 1000.0> ]
+"25769803794" [label = <BLOCK, 57<BR/>&lt;empty&gt;> ]
+"30064771114" [label = <flagLargeOrder, 58<BR/>this.audit.flagLargeOrder(order)> ]
+"30064771115" [label = <&lt;operator&gt;.fieldAccess, 58<BR/>this.audit> ]
+"68719476768" [label = <IDENTIFIER, 58<BR/>this<BR/>this.audit.flagLargeOrder(order)> ]
+"55834574860" [label = <FIELD_IDENTIFIER, 58<BR/>audit> ]
+"68719476769" [label = <IDENTIFIER, 58<BR/>order<BR/>this.audit.flagLargeOrder(order)> ]
+"30064771116" [label = <save, 61<BR/>this.repository.save(order)> ]
+"30064771117" [label = <&lt;operator&gt;.fieldAccess, 61<BR/>this.repository> ]
+"68719476770" [label = <IDENTIFIER, 61<BR/>this<BR/>this.repository.save(order)> ]
+"55834574861" [label = <FIELD_IDENTIFIER, 61<BR/>repository> ]
+"68719476771" [label = <IDENTIFIER, 61<BR/>order<BR/>this.repository.save(order)> ]
+"128849018921" [label = <MODIFIER, 54<BR/>VIRTUAL> ]
+"124554051599" [label = <METHOD_RETURN, 54<BR/>void> ]
+  "107374182415" -> "111669149721" 
+  "107374182415" -> "111669149722" 
+  "107374182415" -> "25769803793" 
+  "107374182415" -> "128849018921" 
+  "107374182415" -> "124554051599" 
+  "25769803793" -> "30064771110" 
+  "25769803793" -> "47244640256" 
+  "25769803793" -> "30064771116" 
+  "30064771110" -> "30064771111" 
+  "30064771110" -> "68719476766" 
+  "30064771111" -> "68719476765" 
+  "30064771111" -> "55834574859" 
+  "47244640256" -> "30064771112" 
+  "47244640256" -> "25769803794" 
+  "30064771112" -> "30064771113" 
+  "30064771112" -> "90194313221" 
+  "30064771113" -> "68719476767" 
+  "25769803794" -> "30064771114" 
+  "30064771114" -> "30064771115" 
+  "30064771114" -> "68719476769" 
+  "30064771115" -> "68719476768" 
+  "30064771115" -> "55834574860" 
+  "30064771116" -> "30064771117" 
+  "30064771116" -> "68719476771" 
+  "30064771117" -> "68719476770" 
+  "30064771117" -> "55834574861" 
+}

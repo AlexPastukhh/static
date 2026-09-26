@@ -1,0 +1,556 @@
+{
+    "schemaVersion":  3,
+    "language":  "python",
+    "scope":  "production",
+    "summary":  {
+                    "types":  9,
+                    "methods":  10,
+                    "internalCalls":  7,
+                    "externalCalls":  13,
+                    "excludedTestTypes":  0,
+                    "excludedTestMethods":  0
+                },
+    "types":  [
+                  {
+                      "name":  "AuditService",
+                      "fullName":  "lab\\main.py:\u003cmodule\u003e.AuditService",
+                      "file":  "lab\\main.py",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "BankGateway",
+                      "fullName":  "lab\\main.py:\u003cmodule\u003e.BankGateway",
+                      "file":  "lab\\main.py",
+                      "inheritsFrom":  [
+                                           "lab\\main.py:\u003cmodule\u003e.PaymentGateway"
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "CardGateway",
+                      "fullName":  "lab\\main.py:\u003cmodule\u003e.CardGateway",
+                      "file":  "lab\\main.py",
+                      "inheritsFrom":  [
+                                           "lab\\main.py:\u003cmodule\u003e.PaymentGateway"
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "Order",
+                      "fullName":  "lab\\main.py:\u003cmodule\u003e.Order",
+                      "file":  "lab\\main.py",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "OrderRepository",
+                      "fullName":  "lab\\main.py:\u003cmodule\u003e.OrderRepository",
+                      "file":  "lab\\main.py",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "OrderService",
+                      "fullName":  "lab\\main.py:\u003cmodule\u003e.OrderService",
+                      "file":  "lab\\main.py",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "PaymentGateway",
+                      "fullName":  "lab\\main.py:\u003cmodule\u003e.PaymentGateway",
+                      "file":  "lab\\main.py",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "PaymentGatewayFactory",
+                      "fullName":  "lab\\main.py:\u003cmodule\u003e.PaymentGatewayFactory",
+                      "file":  "lab\\main.py",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "UnsafeCli",
+                      "fullName":  "lab\\main.py:\u003cmodule\u003e.UnsafeCli",
+                      "file":  "lab\\main.py",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  }
+              ],
+    "methods":  [
+                    {
+                        "name":  "flag_large_order",
+                        "fullName":  "lab\\main.py:\u003cmodule\u003e.AuditService.flag_large_order",
+                        "owner":  "lab\\main.py:\u003cmodule\u003e.AuditService",
+                        "file":  "lab\\main.py",
+                        "line":  38,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "pay",
+                        "fullName":  "lab\\main.py:\u003cmodule\u003e.BankGateway.pay",
+                        "owner":  "lab\\main.py:\u003cmodule\u003e.BankGateway",
+                        "file":  "lab\\main.py",
+                        "line":  27,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "pay",
+                        "fullName":  "lab\\main.py:\u003cmodule\u003e.CardGateway.pay",
+                        "owner":  "lab\\main.py:\u003cmodule\u003e.CardGateway",
+                        "file":  "lab\\main.py",
+                        "line":  22,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "save",
+                        "fullName":  "lab\\main.py:\u003cmodule\u003e.OrderRepository.save",
+                        "owner":  "lab\\main.py:\u003cmodule\u003e.OrderRepository",
+                        "file":  "lab\\main.py",
+                        "line":  43,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "__init__",
+                        "fullName":  "lab\\main.py:\u003cmodule\u003e.OrderService.__init__",
+                        "owner":  "lab\\main.py:\u003cmodule\u003e.OrderService",
+                        "file":  "lab\\main.py",
+                        "line":  48,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "place_order",
+                        "fullName":  "lab\\main.py:\u003cmodule\u003e.OrderService.place_order",
+                        "owner":  "lab\\main.py:\u003cmodule\u003e.OrderService",
+                        "file":  "lab\\main.py",
+                        "line":  58,
+                        "conditions":  [
+                                           "if ... : ..."
+                                       ]
+                    },
+                    {
+                        "name":  "pay",
+                        "fullName":  "lab\\main.py:\u003cmodule\u003e.PaymentGateway.pay",
+                        "owner":  "lab\\main.py:\u003cmodule\u003e.PaymentGateway",
+                        "file":  "lab\\main.py",
+                        "line":  17,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "create",
+                        "fullName":  "lab\\main.py:\u003cmodule\u003e.PaymentGatewayFactory.create",
+                        "owner":  "lab\\main.py:\u003cmodule\u003e.PaymentGatewayFactory",
+                        "file":  "lab\\main.py",
+                        "line":  33,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "run",
+                        "fullName":  "lab\\main.py:\u003cmodule\u003e.UnsafeCli.run",
+                        "owner":  "lab\\main.py:\u003cmodule\u003e.UnsafeCli",
+                        "file":  "lab\\main.py",
+                        "line":  69,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "main",
+                        "fullName":  "lab\\main.py:\u003cmodule\u003e.main",
+                        "owner":  "",
+                        "file":  "lab\\main.py",
+                        "line":  74,
+                        "conditions":  [
+                                           "if ... : ..."
+                                       ]
+                    }
+                ],
+    "calls":  [
+                  {
+                      "caller":  "lab\\main.py:\u003cmodule\u003e.OrderService.place_order",
+                      "callerOwner":  "lab\\main.py:\u003cmodule\u003e.OrderService",
+                      "file":  "lab\\main.py",
+                      "line":  59,
+                      "code":  "self.gateway.pay(order)",
+                      "declaredTarget":  null,
+                      "dispatchTargets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.BankGateway.pay",
+                                              "lab\\main.py:\u003cmodule\u003e.CardGateway.pay"
+                                          ],
+                      "possibleTargets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.BankGateway.pay",
+                                              "lab\\main.py:\u003cmodule\u003e.CardGateway.pay"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab\\main.py:\u003cmodule\u003e.OrderService.place_order",
+                      "callerOwner":  "lab\\main.py:\u003cmodule\u003e.OrderService",
+                      "file":  "lab\\main.py",
+                      "line":  64,
+                      "code":  "self.repository.save(order)",
+                      "declaredTarget":  "lab\\main.py:\u003cmodule\u003e.OrderRepository.save",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.OrderRepository.save"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab\\main.py:\u003cmodule\u003e.OrderService.place_order",
+                      "callerOwner":  "lab\\main.py:\u003cmodule\u003e.OrderService",
+                      "file":  "lab\\main.py",
+                      "line":  62,
+                      "code":  "self.audit.flag_large_order(order)",
+                      "declaredTarget":  "lab\\main.py:\u003cmodule\u003e.AuditService.flag_large_order",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.AuditService.flag_large_order"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab\\main.py:\u003cmodule\u003e.main",
+                      "callerOwner":  "",
+                      "file":  "lab\\main.py",
+                      "line":  85,
+                      "code":  "service.place_order(order)",
+                      "declaredTarget":  "lab\\main.py:\u003cmodule\u003e.OrderService.place_order",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.OrderService.place_order"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab\\main.py:\u003cmodule\u003e.main",
+                      "callerOwner":  "",
+                      "file":  "lab\\main.py",
+                      "line":  81,
+                      "code":  "PaymentGatewayFactory.create(\"card\")",
+                      "declaredTarget":  "lab\\main.py:\u003cmodule\u003e.PaymentGatewayFactory.create",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.PaymentGatewayFactory.create"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab\\main.py:\u003cmodule\u003e.main",
+                      "callerOwner":  "",
+                      "file":  "lab\\main.py",
+                      "line":  82,
+                      "code":  "OrderService(gateway, AuditService(), OrderRepository())",
+                      "declaredTarget":  "lab\\main.py:\u003cmodule\u003e.OrderService.__init__",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.OrderService.__init__"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab\\main.py:\u003cmodule\u003e.main",
+                      "callerOwner":  "",
+                      "file":  "lab\\main.py",
+                      "line":  78,
+                      "code":  "UnsafeCli.run(args[1])",
+                      "declaredTarget":  "lab\\main.py:\u003cmodule\u003e.UnsafeCli.run",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.UnsafeCli.run"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  }
+              ],
+    "externalCalls":  [
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.AuditService.flag_large_order",
+                              "callerOwner":  "lab\\main.py:\u003cmodule\u003e.AuditService",
+                              "file":  "lab\\main.py",
+                              "line":  39,
+                              "code":  "print(f\"AUDIT {order.id}\")",
+                              "target":  "__builtin.print",
+                              "targets":  [
+                                              "__builtin.print"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.BankGateway.pay",
+                              "callerOwner":  "lab\\main.py:\u003cmodule\u003e.BankGateway",
+                              "file":  "lab\\main.py",
+                              "line":  28,
+                              "code":  "print(f\"BankGateway.pay order={order.id} amount={order.amount:g}\")",
+                              "target":  "__builtin.print",
+                              "targets":  [
+                                              "__builtin.print"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.CardGateway.pay",
+                              "callerOwner":  "lab\\main.py:\u003cmodule\u003e.CardGateway",
+                              "file":  "lab\\main.py",
+                              "line":  23,
+                              "code":  "print(f\"CardGateway.pay order={order.id} amount={order.amount:g}\")",
+                              "target":  "__builtin.print",
+                              "targets":  [
+                                              "__builtin.print"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.OrderRepository.save",
+                              "callerOwner":  "lab\\main.py:\u003cmodule\u003e.OrderRepository",
+                              "file":  "lab\\main.py",
+                              "line":  44,
+                              "code":  "print(f\"OrderRepository.save {order.id}\")",
+                              "target":  "__builtin.print",
+                              "targets":  [
+                                              "__builtin.print"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.PaymentGatewayFactory.create",
+                              "callerOwner":  "lab\\main.py:\u003cmodule\u003e.PaymentGatewayFactory",
+                              "file":  "lab\\main.py",
+                              "line":  34,
+                              "code":  "BankGateway()",
+                              "target":  "lab\\main.py:\u003cmodule\u003e.BankGateway.__init__",
+                              "targets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.BankGateway.__init__"
+                                          ],
+                              "classification":  "unresolved-on-internal-type",
+                              "internalOwner":  "lab\\main.py:\u003cmodule\u003e.BankGateway",
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.PaymentGatewayFactory.create",
+                              "callerOwner":  "lab\\main.py:\u003cmodule\u003e.PaymentGatewayFactory",
+                              "file":  "lab\\main.py",
+                              "line":  34,
+                              "code":  "CardGateway()",
+                              "target":  "lab\\main.py:\u003cmodule\u003e.CardGateway.__init__",
+                              "targets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.CardGateway.__init__"
+                                          ],
+                              "classification":  "unresolved-on-internal-type",
+                              "internalOwner":  "lab\\main.py:\u003cmodule\u003e.CardGateway",
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.UnsafeCli.run",
+                              "callerOwner":  "lab\\main.py:\u003cmodule\u003e.UnsafeCli",
+                              "file":  "lab\\main.py",
+                              "line":  71,
+                              "code":  "subprocess.run(user_input, shell = True, check = False)",
+                              "target":  "subprocess.py:\u003cmodule\u003e.run",
+                              "targets":  [
+                                              "subprocess.py:\u003cmodule\u003e.run"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.main",
+                              "callerOwner":  "",
+                              "file":  "lab\\main.py",
+                              "line":  86,
+                              "code":  "print(f\"DONE {order.id}\")",
+                              "target":  "__builtin.print",
+                              "targets":  [
+                                              "__builtin.print"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.main",
+                              "callerOwner":  "",
+                              "file":  "lab\\main.py",
+                              "line":  75,
+                              "code":  "list(sys.argv[1:] if argv is None else argv)",
+                              "target":  "__builtin.list\u003cmeta\u003e",
+                              "targets":  [
+                                              "__builtin.list\u003cmeta\u003e"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.main",
+                              "callerOwner":  "",
+                              "file":  "lab\\main.py",
+                              "line":  83,
+                              "code":  "Order(\"ORD-42\", 125)",
+                              "target":  "lab\\main.py:\u003cmodule\u003e.Order.__init__",
+                              "targets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.Order.__init__"
+                                          ],
+                              "classification":  "unresolved-on-internal-type",
+                              "internalOwner":  "lab\\main.py:\u003cmodule\u003e.Order",
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.main",
+                              "callerOwner":  "",
+                              "file":  "lab\\main.py",
+                              "line":  82,
+                              "code":  "AuditService()",
+                              "target":  "lab\\main.py:\u003cmodule\u003e.AuditService.__init__",
+                              "targets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.AuditService.__init__"
+                                          ],
+                              "classification":  "unresolved-on-internal-type",
+                              "internalOwner":  "lab\\main.py:\u003cmodule\u003e.AuditService",
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.main",
+                              "callerOwner":  "",
+                              "file":  "lab\\main.py",
+                              "line":  82,
+                              "code":  "OrderRepository()",
+                              "target":  "lab\\main.py:\u003cmodule\u003e.OrderRepository.__init__",
+                              "targets":  [
+                                              "lab\\main.py:\u003cmodule\u003e.OrderRepository.__init__"
+                                          ],
+                              "classification":  "unresolved-on-internal-type",
+                              "internalOwner":  "lab\\main.py:\u003cmodule\u003e.OrderRepository",
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab\\main.py:\u003cmodule\u003e.main",
+                              "callerOwner":  "",
+                              "file":  "lab\\main.py",
+                              "line":  77,
+                              "code":  "len(args)",
+                              "target":  "__builtin.len",
+                              "targets":  [
+                                              "__builtin.len"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          }
+                      ]
+}

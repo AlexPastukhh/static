@@ -1,0 +1,570 @@
+{
+    "schemaVersion":  3,
+    "language":  "typescript",
+    "scope":  "production",
+    "summary":  {
+                    "types":  9,
+                    "methods":  19,
+                    "internalCalls":  7,
+                    "externalCalls":  8,
+                    "excludedTestTypes":  0,
+                    "excludedTestMethods":  0
+                },
+    "types":  [
+                  {
+                      "name":  "AuditService",
+                      "fullName":  "src\\main.ts::program:AuditService",
+                      "file":  "src\\main.ts",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "BankGateway",
+                      "fullName":  "src\\main.ts::program:BankGateway",
+                      "file":  "src\\main.ts",
+                      "inheritsFrom":  [
+                                           "src\\main.ts::program:PaymentGateway"
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "CardGateway",
+                      "fullName":  "src\\main.ts::program:CardGateway",
+                      "file":  "src\\main.ts",
+                      "inheritsFrom":  [
+                                           "src\\main.ts::program:PaymentGateway"
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "Order",
+                      "fullName":  "src\\main.ts::program:Order",
+                      "file":  "src\\main.ts",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "OrderRepository",
+                      "fullName":  "src\\main.ts::program:OrderRepository",
+                      "file":  "src\\main.ts",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "OrderService",
+                      "fullName":  "src\\main.ts::program:OrderService",
+                      "file":  "src\\main.ts",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "PaymentGateway",
+                      "fullName":  "src\\main.ts::program:PaymentGateway",
+                      "file":  "src\\main.ts",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "PaymentGatewayFactory",
+                      "fullName":  "src\\main.ts::program:PaymentGatewayFactory",
+                      "file":  "src\\main.ts",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "UnsafeCli",
+                      "fullName":  "src\\main.ts::program:UnsafeCli",
+                      "file":  "src\\main.ts",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  }
+              ],
+    "methods":  [
+                    {
+                        "name":  ":program",
+                        "fullName":  "src\\main.ts::program",
+                        "owner":  "src\\main.ts::program",
+                        "file":  "src\\main.ts",
+                        "line":  1,
+                        "conditions":  [
+                                           "if (args.length \u003e= 2 \u0026\u0026 args[0] === \"--unsafe\") {\n    UnsafeCli.run(args[1]);\n    return;\n  }",
+                                           "if (order.amount \u003e 1000) {\n      this.audit.flagLargeOrder(order);\n    }"
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "src\\main.ts::program:AuditService:\u003cinit\u003e",
+                        "owner":  "src\\main.ts::program:AuditService",
+                        "file":  "src\\main.ts",
+                        "line":  32,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "flagLargeOrder",
+                        "fullName":  "src\\main.ts::program:AuditService:flagLargeOrder",
+                        "owner":  "src\\main.ts::program:AuditService",
+                        "file":  "src\\main.ts",
+                        "line":  33,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "src\\main.ts::program:BankGateway:\u003cinit\u003e",
+                        "owner":  "src\\main.ts::program:BankGateway",
+                        "file":  "src\\main.ts",
+                        "line":  20,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "pay",
+                        "fullName":  "src\\main.ts::program:BankGateway:pay",
+                        "owner":  "src\\main.ts::program:BankGateway",
+                        "file":  "src\\main.ts",
+                        "line":  21,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "src\\main.ts::program:CardGateway:\u003cinit\u003e",
+                        "owner":  "src\\main.ts::program:CardGateway",
+                        "file":  "src\\main.ts",
+                        "line":  14,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "pay",
+                        "fullName":  "src\\main.ts::program:CardGateway:pay",
+                        "owner":  "src\\main.ts::program:CardGateway",
+                        "file":  "src\\main.ts",
+                        "line":  15,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "src\\main.ts::program:Order:\u003cinit\u003e",
+                        "owner":  "src\\main.ts::program:Order",
+                        "file":  "src\\main.ts",
+                        "line":  4,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "src\\main.ts::program:OrderRepository:\u003cinit\u003e",
+                        "owner":  "src\\main.ts::program:OrderRepository",
+                        "file":  "src\\main.ts",
+                        "line":  38,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "save",
+                        "fullName":  "src\\main.ts::program:OrderRepository:save",
+                        "owner":  "src\\main.ts::program:OrderRepository",
+                        "file":  "src\\main.ts",
+                        "line":  39,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "src\\main.ts::program:OrderService:\u003cinit\u003e",
+                        "owner":  "src\\main.ts::program:OrderService",
+                        "file":  "src\\main.ts",
+                        "line":  45,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "placeOrder",
+                        "fullName":  "src\\main.ts::program:OrderService:placeOrder",
+                        "owner":  "src\\main.ts::program:OrderService",
+                        "file":  "src\\main.ts",
+                        "line":  51,
+                        "conditions":  [
+                                           "if (order.amount \u003e 1000) {\n      this.audit.flagLargeOrder(order);\n    }"
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "src\\main.ts::program:PaymentGateway:\u003cinit\u003e",
+                        "owner":  "src\\main.ts::program:PaymentGateway",
+                        "file":  "src\\main.ts",
+                        "line":  10,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "pay",
+                        "fullName":  "src\\main.ts::program:PaymentGateway:pay",
+                        "owner":  "src\\main.ts::program:PaymentGateway",
+                        "file":  "src\\main.ts",
+                        "line":  11,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "src\\main.ts::program:PaymentGatewayFactory:\u003cinit\u003e",
+                        "owner":  "src\\main.ts::program:PaymentGatewayFactory",
+                        "file":  "src\\main.ts",
+                        "line":  26,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "create",
+                        "fullName":  "src\\main.ts::program:PaymentGatewayFactory:create",
+                        "owner":  "src\\main.ts::program:PaymentGatewayFactory",
+                        "file":  "src\\main.ts",
+                        "line":  27,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "src\\main.ts::program:UnsafeCli:\u003cinit\u003e",
+                        "owner":  "src\\main.ts::program:UnsafeCli",
+                        "file":  "src\\main.ts",
+                        "line":  62,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "run",
+                        "fullName":  "src\\main.ts::program:UnsafeCli:run",
+                        "owner":  "src\\main.ts::program:UnsafeCli",
+                        "file":  "src\\main.ts",
+                        "line":  63,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "main",
+                        "fullName":  "src\\main.ts::program:main",
+                        "owner":  "src\\main.ts::program",
+                        "file":  "src\\main.ts",
+                        "line":  69,
+                        "conditions":  [
+                                           "if (args.length \u003e= 2 \u0026\u0026 args[0] === \"--unsafe\") {\n    UnsafeCli.run(args[1]);\n    return;\n  }"
+                                       ]
+                    }
+                ],
+    "calls":  [
+                  {
+                      "caller":  "src\\main.ts::program",
+                      "callerOwner":  "src\\main.ts::program",
+                      "file":  "src\\main.ts",
+                      "line":  87,
+                      "code":  "main(process.argv.slice(2))",
+                      "declaredTarget":  "src\\main.ts::program:main",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "src\\main.ts::program:main"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "src\\main.ts::program:OrderService:placeOrder",
+                      "callerOwner":  "src\\main.ts::program:OrderService",
+                      "file":  "src\\main.ts",
+                      "line":  52,
+                      "code":  "this.gateway.pay(order)",
+                      "declaredTarget":  "src\\main.ts::program:PaymentGateway:pay",
+                      "dispatchTargets":  [
+                                              "src\\main.ts::program:BankGateway:pay",
+                                              "src\\main.ts::program:CardGateway:pay"
+                                          ],
+                      "possibleTargets":  [
+                                              "src\\main.ts::program:BankGateway:pay",
+                                              "src\\main.ts::program:CardGateway:pay",
+                                              "src\\main.ts::program:PaymentGateway:pay"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern+hierarchy"
+                  },
+                  {
+                      "caller":  "src\\main.ts::program:OrderService:placeOrder",
+                      "callerOwner":  "src\\main.ts::program:OrderService",
+                      "file":  "src\\main.ts",
+                      "line":  58,
+                      "code":  "this.repository.save(order)",
+                      "declaredTarget":  "src\\main.ts::program:OrderRepository:\u003cinit\u003e",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "src\\main.ts::program:OrderRepository:\u003cinit\u003e"
+                                          ],
+                      "unresolvedTargets":  [
+                                                "src\\main:ts::program:OrderRepository:\u003cinit\u003e:save",
+                                                "src\\main:ts::program:OrderRepository:save"
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "src\\main.ts::program:OrderService:placeOrder",
+                      "callerOwner":  "src\\main.ts::program:OrderService",
+                      "file":  "src\\main.ts",
+                      "line":  55,
+                      "code":  "this.audit.flagLargeOrder(order)",
+                      "declaredTarget":  "src\\main.ts::program:AuditService:\u003cinit\u003e",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "src\\main.ts::program:AuditService:\u003cinit\u003e"
+                                          ],
+                      "unresolvedTargets":  [
+                                                "src\\main:ts::program:AuditService:\u003cinit\u003e:flagLargeOrder",
+                                                "src\\main:ts::program:AuditService:flagLargeOrder"
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "src\\main.ts::program:main",
+                      "callerOwner":  "src\\main.ts::program",
+                      "file":  "src\\main.ts",
+                      "line":  83,
+                      "code":  "service.placeOrder(order)",
+                      "declaredTarget":  "src\\main.ts::program:OrderService:placeOrder",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "src\\main.ts::program:OrderService:placeOrder"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "src\\main.ts::program:main",
+                      "callerOwner":  "src\\main.ts::program",
+                      "file":  "src\\main.ts",
+                      "line":  75,
+                      "code":  "PaymentGatewayFactory.create(\"card\")",
+                      "declaredTarget":  "src\\main.ts::program:PaymentGatewayFactory:create",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "src\\main.ts::program:PaymentGatewayFactory:create"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "src\\main.ts::program:main",
+                      "callerOwner":  "src\\main.ts::program",
+                      "file":  "src\\main.ts",
+                      "line":  71,
+                      "code":  "UnsafeCli.run(args[1])",
+                      "declaredTarget":  "src\\main.ts::program:UnsafeCli:run",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "src\\main.ts::program:UnsafeCli:run"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  }
+              ],
+    "externalCalls":  [
+                          {
+                              "caller":  "src\\main.ts::program",
+                              "callerOwner":  "src\\main.ts::program",
+                              "file":  "src\\main.ts",
+                              "line":  87,
+                              "code":  "process.argv.slice(2)",
+                              "target":  "process:argv:\u003creturnValue\u003e:\u003cmember\u003e(argv):slice",
+                              "targets":  [
+                                              "process:argv:\u003creturnValue\u003e:\u003cmember\u003e(argv):slice"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "src\\main.ts::program",
+                              "callerOwner":  "src\\main.ts::program",
+                              "file":  "src\\main.ts",
+                              "line":  1,
+                              "code":  "require(\"node:child_process\")",
+                              "target":  "src\\main.ts::program:PaymentGateway:require",
+                              "targets":  [
+                                              "src\\main.ts::program:PaymentGateway:require"
+                                          ],
+                              "classification":  "unresolved-on-internal-type",
+                              "internalOwner":  "src\\main.ts::program:PaymentGateway",
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "src\\main.ts::program:AuditService:flagLargeOrder",
+                              "callerOwner":  "src\\main.ts::program:AuditService",
+                              "file":  "src\\main.ts",
+                              "line":  34,
+                              "code":  "console.log(`AUDIT ${order.id}`)",
+                              "target":  "__whatwg.console:log",
+                              "targets":  [
+                                              "__whatwg.console:log"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "src\\main.ts::program:BankGateway:pay",
+                              "callerOwner":  "src\\main.ts::program:BankGateway",
+                              "file":  "src\\main.ts",
+                              "line":  22,
+                              "code":  "console.log(`BankGateway.pay order=${order.id} amount=${order.amount}`)",
+                              "target":  "__whatwg.console:log",
+                              "targets":  [
+                                              "__whatwg.console:log"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "src\\main.ts::program:CardGateway:pay",
+                              "callerOwner":  "src\\main.ts::program:CardGateway",
+                              "file":  "src\\main.ts",
+                              "line":  16,
+                              "code":  "console.log(`CardGateway.pay order=${order.id} amount=${order.amount}`)",
+                              "target":  "__whatwg.console:log",
+                              "targets":  [
+                                              "__whatwg.console:log"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "src\\main.ts::program:OrderRepository:save",
+                              "callerOwner":  "src\\main.ts::program:OrderRepository",
+                              "file":  "src\\main.ts",
+                              "line":  40,
+                              "code":  "console.log(`OrderRepository.save ${order.id}`)",
+                              "target":  "__whatwg.console:log",
+                              "targets":  [
+                                              "__whatwg.console:log"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "src\\main.ts::program:UnsafeCli:run",
+                              "callerOwner":  "src\\main.ts::program:UnsafeCli",
+                              "file":  "src\\main.ts",
+                              "line":  65,
+                              "code":  "exec(userInput)",
+                              "target":  "node:child_process:exec",
+                              "targets":  [
+                                              "node:child_process:exec"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "src\\main.ts::program:main",
+                              "callerOwner":  "src\\main.ts::program",
+                              "file":  "src\\main.ts",
+                              "line":  84,
+                              "code":  "console.log(`DONE ${order.id}`)",
+                              "target":  "__whatwg.console:log",
+                              "targets":  [
+                                              "__whatwg.console:log"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          }
+                      ]
+}

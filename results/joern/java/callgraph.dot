@@ -1,0 +1,48 @@
+digraph StaticCallGraph {
+  rankdir=LR;
+  node [shape=box];
+
+  "lab.AuditService.<init>:void()";
+  "lab.AuditService.flagLargeOrder:void(lab.Order)";
+  "lab.BankGateway.<init>:void()";
+  "lab.BankGateway.pay:void(lab.Order)";
+  "lab.CardGateway.<init>:void()";
+  "lab.CardGateway.pay:void(lab.Order)";
+  "lab.Main.<init>:void()";
+  "lab.Main.main:void(java.lang.String[])";
+  "lab.Order.<init>:void(java.lang.String,double)";
+  "lab.Order.amount:double()";
+  "lab.Order.id:java.lang.String()";
+  "lab.OrderRepository.<init>:void()";
+  "lab.OrderRepository.save:void(lab.Order)";
+  "lab.OrderService.<init>:void(lab.PaymentGateway,lab.AuditService,lab.OrderRepository)";
+  "lab.OrderService.placeOrder:void(lab.Order)";
+  "lab.PaymentGateway.pay:void(lab.Order)";
+  "lab.PaymentGatewayFactory.<init>:void()";
+  "lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)";
+  "lab.UnsafeCli.<init>:void()";
+  "lab.UnsafeCli.run:void(java.lang.String)";
+
+  "lab.AuditService.flagLargeOrder:void(lab.Order)" -> "lab.Order.id:java.lang.String()";
+  "lab.BankGateway.pay:void(lab.Order)" -> "lab.Order.id:java.lang.String()";
+  "lab.BankGateway.pay:void(lab.Order)" -> "lab.Order.amount:double()";
+  "lab.CardGateway.pay:void(lab.Order)" -> "lab.Order.id:java.lang.String()";
+  "lab.CardGateway.pay:void(lab.Order)" -> "lab.Order.amount:double()";
+  "lab.Main.main:void(java.lang.String[])" -> "lab.OrderService.<init>:void(lab.PaymentGateway,lab.AuditService,lab.OrderRepository)";
+  "lab.Main.main:void(java.lang.String[])" -> "lab.Order.<init>:void(java.lang.String,double)";
+  "lab.Main.main:void(java.lang.String[])" -> "lab.OrderService.placeOrder:void(lab.Order)";
+  "lab.Main.main:void(java.lang.String[])" -> "lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)";
+  "lab.Main.main:void(java.lang.String[])" -> "lab.UnsafeCli.run:void(java.lang.String)";
+  "lab.Main.main:void(java.lang.String[])" -> "lab.AuditService.<init>:void()";
+  "lab.Main.main:void(java.lang.String[])" -> "lab.OrderRepository.<init>:void()";
+  "lab.Main.main:void(java.lang.String[])" -> "lab.Order.id:java.lang.String()";
+  "lab.OrderRepository.save:void(lab.Order)" -> "lab.Order.id:java.lang.String()";
+  "lab.OrderService.placeOrder:void(lab.Order)" -> "lab.BankGateway.pay:void(lab.Order)";
+  "lab.OrderService.placeOrder:void(lab.Order)" -> "lab.CardGateway.pay:void(lab.Order)";
+  "lab.OrderService.placeOrder:void(lab.Order)" -> "lab.PaymentGateway.pay:void(lab.Order)";
+  "lab.OrderService.placeOrder:void(lab.Order)" -> "lab.OrderRepository.save:void(lab.Order)";
+  "lab.OrderService.placeOrder:void(lab.Order)" -> "lab.Order.amount:double()";
+  "lab.OrderService.placeOrder:void(lab.Order)" -> "lab.AuditService.flagLargeOrder:void(lab.Order)";
+  "lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)" -> "lab.BankGateway.<init>:void()";
+  "lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)" -> "lab.CardGateway.<init>:void()";
+}

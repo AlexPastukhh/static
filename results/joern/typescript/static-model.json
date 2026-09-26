@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 1,
+  "summary": {
+    "types": 28,
+    "methods": 19,
+    "calls": 15
+  },
+  "types": [
+    {
+      "name": ":program",
+      "fullName": "src\\main.ts::program",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "AuditService",
+      "fullName": "src\\main.ts::program:AuditService",
+      "file": "src\\main.ts",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:AuditService:<init>",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "flagLargeOrder",
+      "fullName": "src\\main.ts::program:AuditService:flagLargeOrder",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "BankGateway",
+      "fullName": "src\\main.ts::program:BankGateway",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["PaymentGateway","src\\main.ts::program:PaymentGateway"]
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:BankGateway:<init>",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "pay",
+      "fullName": "src\\main.ts::program:BankGateway:pay",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "CardGateway",
+      "fullName": "src\\main.ts::program:CardGateway",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["PaymentGateway","src\\main.ts::program:PaymentGateway"]
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:CardGateway:<init>",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "pay",
+      "fullName": "src\\main.ts::program:CardGateway:pay",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "Order",
+      "fullName": "src\\main.ts::program:Order",
+      "file": "src\\main.ts",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:Order:<init>",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "OrderRepository",
+      "fullName": "src\\main.ts::program:OrderRepository",
+      "file": "src\\main.ts",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:OrderRepository:<init>",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "save",
+      "fullName": "src\\main.ts::program:OrderRepository:save",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "OrderService",
+      "fullName": "src\\main.ts::program:OrderService",
+      "file": "src\\main.ts",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:OrderService:<init>",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "placeOrder",
+      "fullName": "src\\main.ts::program:OrderService:placeOrder",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "PaymentGateway",
+      "fullName": "src\\main.ts::program:PaymentGateway",
+      "file": "src\\main.ts",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:PaymentGateway:<init>",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "pay",
+      "fullName": "src\\main.ts::program:PaymentGateway:pay",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "PaymentGatewayFactory",
+      "fullName": "src\\main.ts::program:PaymentGatewayFactory",
+      "file": "src\\main.ts",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:PaymentGatewayFactory:<init>",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "create",
+      "fullName": "src\\main.ts::program:PaymentGatewayFactory:create",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "UnsafeCli",
+      "fullName": "src\\main.ts::program:UnsafeCli",
+      "file": "src\\main.ts",
+      "inheritsFrom": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:UnsafeCli:<init>",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "run",
+      "fullName": "src\\main.ts::program:UnsafeCli:run",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    },
+    {
+      "name": "main",
+      "fullName": "src\\main.ts::program:main",
+      "file": "src\\main.ts",
+      "inheritsFrom": ["ANY"]
+    }
+  ],
+  "methods": [
+    {
+      "name": ":program",
+      "fullName": "src\\main.ts::program",
+      "owner": "src\\main.ts::program",
+      "file": "src\\main.ts",
+      "line": 1,
+      "conditions": ["if (args.length >= 2 && args[0] === \"--unsafe\") {\n    UnsafeCli.run(args[1]);\n    return;\n  }","if (order.amount > 1000) {\n      this.audit.flagLargeOrder(order);\n    }"]
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:AuditService:<init>",
+      "owner": "src\\main.ts::program:AuditService",
+      "file": "src\\main.ts",
+      "line": 32,
+      "conditions": []
+    },
+    {
+      "name": "flagLargeOrder",
+      "fullName": "src\\main.ts::program:AuditService:flagLargeOrder",
+      "owner": "src\\main.ts::program:AuditService",
+      "file": "src\\main.ts",
+      "line": 33,
+      "conditions": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:BankGateway:<init>",
+      "owner": "src\\main.ts::program:BankGateway",
+      "file": "src\\main.ts",
+      "line": 20,
+      "conditions": []
+    },
+    {
+      "name": "pay",
+      "fullName": "src\\main.ts::program:BankGateway:pay",
+      "owner": "src\\main.ts::program:BankGateway",
+      "file": "src\\main.ts",
+      "line": 21,
+      "conditions": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:CardGateway:<init>",
+      "owner": "src\\main.ts::program:CardGateway",
+      "file": "src\\main.ts",
+      "line": 14,
+      "conditions": []
+    },
+    {
+      "name": "pay",
+      "fullName": "src\\main.ts::program:CardGateway:pay",
+      "owner": "src\\main.ts::program:CardGateway",
+      "file": "src\\main.ts",
+      "line": 15,
+      "conditions": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:Order:<init>",
+      "owner": "src\\main.ts::program:Order",
+      "file": "src\\main.ts",
+      "line": 4,
+      "conditions": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:OrderRepository:<init>",
+      "owner": "src\\main.ts::program:OrderRepository",
+      "file": "src\\main.ts",
+      "line": 38,
+      "conditions": []
+    },
+    {
+      "name": "save",
+      "fullName": "src\\main.ts::program:OrderRepository:save",
+      "owner": "src\\main.ts::program:OrderRepository",
+      "file": "src\\main.ts",
+      "line": 39,
+      "conditions": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:OrderService:<init>",
+      "owner": "src\\main.ts::program:OrderService",
+      "file": "src\\main.ts",
+      "line": 45,
+      "conditions": []
+    },
+    {
+      "name": "placeOrder",
+      "fullName": "src\\main.ts::program:OrderService:placeOrder",
+      "owner": "src\\main.ts::program:OrderService",
+      "file": "src\\main.ts",
+      "line": 51,
+      "conditions": ["if (order.amount > 1000) {\n      this.audit.flagLargeOrder(order);\n    }"]
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:PaymentGateway:<init>",
+      "owner": "src\\main.ts::program:PaymentGateway",
+      "file": "src\\main.ts",
+      "line": 10,
+      "conditions": []
+    },
+    {
+      "name": "pay",
+      "fullName": "src\\main.ts::program:PaymentGateway:pay",
+      "owner": "src\\main.ts::program:PaymentGateway",
+      "file": "src\\main.ts",
+      "line": 11,
+      "conditions": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:PaymentGatewayFactory:<init>",
+      "owner": "src\\main.ts::program:PaymentGatewayFactory",
+      "file": "src\\main.ts",
+      "line": 26,
+      "conditions": []
+    },
+    {
+      "name": "create",
+      "fullName": "src\\main.ts::program:PaymentGatewayFactory:create",
+      "owner": "src\\main.ts::program:PaymentGatewayFactory",
+      "file": "src\\main.ts",
+      "line": 27,
+      "conditions": []
+    },
+    {
+      "name": "<init>",
+      "fullName": "src\\main.ts::program:UnsafeCli:<init>",
+      "owner": "src\\main.ts::program:UnsafeCli",
+      "file": "src\\main.ts",
+      "line": 62,
+      "conditions": []
+    },
+    {
+      "name": "run",
+      "fullName": "src\\main.ts::program:UnsafeCli:run",
+      "owner": "src\\main.ts::program:UnsafeCli",
+      "file": "src\\main.ts",
+      "line": 63,
+      "conditions": []
+    },
+    {
+      "name": "main",
+      "fullName": "src\\main.ts::program:main",
+      "owner": "src\\main.ts::program",
+      "file": "src\\main.ts",
+      "line": 69,
+      "conditions": ["if (args.length >= 2 && args[0] === \"--unsafe\") {\n    UnsafeCli.run(args[1]);\n    return;\n  }"]
+    }
+  ],
+  "calls": [
+    {
+      "caller": "src\\main.ts::program",
+      "file": "src\\main.ts",
+      "line": 87,
+      "code": "main(process.argv.slice(2))",
+      "directTarget": "src\\main.ts::program:main",
+      "possibleTargets": ["src\\main.ts::program:main"],
+      "internalTargets": ["src\\main.ts::program:main"]
+    },
+    {
+      "caller": "src\\main.ts::program",
+      "file": "src\\main.ts",
+      "line": 87,
+      "code": "process.argv.slice(2)",
+      "directTarget": "process:argv:<returnValue>:<member>(argv):slice",
+      "possibleTargets": ["process:argv:<returnValue>:<member>(argv):slice"],
+      "internalTargets": []
+    },
+    {
+      "caller": "src\\main.ts::program",
+      "file": "src\\main.ts",
+      "line": 1,
+      "code": "require(\"node:child_process\")",
+      "directTarget": "src\\main.ts::program:PaymentGateway:require",
+      "possibleTargets": ["src\\main.ts::program:PaymentGateway:require"],
+      "internalTargets": []
+    },
+    {
+      "caller": "src\\main.ts::program:AuditService:flagLargeOrder",
+      "file": "src\\main.ts",
+      "line": 34,
+      "code": "console.log(`AUDIT ${order.id}`)",
+      "directTarget": "__whatwg.console:log",
+      "possibleTargets": ["__whatwg.console:log"],
+      "internalTargets": []
+    },
+    {
+      "caller": "src\\main.ts::program:BankGateway:pay",
+      "file": "src\\main.ts",
+      "line": 22,
+      "code": "console.log(`BankGateway.pay order=${order.id} amount=${order.amount}`)",
+      "directTarget": "__whatwg.console:log",
+      "possibleTargets": ["__whatwg.console:log"],
+      "internalTargets": []
+    },
+    {
+      "caller": "src\\main.ts::program:CardGateway:pay",
+      "file": "src\\main.ts",
+      "line": 16,
+      "code": "console.log(`CardGateway.pay order=${order.id} amount=${order.amount}`)",
+      "directTarget": "__whatwg.console:log",
+      "possibleTargets": ["__whatwg.console:log"],
+      "internalTargets": []
+    },
+    {
+      "caller": "src\\main.ts::program:OrderRepository:save",
+      "file": "src\\main.ts",
+      "line": 40,
+      "code": "console.log(`OrderRepository.save ${order.id}`)",
+      "directTarget": "__whatwg.console:log",
+      "possibleTargets": ["__whatwg.console:log"],
+      "internalTargets": []
+    },
+    {
+      "caller": "src\\main.ts::program:OrderService:placeOrder",
+      "file": "src\\main.ts",
+      "line": 52,
+      "code": "this.gateway.pay(order)",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": ["src\\main.ts::program:PaymentGateway:pay"],
+      "internalTargets": ["src\\main.ts::program:PaymentGateway:pay"]
+    },
+    {
+      "caller": "src\\main.ts::program:OrderService:placeOrder",
+      "file": "src\\main.ts",
+      "line": 58,
+      "code": "this.repository.save(order)",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": ["src\\main.ts::program:OrderRepository:<init>:save","src\\main:ts::program:OrderRepository:<init>:save","src\\main:ts::program:OrderRepository:save"],
+      "internalTargets": []
+    },
+    {
+      "caller": "src\\main.ts::program:OrderService:placeOrder",
+      "file": "src\\main.ts",
+      "line": 55,
+      "code": "this.audit.flagLargeOrder(order)",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": ["src\\main.ts::program:AuditService:<init>:flagLargeOrder","src\\main:ts::program:AuditService:<init>:flagLargeOrder","src\\main:ts::program:AuditService:flagLargeOrder"],
+      "internalTargets": []
+    },
+    {
+      "caller": "src\\main.ts::program:UnsafeCli:run",
+      "file": "src\\main.ts",
+      "line": 65,
+      "code": "exec(userInput)",
+      "directTarget": "node:child_process:exec",
+      "possibleTargets": ["node:child_process:exec"],
+      "internalTargets": []
+    },
+    {
+      "caller": "src\\main.ts::program:main",
+      "file": "src\\main.ts",
+      "line": 83,
+      "code": "service.placeOrder(order)",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": ["src\\main.ts::program:OrderService:placeOrder"],
+      "internalTargets": ["src\\main.ts::program:OrderService:placeOrder"]
+    },
+    {
+      "caller": "src\\main.ts::program:main",
+      "file": "src\\main.ts",
+      "line": 84,
+      "code": "console.log(`DONE ${order.id}`)",
+      "directTarget": "__whatwg.console:log",
+      "possibleTargets": ["__whatwg.console:log"],
+      "internalTargets": []
+    },
+    {
+      "caller": "src\\main.ts::program:main",
+      "file": "src\\main.ts",
+      "line": 75,
+      "code": "PaymentGatewayFactory.create(\"card\")",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": ["src\\main.ts::program:PaymentGatewayFactory:create"],
+      "internalTargets": ["src\\main.ts::program:PaymentGatewayFactory:create"]
+    },
+    {
+      "caller": "src\\main.ts::program:main",
+      "file": "src\\main.ts",
+      "line": 71,
+      "code": "UnsafeCli.run(args[1])",
+      "directTarget": "<unknownFullName>",
+      "possibleTargets": ["src\\main.ts::program:UnsafeCli:run"],
+      "internalTargets": ["src\\main.ts::program:UnsafeCli:run"]
+    }
+  ]
+}

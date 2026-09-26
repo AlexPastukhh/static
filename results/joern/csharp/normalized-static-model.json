@@ -1,0 +1,632 @@
+{
+    "schemaVersion":  3,
+    "language":  "csharp",
+    "scope":  "production",
+    "summary":  {
+                    "types":  10,
+                    "methods":  10,
+                    "internalCalls":  7,
+                    "externalCalls":  17,
+                    "excludedTestTypes":  0,
+                    "excludedTestMethods":  0
+                },
+    "types":  [
+                  {
+                      "name":  "AuditService",
+                      "fullName":  "StaticLab.AuditService",
+                      "file":  "Program.cs",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "BankGateway",
+                      "fullName":  "StaticLab.BankGateway",
+                      "file":  "Program.cs",
+                      "inheritsFrom":  [
+                                           "StaticLab.IPaymentGateway"
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "CardGateway",
+                      "fullName":  "StaticLab.CardGateway",
+                      "file":  "Program.cs",
+                      "inheritsFrom":  [
+                                           "StaticLab.IPaymentGateway"
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "IPaymentGateway",
+                      "fullName":  "StaticLab.IPaymentGateway",
+                      "file":  "Program.cs",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "Order",
+                      "fullName":  "StaticLab.Order",
+                      "file":  "Program.cs",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "OrderRepository",
+                      "fullName":  "StaticLab.OrderRepository",
+                      "file":  "Program.cs",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "OrderService",
+                      "fullName":  "StaticLab.OrderService",
+                      "file":  "Program.cs",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "PaymentGatewayFactory",
+                      "fullName":  "StaticLab.PaymentGatewayFactory",
+                      "file":  "Program.cs",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "Program",
+                      "fullName":  "StaticLab.Program",
+                      "file":  "Program.cs",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  },
+                  {
+                      "name":  "UnsafeCli",
+                      "fullName":  "StaticLab.UnsafeCli",
+                      "file":  "Program.cs",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+
+                                          ]
+                  }
+              ],
+    "methods":  [
+                    {
+                        "name":  "FlagLargeOrder",
+                        "fullName":  "StaticLab.AuditService.FlagLargeOrder:System.Void(StaticLab.Order)",
+                        "owner":  "StaticLab.AuditService",
+                        "file":  "Program.cs",
+                        "line":  37,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "Pay",
+                        "fullName":  "StaticLab.BankGateway.Pay:System.Void(StaticLab.Order)",
+                        "owner":  "StaticLab.BankGateway",
+                        "file":  "Program.cs",
+                        "line":  21,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "Pay",
+                        "fullName":  "StaticLab.CardGateway.Pay:System.Void(StaticLab.Order)",
+                        "owner":  "StaticLab.CardGateway",
+                        "file":  "Program.cs",
+                        "line":  13,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "Pay",
+                        "fullName":  "StaticLab.IPaymentGateway.Pay:System.Void(StaticLab.Order)",
+                        "owner":  "StaticLab.IPaymentGateway",
+                        "file":  "Program.cs",
+                        "line":  8,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "Save",
+                        "fullName":  "StaticLab.OrderRepository.Save:System.Void(StaticLab.Order)",
+                        "owner":  "StaticLab.OrderRepository",
+                        "file":  "Program.cs",
+                        "line":  45,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "StaticLab.OrderService.\u003cinit\u003e:System.Void(StaticLab.IPaymentGateway,StaticLab.AuditService,StaticLab.OrderRepository)",
+                        "owner":  "StaticLab.OrderService",
+                        "file":  "Program.cs",
+                        "line":  57,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "PlaceOrder",
+                        "fullName":  "StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)",
+                        "owner":  "StaticLab.OrderService",
+                        "file":  "Program.cs",
+                        "line":  64,
+                        "conditions":  [
+                                           "if (order.Amount \u003e 1000m)"
+                                       ]
+                    },
+                    {
+                        "name":  "Create",
+                        "fullName":  "StaticLab.PaymentGatewayFactory.Create:StaticLab.IPaymentGateway(System.String)",
+                        "owner":  "StaticLab.PaymentGatewayFactory",
+                        "file":  "Program.cs",
+                        "line":  29,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "Main",
+                        "fullName":  "StaticLab.Program.Main:System.Void(System.String[])",
+                        "owner":  "StaticLab.Program",
+                        "file":  "Program.cs",
+                        "line":  105,
+                        "conditions":  [
+                                           "if (args.Length \u003e= 2 \u0026\u0026 args[0] == \"--unsafe\")"
+                                       ]
+                    },
+                    {
+                        "name":  "Run",
+                        "fullName":  "StaticLab.UnsafeCli.Run:System.Void(System.String)",
+                        "owner":  "StaticLab.UnsafeCli",
+                        "file":  "Program.cs",
+                        "line":  80,
+                        "conditions":  [
+                                           "if (OperatingSystem.IsWindows())"
+                                       ]
+                    }
+                ],
+    "calls":  [
+                  {
+                      "caller":  "StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)",
+                      "callerOwner":  "StaticLab.OrderService",
+                      "file":  "Program.cs",
+                      "line":  66,
+                      "code":  "_gateway.Pay(order)",
+                      "declaredTarget":  "StaticLab.IPaymentGateway.Pay:System.Void(StaticLab.Order)",
+                      "dispatchTargets":  [
+                                              "StaticLab.BankGateway.Pay:System.Void(StaticLab.Order)",
+                                              "StaticLab.CardGateway.Pay:System.Void(StaticLab.Order)"
+                                          ],
+                      "possibleTargets":  [
+                                              "StaticLab.BankGateway.Pay:System.Void(StaticLab.Order)",
+                                              "StaticLab.CardGateway.Pay:System.Void(StaticLab.Order)",
+                                              "StaticLab.IPaymentGateway.Pay:System.Void(StaticLab.Order)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern+hierarchy"
+                  },
+                  {
+                      "caller":  "StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)",
+                      "callerOwner":  "StaticLab.OrderService",
+                      "file":  "Program.cs",
+                      "line":  73,
+                      "code":  "_repository.Save(order)",
+                      "declaredTarget":  "StaticLab.OrderRepository.Save:System.Void(StaticLab.Order)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "StaticLab.OrderRepository.Save:System.Void(StaticLab.Order)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)",
+                      "callerOwner":  "StaticLab.OrderService",
+                      "file":  "Program.cs",
+                      "line":  70,
+                      "code":  "_audit.FlagLargeOrder(order)",
+                      "declaredTarget":  "StaticLab.AuditService.FlagLargeOrder:System.Void(StaticLab.Order)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "StaticLab.AuditService.FlagLargeOrder:System.Void(StaticLab.Order)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "StaticLab.Program.Main:System.Void(System.String[])",
+                      "callerOwner":  "StaticLab.Program",
+                      "file":  "Program.cs",
+                      "line":  117,
+                      "code":  "service.PlaceOrder(order)",
+                      "declaredTarget":  "StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "StaticLab.Program.Main:System.Void(System.String[])",
+                      "callerOwner":  "StaticLab.Program",
+                      "file":  "Program.cs",
+                      "line":  113,
+                      "code":  "PaymentGatewayFactory.Create(\"card\")",
+                      "declaredTarget":  "StaticLab.PaymentGatewayFactory.Create:StaticLab.IPaymentGateway(System.String)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "StaticLab.PaymentGatewayFactory.Create:StaticLab.IPaymentGateway(System.String)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "StaticLab.Program.Main:System.Void(System.String[])",
+                      "callerOwner":  "StaticLab.Program",
+                      "file":  "Program.cs",
+                      "line":  114,
+                      "code":  "new OrderService(gateway, new AuditService(), new OrderRepository())",
+                      "declaredTarget":  "StaticLab.OrderService.\u003cinit\u003e:System.Void(StaticLab.IPaymentGateway,StaticLab.AuditService,StaticLab.OrderRepository)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "StaticLab.OrderService.\u003cinit\u003e:System.Void(StaticLab.IPaymentGateway,StaticLab.AuditService,StaticLab.OrderRepository)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "StaticLab.Program.Main:System.Void(System.String[])",
+                      "callerOwner":  "StaticLab.Program",
+                      "file":  "Program.cs",
+                      "line":  109,
+                      "code":  "UnsafeCli.Run(args[1])",
+                      "declaredTarget":  "StaticLab.UnsafeCli.Run:System.Void(System.String)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "StaticLab.UnsafeCli.Run:System.Void(System.String)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  }
+              ],
+    "externalCalls":  [
+                          {
+                              "caller":  "StaticLab.AuditService.FlagLargeOrder:System.Void(StaticLab.Order)",
+                              "callerOwner":  "StaticLab.AuditService",
+                              "file":  "Program.cs",
+                              "line":  39,
+                              "code":  "Console.WriteLine($\"AUDIT {order.Id}\")",
+                              "target":  "System.Console.WriteLine:System.Void(System.String)",
+                              "targets":  [
+                                              "System.Console.WriteLine:System.Void(System.String)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.BankGateway.Pay:System.Void(StaticLab.Order)",
+                              "callerOwner":  "StaticLab.BankGateway",
+                              "file":  "Program.cs",
+                              "line":  23,
+                              "code":  "Console.WriteLine($\"BankGateway.pay order={order.Id} amount={order.Amount}\")",
+                              "target":  "System.Console.WriteLine:System.Void(System.String)",
+                              "targets":  [
+                                              "System.Console.WriteLine:System.Void(System.String)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.CardGateway.Pay:System.Void(StaticLab.Order)",
+                              "callerOwner":  "StaticLab.CardGateway",
+                              "file":  "Program.cs",
+                              "line":  15,
+                              "code":  "Console.WriteLine($\"CardGateway.pay order={order.Id} amount={order.Amount}\")",
+                              "target":  "System.Console.WriteLine:System.Void(System.String)",
+                              "targets":  [
+                                              "System.Console.WriteLine:System.Void(System.String)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.OrderRepository.Save:System.Void(StaticLab.Order)",
+                              "callerOwner":  "StaticLab.OrderRepository",
+                              "file":  "Program.cs",
+                              "line":  47,
+                              "code":  "Console.WriteLine($\"OrderRepository.save {order.Id}\")",
+                              "target":  "System.Console.WriteLine:System.Void(System.String)",
+                              "targets":  [
+                                              "System.Console.WriteLine:System.Void(System.String)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.PaymentGatewayFactory.Create:StaticLab.IPaymentGateway(System.String)",
+                              "callerOwner":  "StaticLab.PaymentGatewayFactory",
+                              "file":  "Program.cs",
+                              "line":  31,
+                              "code":  "new BankGateway()",
+                              "target":  "StaticLab.BankGateway.\u003cinit\u003e",
+                              "targets":  [
+                                              "StaticLab.BankGateway.\u003cinit\u003e"
+                                          ],
+                              "classification":  "unresolved-on-internal-type",
+                              "internalOwner":  "StaticLab.BankGateway",
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.PaymentGatewayFactory.Create:StaticLab.IPaymentGateway(System.String)",
+                              "callerOwner":  "StaticLab.PaymentGatewayFactory",
+                              "file":  "Program.cs",
+                              "line":  31,
+                              "code":  "new CardGateway()",
+                              "target":  "StaticLab.CardGateway.\u003cinit\u003e",
+                              "targets":  [
+                                              "StaticLab.CardGateway.\u003cinit\u003e"
+                                          ],
+                              "classification":  "unresolved-on-internal-type",
+                              "internalOwner":  "StaticLab.CardGateway",
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.Program.Main:System.Void(System.String[])",
+                              "callerOwner":  "StaticLab.Program",
+                              "file":  "Program.cs",
+                              "line":  118,
+                              "code":  "Console.WriteLine($\"DONE {order.Id}\")",
+                              "target":  "System.Console.WriteLine:System.Void(System.String)",
+                              "targets":  [
+                                              "System.Console.WriteLine:System.Void(System.String)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.Program.Main:System.Void(System.String[])",
+                              "callerOwner":  "StaticLab.Program",
+                              "file":  "Program.cs",
+                              "line":  115,
+                              "code":  "new Order(\"ORD-42\", 125m)",
+                              "target":  "StaticLab.Order.\u003cinit\u003e",
+                              "targets":  [
+                                              "StaticLab.Order.\u003cinit\u003e"
+                                          ],
+                              "classification":  "unresolved-on-internal-type",
+                              "internalOwner":  "StaticLab.Order",
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.Program.Main:System.Void(System.String[])",
+                              "callerOwner":  "StaticLab.Program",
+                              "file":  "Program.cs",
+                              "line":  114,
+                              "code":  "new AuditService()",
+                              "target":  "StaticLab.AuditService.\u003cinit\u003e",
+                              "targets":  [
+                                              "StaticLab.AuditService.\u003cinit\u003e"
+                                          ],
+                              "classification":  "unresolved-on-internal-type",
+                              "internalOwner":  "StaticLab.AuditService",
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.Program.Main:System.Void(System.String[])",
+                              "callerOwner":  "StaticLab.Program",
+                              "file":  "Program.cs",
+                              "line":  114,
+                              "code":  "new OrderRepository()",
+                              "target":  "StaticLab.OrderRepository.\u003cinit\u003e",
+                              "targets":  [
+                                              "StaticLab.OrderRepository.\u003cinit\u003e"
+                                          ],
+                              "classification":  "unresolved-on-internal-type",
+                              "internalOwner":  "StaticLab.OrderRepository",
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.UnsafeCli.Run:System.Void(System.String)",
+                              "callerOwner":  "StaticLab.UnsafeCli",
+                              "file":  "Program.cs",
+                              "line":  97,
+                              "code":  "psi.ArgumentList.Add(userInput)",
+                              "target":  "\u003cunresolvedNamespace\u003e.Add:System.Void(TKey,TValue)",
+                              "targets":  [
+                                              "\u003cunresolvedNamespace\u003e.Add:System.Void(TKey,TValue)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.UnsafeCli.Run:System.Void(System.String)",
+                              "callerOwner":  "StaticLab.UnsafeCli",
+                              "file":  "Program.cs",
+                              "line":  99,
+                              "code":  "process",
+                              "target":  "System.Void.WaitForExit:\u003cunresolvedSignature\u003e",
+                              "targets":  [
+                                              "System.Void.WaitForExit:\u003cunresolvedSignature\u003e"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.UnsafeCli.Run:System.Void(System.String)",
+                              "callerOwner":  "StaticLab.UnsafeCli",
+                              "file":  "Program.cs",
+                              "line":  82,
+                              "code":  "new ProcessStartInfo\n        {\n            FileName = OperatingSystem.IsWindows() ? \"cmd.exe\" : \"/bin/sh\",\n            UseShellExecute = false\n        }",
+                              "target":  "ProcessStartInfo.\u003cinit\u003e",
+                              "targets":  [
+                                              "ProcessStartInfo.\u003cinit\u003e"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.UnsafeCli.Run:System.Void(System.String)",
+                              "callerOwner":  "StaticLab.UnsafeCli",
+                              "file":  "Program.cs",
+                              "line":  88,
+                              "code":  "OperatingSystem.IsWindows()",
+                              "target":  "System.OperatingSystem.IsWindows:\u003cunresolvedSignature\u003e",
+                              "targets":  [
+                                              "System.OperatingSystem.IsWindows:\u003cunresolvedSignature\u003e"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.UnsafeCli.Run:System.Void(System.String)",
+                              "callerOwner":  "StaticLab.UnsafeCli",
+                              "file":  "Program.cs",
+                              "line":  98,
+                              "code":  "Process.Start(psi)",
+                              "target":  "\u003cunresolvedNamespace\u003e.Start:System.Void(System.Object)",
+                              "targets":  [
+                                              "\u003cunresolvedNamespace\u003e.Start:System.Void(System.Object)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.UnsafeCli.Run:System.Void(System.String)",
+                              "callerOwner":  "StaticLab.UnsafeCli",
+                              "file":  "Program.cs",
+                              "line":  90,
+                              "code":  "psi.ArgumentList.Add(\"/c\")",
+                              "target":  "\u003cunresolvedNamespace\u003e.Add:System.Void(TKey,TValue)",
+                              "targets":  [
+                                              "\u003cunresolvedNamespace\u003e.Add:System.Void(TKey,TValue)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "StaticLab.UnsafeCli.Run:System.Void(System.String)",
+                              "callerOwner":  "StaticLab.UnsafeCli",
+                              "file":  "Program.cs",
+                              "line":  94,
+                              "code":  "psi.ArgumentList.Add(\"-c\")",
+                              "target":  "\u003cunresolvedNamespace\u003e.Add:System.Void(TKey,TValue)",
+                              "targets":  [
+                                              "\u003cunresolvedNamespace\u003e.Add:System.Void(TKey,TValue)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          }
+                      ]
+}

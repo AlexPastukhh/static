@@ -1,0 +1,3 @@
+CardGateway.pay order=ORD-42 amount=125
+OrderRepository.save ORD-42
+DONE ORD-42

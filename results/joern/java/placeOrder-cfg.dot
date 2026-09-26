@@ -1,0 +1,29 @@
+digraph "placeOrder" {  
+node [shape="rect"];  
+"30064771110" [label = <pay, 55<BR/>this.gateway.pay(order)> ]
+"30064771116" [label = <save, 61<BR/>this.repository.save(order)> ]
+"30064771111" [label = <&lt;operator&gt;.fieldAccess, 55<BR/>this.gateway> ]
+"30064771112" [label = <&lt;operator&gt;.greaterThan, 57<BR/>order.amount() &gt; 1000.0> ]
+"30064771117" [label = <&lt;operator&gt;.fieldAccess, 61<BR/>this.repository> ]
+"55834574859" [label = <FIELD_IDENTIFIER, 55<BR/>gateway> ]
+"30064771113" [label = <amount, 57<BR/>order.amount()> ]
+"30064771114" [label = <flagLargeOrder, 58<BR/>this.audit.flagLargeOrder(order)> ]
+"55834574861" [label = <FIELD_IDENTIFIER, 61<BR/>repository> ]
+"30064771115" [label = <&lt;operator&gt;.fieldAccess, 58<BR/>this.audit> ]
+"55834574860" [label = <FIELD_IDENTIFIER, 58<BR/>audit> ]
+"107374182415" [label = <METHOD, 54<BR/>placeOrder> ]
+"124554051599" [label = <METHOD_RETURN, 54<BR/>void> ]
+  "30064771110" -> "30064771113" 
+  "30064771116" -> "124554051599" 
+  "30064771111" -> "30064771110" 
+  "30064771112" -> "55834574860" 
+  "30064771112" -> "55834574861" 
+  "30064771117" -> "30064771116" 
+  "55834574859" -> "30064771111" 
+  "30064771113" -> "30064771112" 
+  "30064771114" -> "55834574861" 
+  "55834574861" -> "30064771117" 
+  "30064771115" -> "30064771114" 
+  "55834574860" -> "30064771115" 
+  "107374182415" -> "55834574859" 
+}

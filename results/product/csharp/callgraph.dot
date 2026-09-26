@@ -1,0 +1,17 @@
+digraph StaticCallGraph {
+  rankdir=LR;
+  node [shape=box];
+
+  "StaticLab.AuditService.FlagLargeOrder:System.Void(StaticLab.Order)";
+  "StaticLab.BankGateway.Pay:System.Void(StaticLab.Order)";
+  "StaticLab.CardGateway.Pay:System.Void(StaticLab.Order)";
+  "StaticLab.IPaymentGateway.Pay:System.Void(StaticLab.Order)";
+  "StaticLab.OrderRepository.Save:System.Void(StaticLab.Order)";
+  "StaticLab.OrderService.<init>:System.Void(StaticLab.IPaymentGateway,StaticLab.AuditService,StaticLab.OrderRepository)";
+  "StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)";
+  "StaticLab.PaymentGatewayFactory.Create:StaticLab.IPaymentGateway(System.String)";
+  "StaticLab.Program.Main:System.Void(System.String[])";
+  "StaticLab.UnsafeCli.Run:System.Void(System.String)";
+
+  "StaticLab.Program.Main:System.Void(System.String[])" -> "StaticLab.UnsafeCli.Run:System.Void(System.String)";
+}

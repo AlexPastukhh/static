@@ -1,0 +1,44 @@
+APPLICATION STATIC MODEL
+========================
+
+Schema:   3
+Language: typescript
+Scope:    production
+
+Types:          9
+Methods:        19
+Internal calls: 7
+External calls: 8
+
+APPLICATION CALL GRAPH
+----------------------
+
+src\main.ts::program
+  -> main(process.argv.slice(2)) [line 87]
+     declared: src\main.ts::program:main
+     resolution: joern
+
+src\main.ts::program:main
+  -> service.placeOrder(order) [line 83]
+     declared: src\main.ts::program:OrderService:placeOrder
+     resolution: joern
+  -> PaymentGatewayFactory.create("card") [line 75]
+     declared: src\main.ts::program:PaymentGatewayFactory:create
+     resolution: joern
+  -> UnsafeCli.run(args[1]) [line 71]
+     declared: src\main.ts::program:UnsafeCli:run
+     resolution: joern
+
+src\main.ts::program:OrderService:placeOrder
+  -> this.gateway.pay(order) [line 52]
+     declared: src\main.ts::program:PaymentGateway:pay
+     dispatch:
+       - src\main.ts::program:BankGateway:pay
+       - src\main.ts::program:CardGateway:pay
+     resolution: joern+hierarchy
+  -> this.repository.save(order) [line 58]
+     declared: src\main.ts::program:OrderRepository:<init>
+     resolution: joern
+  -> this.audit.flagLargeOrder(order) [line 55]
+     declared: src\main.ts::program:AuditService:<init>
+     resolution: joern

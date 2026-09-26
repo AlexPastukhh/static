@@ -1,0 +1,29 @@
+{
+  "defaults": {
+    "direction": "downstream",
+    "depth": 3,
+    "showConstructors": false,
+    "showExternal": false
+  },
+  "folderColors": {
+    "ui/": "#2f81f7",
+    "features/": "#a371f7",
+    "domain/": "#d29922",
+    "shared/": "#3fb950",
+    "infrastructure/": "#bf8700",
+    "app/": "#db61a2",
+    "testing/": "#8b949e",
+    "(root)": "#8b949e"
+  },
+  "errorTypePatterns": [
+    "Error",
+    "Exception",
+    "Failure",
+    "Throwable"
+  ],
+  "ui": {
+    "groupSidebarByFolder": true,
+    "groupCallsByTargetFolder": true,
+    "showBranchStatus": true
+  }
+}

@@ -1,0 +1,253 @@
+STATIC APPLICATION MODEL
+========================
+
+Types:   28
+Methods: 19
+Calls:   15
+
+TYPES
+-----
+
+src\main.ts::program
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:AuditService
+  file: src\main.ts
+
+src\main.ts::program:AuditService:<init>
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:AuditService:flagLargeOrder
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:BankGateway
+  file: src\main.ts
+  inherits/implements: PaymentGateway, src\main.ts::program:PaymentGateway
+
+src\main.ts::program:BankGateway:<init>
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:BankGateway:pay
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:CardGateway
+  file: src\main.ts
+  inherits/implements: PaymentGateway, src\main.ts::program:PaymentGateway
+
+src\main.ts::program:CardGateway:<init>
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:CardGateway:pay
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:Order
+  file: src\main.ts
+
+src\main.ts::program:Order:<init>
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:OrderRepository
+  file: src\main.ts
+
+src\main.ts::program:OrderRepository:<init>
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:OrderRepository:save
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:OrderService
+  file: src\main.ts
+
+src\main.ts::program:OrderService:<init>
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:OrderService:placeOrder
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:PaymentGateway
+  file: src\main.ts
+
+src\main.ts::program:PaymentGateway:<init>
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:PaymentGateway:pay
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:PaymentGatewayFactory
+  file: src\main.ts
+
+src\main.ts::program:PaymentGatewayFactory:<init>
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:PaymentGatewayFactory:create
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:UnsafeCli
+  file: src\main.ts
+
+src\main.ts::program:UnsafeCli:<init>
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:UnsafeCli:run
+  file: src\main.ts
+  inherits/implements: ANY
+
+src\main.ts::program:main
+  file: src\main.ts
+  inherits/implements: ANY
+
+
+METHODS AND CALLS
+-----------------
+
+src\main.ts::program
+  source: src\main.ts:1
+  condition: if (args.length >= 2 && args[0] === "--unsafe") {
+    UnsafeCli.run(args[1]);
+    return;
+  }
+  condition: if (order.amount > 1000) {
+      this.audit.flagLargeOrder(order);
+    }
+  -> src\main.ts::program:main @ line 87
+     code: main(process.argv.slice(2))
+     possible targets:
+       - src\main.ts::program:main
+  -> process:argv:<returnValue>:<member>(argv):slice @ line 87
+     code: process.argv.slice(2)
+     possible targets:
+       - process:argv:<returnValue>:<member>(argv):slice
+  -> src\main.ts::program:PaymentGateway:require @ line 1
+     code: require("node:child_process")
+     possible targets:
+       - src\main.ts::program:PaymentGateway:require
+
+src\main.ts::program:AuditService:<init>
+  source: src\main.ts:32
+
+src\main.ts::program:AuditService:flagLargeOrder
+  source: src\main.ts:33
+  -> __whatwg.console:log @ line 34
+     code: console.log(`AUDIT ${order.id}`)
+     possible targets:
+       - __whatwg.console:log
+
+src\main.ts::program:BankGateway:<init>
+  source: src\main.ts:20
+
+src\main.ts::program:BankGateway:pay
+  source: src\main.ts:21
+  -> __whatwg.console:log @ line 22
+     code: console.log(`BankGateway.pay order=${order.id} amount=${order.amount}`)
+     possible targets:
+       - __whatwg.console:log
+
+src\main.ts::program:CardGateway:<init>
+  source: src\main.ts:14
+
+src\main.ts::program:CardGateway:pay
+  source: src\main.ts:15
+  -> __whatwg.console:log @ line 16
+     code: console.log(`CardGateway.pay order=${order.id} amount=${order.amount}`)
+     possible targets:
+       - __whatwg.console:log
+
+src\main.ts::program:Order:<init>
+  source: src\main.ts:4
+
+src\main.ts::program:OrderRepository:<init>
+  source: src\main.ts:38
+
+src\main.ts::program:OrderRepository:save
+  source: src\main.ts:39
+  -> __whatwg.console:log @ line 40
+     code: console.log(`OrderRepository.save ${order.id}`)
+     possible targets:
+       - __whatwg.console:log
+
+src\main.ts::program:OrderService:<init>
+  source: src\main.ts:45
+
+src\main.ts::program:OrderService:placeOrder
+  source: src\main.ts:51
+  condition: if (order.amount > 1000) {
+      this.audit.flagLargeOrder(order);
+    }
+  -> <unknownFullName> @ line 52
+     code: this.gateway.pay(order)
+     possible targets:
+       - src\main.ts::program:PaymentGateway:pay
+  -> <unknownFullName> @ line 58
+     code: this.repository.save(order)
+     possible targets:
+       - src\main.ts::program:OrderRepository:<init>:save
+       - src\main:ts::program:OrderRepository:<init>:save
+       - src\main:ts::program:OrderRepository:save
+  -> <unknownFullName> @ line 55
+     code: this.audit.flagLargeOrder(order)
+     possible targets:
+       - src\main.ts::program:AuditService:<init>:flagLargeOrder
+       - src\main:ts::program:AuditService:<init>:flagLargeOrder
+       - src\main:ts::program:AuditService:flagLargeOrder
+
+src\main.ts::program:PaymentGateway:<init>
+  source: src\main.ts:10
+
+src\main.ts::program:PaymentGateway:pay
+  source: src\main.ts:11
+
+src\main.ts::program:PaymentGatewayFactory:<init>
+  source: src\main.ts:26
+
+src\main.ts::program:PaymentGatewayFactory:create
+  source: src\main.ts:27
+
+src\main.ts::program:UnsafeCli:<init>
+  source: src\main.ts:62
+
+src\main.ts::program:UnsafeCli:run
+  source: src\main.ts:63
+  -> node:child_process:exec @ line 65
+     code: exec(userInput)
+     possible targets:
+       - node:child_process:exec
+
+src\main.ts::program:main
+  source: src\main.ts:69
+  condition: if (args.length >= 2 && args[0] === "--unsafe") {
+    UnsafeCli.run(args[1]);
+    return;
+  }
+  -> <unknownFullName> @ line 83
+     code: service.placeOrder(order)
+     possible targets:
+       - src\main.ts::program:OrderService:placeOrder
+  -> __whatwg.console:log @ line 84
+     code: console.log(`DONE ${order.id}`)
+     possible targets:
+       - __whatwg.console:log
+  -> <unknownFullName> @ line 75
+     code: PaymentGatewayFactory.create("card")
+     possible targets:
+       - src\main.ts::program:PaymentGatewayFactory:create
+  -> <unknownFullName> @ line 71
+     code: UnsafeCli.run(args[1])
+     possible targets:
+       - src\main.ts::program:UnsafeCli:run

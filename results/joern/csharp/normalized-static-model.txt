@@ -1,0 +1,42 @@
+APPLICATION STATIC MODEL
+========================
+
+Schema:   3
+Language: csharp
+Scope:    production
+
+Types:          10
+Methods:        10
+Internal calls: 7
+External calls: 17
+
+APPLICATION CALL GRAPH
+----------------------
+
+StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)
+  -> _gateway.Pay(order) [line 66]
+     declared: StaticLab.IPaymentGateway.Pay:System.Void(StaticLab.Order)
+     dispatch:
+       - StaticLab.BankGateway.Pay:System.Void(StaticLab.Order)
+       - StaticLab.CardGateway.Pay:System.Void(StaticLab.Order)
+     resolution: joern+hierarchy
+  -> _repository.Save(order) [line 73]
+     declared: StaticLab.OrderRepository.Save:System.Void(StaticLab.Order)
+     resolution: joern
+  -> _audit.FlagLargeOrder(order) [line 70]
+     declared: StaticLab.AuditService.FlagLargeOrder:System.Void(StaticLab.Order)
+     resolution: joern
+
+StaticLab.Program.Main:System.Void(System.String[])
+  -> service.PlaceOrder(order) [line 117]
+     declared: StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)
+     resolution: joern
+  -> PaymentGatewayFactory.Create("card") [line 113]
+     declared: StaticLab.PaymentGatewayFactory.Create:StaticLab.IPaymentGateway(System.String)
+     resolution: joern
+  -> new OrderService(gateway, new AuditService(), new OrderRepository()) [line 114]
+     declared: StaticLab.OrderService.<init>:System.Void(StaticLab.IPaymentGateway,StaticLab.AuditService,StaticLab.OrderRepository)
+     resolution: joern
+  -> UnsafeCli.Run(args[1]) [line 109]
+     declared: StaticLab.UnsafeCli.Run:System.Void(System.String)
+     resolution: joern

@@ -1,0 +1,71 @@
+NORMALIZED STATIC MODEL
+=======================
+
+Language: csharp
+Types: 10
+Methods: 10
+Internal calls: 7
+External calls: 17
+
+TYPES
+-----
+
+StaticLab.AuditService
+
+StaticLab.BankGateway
+  inherits/implements: StaticLab.IPaymentGateway
+
+StaticLab.CardGateway
+  inherits/implements: StaticLab.IPaymentGateway
+
+StaticLab.IPaymentGateway
+
+StaticLab.Order
+
+StaticLab.OrderRepository
+
+StaticLab.OrderService
+
+StaticLab.PaymentGatewayFactory
+
+StaticLab.Program
+
+StaticLab.UnsafeCli
+
+
+APPLICATION CALL GRAPH
+----------------------
+
+StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)
+  -> _gateway.Pay(order)  [line 66]
+     declared: StaticLab.IPaymentGateway.Pay:System.Void(StaticLab.Order)
+     possible:
+       - StaticLab.BankGateway.Pay:System.Void(StaticLab.Order)
+       - StaticLab.CardGateway.Pay:System.Void(StaticLab.Order)
+       - StaticLab.IPaymentGateway.Pay:System.Void(StaticLab.Order)
+  -> _repository.Save(order)  [line 73]
+     declared: StaticLab.OrderRepository.Save:System.Void(StaticLab.Order)
+     possible:
+       - StaticLab.OrderRepository.Save:System.Void(StaticLab.Order)
+  -> _audit.FlagLargeOrder(order)  [line 70]
+     declared: StaticLab.AuditService.FlagLargeOrder:System.Void(StaticLab.Order)
+     possible:
+       - StaticLab.AuditService.FlagLargeOrder:System.Void(StaticLab.Order)
+
+StaticLab.Program.Main:System.Void(System.String[])
+  -> service.PlaceOrder(order)  [line 117]
+     declared: StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)
+     possible:
+       - StaticLab.OrderService.PlaceOrder:System.Void(StaticLab.Order)
+  -> PaymentGatewayFactory.Create("card")  [line 113]
+     declared: StaticLab.PaymentGatewayFactory.Create:StaticLab.IPaymentGateway(System.String)
+     possible:
+       - StaticLab.PaymentGatewayFactory.Create:StaticLab.IPaymentGateway(System.String)
+  -> new OrderService(gateway, new AuditService(), new OrderRepository())  [line 114]
+     declared: StaticLab.OrderService.<init>:System.Void(StaticLab.IPaymentGateway,StaticLab.AuditService,StaticLab.OrderRepository)
+     possible:
+       - StaticLab.OrderService.<init>:System.Void(StaticLab.IPaymentGateway,StaticLab.AuditService,StaticLab.OrderRepository)
+  -> UnsafeCli.Run(args[1])  [line 109]
+     declared: StaticLab.UnsafeCli.Run:System.Void(System.String)
+     possible:
+       - StaticLab.UnsafeCli.Run:System.Void(System.String)

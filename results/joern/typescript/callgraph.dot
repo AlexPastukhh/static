@@ -1,0 +1,30 @@
+digraph StaticCallGraph {
+  rankdir=LR;
+  node [shape=box];
+
+  "src\\main.ts::program";
+  "src\\main.ts::program:AuditService:<init>";
+  "src\\main.ts::program:AuditService:flagLargeOrder";
+  "src\\main.ts::program:BankGateway:<init>";
+  "src\\main.ts::program:BankGateway:pay";
+  "src\\main.ts::program:CardGateway:<init>";
+  "src\\main.ts::program:CardGateway:pay";
+  "src\\main.ts::program:Order:<init>";
+  "src\\main.ts::program:OrderRepository:<init>";
+  "src\\main.ts::program:OrderRepository:save";
+  "src\\main.ts::program:OrderService:<init>";
+  "src\\main.ts::program:OrderService:placeOrder";
+  "src\\main.ts::program:PaymentGateway:<init>";
+  "src\\main.ts::program:PaymentGateway:pay";
+  "src\\main.ts::program:PaymentGatewayFactory:<init>";
+  "src\\main.ts::program:PaymentGatewayFactory:create";
+  "src\\main.ts::program:UnsafeCli:<init>";
+  "src\\main.ts::program:UnsafeCli:run";
+  "src\\main.ts::program:main";
+
+  "src\\main.ts::program" -> "src\\main.ts::program:main";
+  "src\\main.ts::program:OrderService:placeOrder" -> "src\\main.ts::program:PaymentGateway:pay";
+  "src\\main.ts::program:main" -> "src\\main.ts::program:OrderService:placeOrder";
+  "src\\main.ts::program:main" -> "src\\main.ts::program:PaymentGatewayFactory:create";
+  "src\\main.ts::program:main" -> "src\\main.ts::program:UnsafeCli:run";
+}

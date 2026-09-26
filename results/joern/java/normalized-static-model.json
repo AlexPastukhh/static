@@ -1,0 +1,854 @@
+{
+    "schemaVersion":  3,
+    "language":  "java",
+    "scope":  "production",
+    "summary":  {
+                    "types":  10,
+                    "methods":  20,
+                    "internalCalls":  20,
+                    "externalCalls":  10,
+                    "excludedTestTypes":  0,
+                    "excludedTestMethods":  0
+                },
+    "types":  [
+                  {
+                      "name":  "AuditService",
+                      "fullName":  "lab.AuditService",
+                      "file":  "lab\\Main.java",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+                                              "java.lang.Object"
+                                          ]
+                  },
+                  {
+                      "name":  "BankGateway",
+                      "fullName":  "lab.BankGateway",
+                      "file":  "lab\\Main.java",
+                      "inheritsFrom":  [
+                                           "lab.PaymentGateway"
+                                       ],
+                      "unresolvedBases":  [
+                                              "java.lang.Object"
+                                          ]
+                  },
+                  {
+                      "name":  "CardGateway",
+                      "fullName":  "lab.CardGateway",
+                      "file":  "lab\\Main.java",
+                      "inheritsFrom":  [
+                                           "lab.PaymentGateway"
+                                       ],
+                      "unresolvedBases":  [
+                                              "java.lang.Object"
+                                          ]
+                  },
+                  {
+                      "name":  "Main",
+                      "fullName":  "lab.Main",
+                      "file":  "lab\\Main.java",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+                                              "java.lang.Object"
+                                          ]
+                  },
+                  {
+                      "name":  "Order",
+                      "fullName":  "lab.Order",
+                      "file":  "lab\\Main.java",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+                                              "java.lang.Record"
+                                          ]
+                  },
+                  {
+                      "name":  "OrderRepository",
+                      "fullName":  "lab.OrderRepository",
+                      "file":  "lab\\Main.java",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+                                              "java.lang.Object"
+                                          ]
+                  },
+                  {
+                      "name":  "OrderService",
+                      "fullName":  "lab.OrderService",
+                      "file":  "lab\\Main.java",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+                                              "java.lang.Object"
+                                          ]
+                  },
+                  {
+                      "name":  "PaymentGateway",
+                      "fullName":  "lab.PaymentGateway",
+                      "file":  "lab\\Main.java",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+                                              "java.lang.Object"
+                                          ]
+                  },
+                  {
+                      "name":  "PaymentGatewayFactory",
+                      "fullName":  "lab.PaymentGatewayFactory",
+                      "file":  "lab\\Main.java",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+                                              "java.lang.Object"
+                                          ]
+                  },
+                  {
+                      "name":  "UnsafeCli",
+                      "fullName":  "lab.UnsafeCli",
+                      "file":  "lab\\Main.java",
+                      "inheritsFrom":  [
+
+                                       ],
+                      "unresolvedBases":  [
+                                              "java.lang.Object"
+                                          ]
+                  }
+              ],
+    "methods":  [
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "lab.AuditService.\u003cinit\u003e:void()",
+                        "owner":  "lab.AuditService",
+                        "file":  "lab\\Main.java",
+                        "line":  31,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "flagLargeOrder",
+                        "fullName":  "lab.AuditService.flagLargeOrder:void(lab.Order)",
+                        "owner":  "lab.AuditService",
+                        "file":  "lab\\Main.java",
+                        "line":  32,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "lab.BankGateway.\u003cinit\u003e:void()",
+                        "owner":  "lab.BankGateway",
+                        "file":  "lab\\Main.java",
+                        "line":  18,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "pay",
+                        "fullName":  "lab.BankGateway.pay:void(lab.Order)",
+                        "owner":  "lab.BankGateway",
+                        "file":  "lab\\Main.java",
+                        "line":  19,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "lab.CardGateway.\u003cinit\u003e:void()",
+                        "owner":  "lab.CardGateway",
+                        "file":  "lab\\Main.java",
+                        "line":  11,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "pay",
+                        "fullName":  "lab.CardGateway.pay:void(lab.Order)",
+                        "owner":  "lab.CardGateway",
+                        "file":  "lab\\Main.java",
+                        "line":  12,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "lab.Main.\u003cinit\u003e:void()",
+                        "owner":  "lab.Main",
+                        "file":  "lab\\Main.java",
+                        "line":  75,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "main",
+                        "fullName":  "lab.Main.main:void(java.lang.String[])",
+                        "owner":  "lab.Main",
+                        "file":  "lab\\Main.java",
+                        "line":  76,
+                        "conditions":  [
+                                           "if (args.length \u003e= 2 \u0026\u0026 \"--unsafe\".equals(args[0]))"
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "lab.Order.\u003cinit\u003e:void(java.lang.String,double)",
+                        "owner":  "lab.Order",
+                        "file":  "lab\\Main.java",
+                        "line":  5,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "amount",
+                        "fullName":  "lab.Order.amount:double()",
+                        "owner":  "lab.Order",
+                        "file":  "lab\\Main.java",
+                        "line":  5,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "id",
+                        "fullName":  "lab.Order.id:java.lang.String()",
+                        "owner":  "lab.Order",
+                        "file":  "lab\\Main.java",
+                        "line":  5,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "lab.OrderRepository.\u003cinit\u003e:void()",
+                        "owner":  "lab.OrderRepository",
+                        "file":  "lab\\Main.java",
+                        "line":  37,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "save",
+                        "fullName":  "lab.OrderRepository.save:void(lab.Order)",
+                        "owner":  "lab.OrderRepository",
+                        "file":  "lab\\Main.java",
+                        "line":  38,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "lab.OrderService.\u003cinit\u003e:void(lab.PaymentGateway,lab.AuditService,lab.OrderRepository)",
+                        "owner":  "lab.OrderService",
+                        "file":  "lab\\Main.java",
+                        "line":  48,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "placeOrder",
+                        "fullName":  "lab.OrderService.placeOrder:void(lab.Order)",
+                        "owner":  "lab.OrderService",
+                        "file":  "lab\\Main.java",
+                        "line":  54,
+                        "conditions":  [
+                                           "if (order.amount() \u003e 1000.0)"
+                                       ]
+                    },
+                    {
+                        "name":  "pay",
+                        "fullName":  "lab.PaymentGateway.pay:void(lab.Order)",
+                        "owner":  "lab.PaymentGateway",
+                        "file":  "lab\\Main.java",
+                        "line":  8,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "lab.PaymentGatewayFactory.\u003cinit\u003e:void()",
+                        "owner":  "lab.PaymentGatewayFactory",
+                        "file":  "lab\\Main.java",
+                        "line":  25,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "create",
+                        "fullName":  "lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)",
+                        "owner":  "lab.PaymentGatewayFactory",
+                        "file":  "lab\\Main.java",
+                        "line":  26,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "\u003cinit\u003e",
+                        "fullName":  "lab.UnsafeCli.\u003cinit\u003e:void()",
+                        "owner":  "lab.UnsafeCli",
+                        "file":  "lab\\Main.java",
+                        "line":  66,
+                        "conditions":  [
+
+                                       ]
+                    },
+                    {
+                        "name":  "run",
+                        "fullName":  "lab.UnsafeCli.run:void(java.lang.String)",
+                        "owner":  "lab.UnsafeCli",
+                        "file":  "lab\\Main.java",
+                        "line":  69,
+                        "conditions":  [
+
+                                       ]
+                    }
+                ],
+    "calls":  [
+                  {
+                      "caller":  "lab.AuditService.flagLargeOrder:void(lab.Order)",
+                      "callerOwner":  "lab.AuditService",
+                      "file":  "lab\\Main.java",
+                      "line":  33,
+                      "code":  "order.id()",
+                      "declaredTarget":  "lab.Order.id:java.lang.String()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.Order.id:java.lang.String()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.BankGateway.pay:void(lab.Order)",
+                      "callerOwner":  "lab.BankGateway",
+                      "file":  "lab\\Main.java",
+                      "line":  21,
+                      "code":  "order.id()",
+                      "declaredTarget":  "lab.Order.id:java.lang.String()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.Order.id:java.lang.String()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.BankGateway.pay:void(lab.Order)",
+                      "callerOwner":  "lab.BankGateway",
+                      "file":  "lab\\Main.java",
+                      "line":  21,
+                      "code":  "order.amount()",
+                      "declaredTarget":  "lab.Order.amount:double()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.Order.amount:double()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.CardGateway.pay:void(lab.Order)",
+                      "callerOwner":  "lab.CardGateway",
+                      "file":  "lab\\Main.java",
+                      "line":  14,
+                      "code":  "order.id()",
+                      "declaredTarget":  "lab.Order.id:java.lang.String()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.Order.id:java.lang.String()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.CardGateway.pay:void(lab.Order)",
+                      "callerOwner":  "lab.CardGateway",
+                      "file":  "lab\\Main.java",
+                      "line":  14,
+                      "code":  "order.amount()",
+                      "declaredTarget":  "lab.Order.amount:double()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.Order.amount:double()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.Main.main:void(java.lang.String[])",
+                      "callerOwner":  "lab.Main",
+                      "file":  "lab\\Main.java",
+                      "line":  84,
+                      "code":  "new OrderService(gateway, new AuditService(), new OrderRepository())",
+                      "declaredTarget":  "lab.OrderService.\u003cinit\u003e:void(lab.PaymentGateway,lab.AuditService,lab.OrderRepository)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.OrderService.\u003cinit\u003e:void(lab.PaymentGateway,lab.AuditService,lab.OrderRepository)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.Main.main:void(java.lang.String[])",
+                      "callerOwner":  "lab.Main",
+                      "file":  "lab\\Main.java",
+                      "line":  85,
+                      "code":  "new Order(\"ORD-42\", 125.0)",
+                      "declaredTarget":  "lab.Order.\u003cinit\u003e:void(java.lang.String,double)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.Order.\u003cinit\u003e:void(java.lang.String,double)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.Main.main:void(java.lang.String[])",
+                      "callerOwner":  "lab.Main",
+                      "file":  "lab\\Main.java",
+                      "line":  87,
+                      "code":  "service.placeOrder(order)",
+                      "declaredTarget":  "lab.OrderService.placeOrder:void(lab.Order)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.OrderService.placeOrder:void(lab.Order)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.Main.main:void(java.lang.String[])",
+                      "callerOwner":  "lab.Main",
+                      "file":  "lab\\Main.java",
+                      "line":  82,
+                      "code":  "PaymentGatewayFactory.create(\"card\")",
+                      "declaredTarget":  "lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.Main.main:void(java.lang.String[])",
+                      "callerOwner":  "lab.Main",
+                      "file":  "lab\\Main.java",
+                      "line":  78,
+                      "code":  "UnsafeCli.run(args[1])",
+                      "declaredTarget":  "lab.UnsafeCli.run:void(java.lang.String)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.UnsafeCli.run:void(java.lang.String)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.Main.main:void(java.lang.String[])",
+                      "callerOwner":  "lab.Main",
+                      "file":  "lab\\Main.java",
+                      "line":  84,
+                      "code":  "new AuditService()",
+                      "declaredTarget":  "lab.AuditService.\u003cinit\u003e:void()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.AuditService.\u003cinit\u003e:void()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.Main.main:void(java.lang.String[])",
+                      "callerOwner":  "lab.Main",
+                      "file":  "lab\\Main.java",
+                      "line":  84,
+                      "code":  "new OrderRepository()",
+                      "declaredTarget":  "lab.OrderRepository.\u003cinit\u003e:void()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.OrderRepository.\u003cinit\u003e:void()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.Main.main:void(java.lang.String[])",
+                      "callerOwner":  "lab.Main",
+                      "file":  "lab\\Main.java",
+                      "line":  88,
+                      "code":  "order.id()",
+                      "declaredTarget":  "lab.Order.id:java.lang.String()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.Order.id:java.lang.String()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.OrderRepository.save:void(lab.Order)",
+                      "callerOwner":  "lab.OrderRepository",
+                      "file":  "lab\\Main.java",
+                      "line":  39,
+                      "code":  "order.id()",
+                      "declaredTarget":  "lab.Order.id:java.lang.String()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.Order.id:java.lang.String()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.OrderService.placeOrder:void(lab.Order)",
+                      "callerOwner":  "lab.OrderService",
+                      "file":  "lab\\Main.java",
+                      "line":  55,
+                      "code":  "this.gateway.pay(order)",
+                      "declaredTarget":  "lab.PaymentGateway.pay:void(lab.Order)",
+                      "dispatchTargets":  [
+                                              "lab.BankGateway.pay:void(lab.Order)",
+                                              "lab.CardGateway.pay:void(lab.Order)"
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.BankGateway.pay:void(lab.Order)",
+                                              "lab.CardGateway.pay:void(lab.Order)",
+                                              "lab.PaymentGateway.pay:void(lab.Order)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.OrderService.placeOrder:void(lab.Order)",
+                      "callerOwner":  "lab.OrderService",
+                      "file":  "lab\\Main.java",
+                      "line":  61,
+                      "code":  "this.repository.save(order)",
+                      "declaredTarget":  "lab.OrderRepository.save:void(lab.Order)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.OrderRepository.save:void(lab.Order)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.OrderService.placeOrder:void(lab.Order)",
+                      "callerOwner":  "lab.OrderService",
+                      "file":  "lab\\Main.java",
+                      "line":  57,
+                      "code":  "order.amount()",
+                      "declaredTarget":  "lab.Order.amount:double()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.Order.amount:double()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.OrderService.placeOrder:void(lab.Order)",
+                      "callerOwner":  "lab.OrderService",
+                      "file":  "lab\\Main.java",
+                      "line":  58,
+                      "code":  "this.audit.flagLargeOrder(order)",
+                      "declaredTarget":  "lab.AuditService.flagLargeOrder:void(lab.Order)",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.AuditService.flagLargeOrder:void(lab.Order)"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)",
+                      "callerOwner":  "lab.PaymentGatewayFactory",
+                      "file":  "lab\\Main.java",
+                      "line":  27,
+                      "code":  "new BankGateway()",
+                      "declaredTarget":  "lab.BankGateway.\u003cinit\u003e:void()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.BankGateway.\u003cinit\u003e:void()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  },
+                  {
+                      "caller":  "lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)",
+                      "callerOwner":  "lab.PaymentGatewayFactory",
+                      "file":  "lab\\Main.java",
+                      "line":  27,
+                      "code":  "new CardGateway()",
+                      "declaredTarget":  "lab.CardGateway.\u003cinit\u003e:void()",
+                      "dispatchTargets":  [
+
+                                          ],
+                      "possibleTargets":  [
+                                              "lab.CardGateway.\u003cinit\u003e:void()"
+                                          ],
+                      "unresolvedTargets":  [
+
+                                            ],
+                      "resolution":  "joern"
+                  }
+              ],
+    "externalCalls":  [
+                          {
+                              "caller":  "lab.AuditService.flagLargeOrder:void(lab.Order)",
+                              "callerOwner":  "lab.AuditService",
+                              "file":  "lab\\Main.java",
+                              "line":  33,
+                              "code":  "System.out.println(\"AUDIT \" + order.id())",
+                              "target":  "java.io.PrintStream.println:void(java.lang.String)",
+                              "targets":  [
+                                              "java.io.PrintStream.println:void(java.lang.String)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab.BankGateway.pay:void(lab.Order)",
+                              "callerOwner":  "lab.BankGateway",
+                              "file":  "lab\\Main.java",
+                              "line":  21,
+                              "code":  "System.out.printf(\"BankGateway.pay order=%s amount=%.0f%n\", order.id(), order.amount())",
+                              "target":  "java.io.PrintStream.printf:java.io.PrintStream(java.lang.String,java.lang.Object[])",
+                              "targets":  [
+                                              "java.io.PrintStream.printf:java.io.PrintStream(java.lang.String,java.lang.Object[])"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab.CardGateway.pay:void(lab.Order)",
+                              "callerOwner":  "lab.CardGateway",
+                              "file":  "lab\\Main.java",
+                              "line":  14,
+                              "code":  "System.out.printf(\"CardGateway.pay order=%s amount=%.0f%n\", order.id(), order.amount())",
+                              "target":  "java.io.PrintStream.printf:java.io.PrintStream(java.lang.String,java.lang.Object[])",
+                              "targets":  [
+                                              "java.io.PrintStream.printf:java.io.PrintStream(java.lang.String,java.lang.Object[])"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab.Main.main:void(java.lang.String[])",
+                              "callerOwner":  "lab.Main",
+                              "file":  "lab\\Main.java",
+                              "line":  88,
+                              "code":  "System.out.println(\"DONE \" + order.id())",
+                              "target":  "java.io.PrintStream.println:void(java.lang.String)",
+                              "targets":  [
+                                              "java.io.PrintStream.println:void(java.lang.String)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab.Main.main:void(java.lang.String[])",
+                              "callerOwner":  "lab.Main",
+                              "file":  "lab\\Main.java",
+                              "line":  77,
+                              "code":  "this.equals(args[0])",
+                              "target":  "java.lang.String.equals:boolean(java.lang.Object)",
+                              "targets":  [
+                                              "java.lang.String.equals:boolean(java.lang.Object)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab.OrderRepository.save:void(lab.Order)",
+                              "callerOwner":  "lab.OrderRepository",
+                              "file":  "lab\\Main.java",
+                              "line":  39,
+                              "code":  "System.out.println(\"OrderRepository.save \" + order.id())",
+                              "target":  "java.io.PrintStream.println:void(java.lang.String)",
+                              "targets":  [
+                                              "java.io.PrintStream.println:void(java.lang.String)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)",
+                              "callerOwner":  "lab.PaymentGatewayFactory",
+                              "file":  "lab\\Main.java",
+                              "line":  27,
+                              "code":  "this.equals(kind)",
+                              "target":  "java.lang.String.equals:boolean(java.lang.Object)",
+                              "targets":  [
+                                              "java.lang.String.equals:boolean(java.lang.Object)"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab.UnsafeCli.run:void(java.lang.String)",
+                              "callerOwner":  "lab.UnsafeCli",
+                              "file":  "lab\\Main.java",
+                              "line":  71,
+                              "code":  "process.waitFor()",
+                              "target":  "java.lang.Process.waitFor:int()",
+                              "targets":  [
+                                              "java.lang.Process.waitFor:int()"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab.UnsafeCli.run:void(java.lang.String)",
+                              "callerOwner":  "lab.UnsafeCli",
+                              "file":  "lab\\Main.java",
+                              "line":  70,
+                              "code":  "Runtime.getRuntime().exec(new String[] { \"/bin/sh\", \"-c\", userInput })",
+                              "target":  "java.lang.Runtime.exec:java.lang.Process(java.lang.String[])",
+                              "targets":  [
+                                              "java.lang.Runtime.exec:java.lang.Process(java.lang.String[])"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          },
+                          {
+                              "caller":  "lab.UnsafeCli.run:void(java.lang.String)",
+                              "callerOwner":  "lab.UnsafeCli",
+                              "file":  "lab\\Main.java",
+                              "line":  70,
+                              "code":  "Runtime.getRuntime()",
+                              "target":  "java.lang.Runtime.getRuntime:java.lang.Runtime()",
+                              "targets":  [
+                                              "java.lang.Runtime.getRuntime:java.lang.Runtime()"
+                                          ],
+                              "classification":  "external",
+                              "internalOwner":  null,
+                              "unresolvedBaseHints":  {
+
+                                                      }
+                          }
+                      ]
+}

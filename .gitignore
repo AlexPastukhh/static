@@ -1,0 +1,40 @@
+﻿# Joern / generated CPG
+tools/joern/
+workspace/
+*.cpg
+*.cpg.bin
+cpg.bin
+
+# Generated standalone viewers with embedded models
+viewer/gd-cap*.html
+
+# Java
+**/target/
+**/*.class
+
+# .NET
+**/bin/
+**/obj/
+
+# Node
+**/node_modules/
+**/dist/
+
+# Python
+**/__pycache__/
+**/*.pyc
+**/.venv/
+**/venv/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+
+# Downloaded Joern distribution
+tools/joern-cli-*.zip

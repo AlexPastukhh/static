@@ -1,0 +1,41 @@
+APPLICATION STATIC MODEL
+========================
+
+Schema:   3
+Language: python
+Scope:    production
+
+Types:          9
+Methods:        10
+Internal calls: 7
+External calls: 13
+
+APPLICATION CALL GRAPH
+----------------------
+
+lab\main.py:<module>.main
+  -> service.place_order(order) [line 85]
+     declared: lab\main.py:<module>.OrderService.place_order
+     resolution: joern
+  -> PaymentGatewayFactory.create("card") [line 81]
+     declared: lab\main.py:<module>.PaymentGatewayFactory.create
+     resolution: joern
+  -> OrderService(gateway, AuditService(), OrderRepository()) [line 82]
+     declared: lab\main.py:<module>.OrderService.__init__
+     resolution: joern
+  -> UnsafeCli.run(args[1]) [line 78]
+     declared: lab\main.py:<module>.UnsafeCli.run
+     resolution: joern
+
+lab\main.py:<module>.OrderService.place_order
+  -> self.gateway.pay(order) [line 59]
+     dispatch:
+       - lab\main.py:<module>.BankGateway.pay
+       - lab\main.py:<module>.CardGateway.pay
+     resolution: joern
+  -> self.repository.save(order) [line 64]
+     declared: lab\main.py:<module>.OrderRepository.save
+     resolution: joern
+  -> self.audit.flag_large_order(order) [line 62]
+     declared: lab\main.py:<module>.AuditService.flag_large_order
+     resolution: joern

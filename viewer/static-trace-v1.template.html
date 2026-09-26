@@ -1,0 +1,46 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Static Trace Explorer V1</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101216;color:#e8eaf0;font:14px Segoe UI,Arial;height:100vh;display:grid;grid-template-rows:58px 1fr}
+header{display:flex;gap:12px;align-items:center;padding:0 16px;background:#181b21;border-bottom:1px solid #2b3038}
+input,select{background:#101319;color:#eee;border:1px solid #3a404a;border-radius:6px;padding:7px}
+#q{width:420px}.layout{display:grid;grid-template-columns:340px 1fr;min-height:0}.side{overflow:auto;border-right:1px solid #2b3038;background:#15181d}
+.item{padding:9px 12px;border-bottom:1px solid #22272e;cursor:pointer}.item:hover,.item.sel{background:#292f39}
+.folder{font-size:11px;color:#89919e}.owner{font-size:11px;color:#b2b8c2}.name{font-weight:600;margin-top:2px}
+main{overflow:auto;padding:22px 30px 80px}.notice{padding:10px 12px;border:1px solid #343a44;border-radius:8px;color:#9ca4b1;margin-bottom:16px;max-width:1050px}
+.node{max-width:760px;border:1px solid #353b45;border-radius:9px;background:#191d23;margin:7px 0;overflow:hidden}
+.head{padding:11px 13px;background:#1e232a;border-bottom:1px solid #303640}.method{font-size:15px;font-weight:650}.body{padding:10px 13px;font-size:12px}.src{color:#7e8794;font-family:Consolas,monospace;margin-top:6px}
+.chip{display:inline-block;background:#2b3038;border-radius:5px;padding:2px 6px;margin:2px 4px 2px 0;font-family:Consolas,monospace}.err{background:#542d2d;color:#ffd0d0}
+.children{margin-left:28px;padding-left:24px;border-left:1px solid #3a4049}.edge{max-width:740px;padding:7px 10px;margin:7px 0;background:#14181e;border:1px solid #2d333c;border-radius:6px;font-family:Consolas,monospace;font-size:12px}
+.meta{color:#7f8793;font-size:10px;margin-top:4px}.pending{color:#b8a8cb;border:1px dashed #4a4056;border-radius:5px;padding:6px 8px;margin-top:8px}
+.cycle,.limit,.none{color:#7c8592;padding:6px 0}.incoming{margin-top:28px}.incoming .row{padding:7px 9px;border:1px solid #2d333c;border-radius:6px;margin:5px 0;cursor:pointer;max-width:900px}.incoming .row:hover{background:#20252d}
+</style>
+<header>
+<b>Static Trace Explorer V1</b>
+<input id="q" placeholder="Search method, class, folder...">
+<label>direction <select id="dir"><option value="down">downstream</option><option value="up">upstream</option></select></label>
+<label>depth <input id="depth" type="number" min="1" max="7" value="3" style="width:55px"></label>
+<label><input id="ctors" type="checkbox"> constructors</label>
+</header>
+<div class="layout"><aside class="side" id="list"></aside><main id="main"></main></div>
+<script id="model" type="application/json">__MODEL__</script>
+<script>
+const M=JSON.parse(document.getElementById("model").textContent),sourceRoot=__SOURCE_ROOT__;
+const methods=new Map(M.methods.map(x=>[x.fullName,x])),out=new Map(),inc=new Map();
+for(const c of M.calls){if(!out.has(c.caller))out.set(c.caller,[]);out.get(c.caller).push(c);for(const t of c.possibleTargets||[]){if(!inc.has(t))inc.set(t,[]);inc.get(t).push(c)}}
+const $=id=>document.getElementById(id), esc=s=>String(s??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");
+function folder(m){let f=(m.file||"").replaceAll("\\\\","/"),i=f.lastIndexOf("/");return (i>=0?f.slice(0,i):"(root)").replace(/^gdcap\//,"")}
+function sig(f){let o=f.lastIndexOf("("),c=f.lastIndexOf(")"),colon=f.lastIndexOf(":",o);if(o<0||c<o)return{r:"unknown",p:[]};let r=colon>=0?f.slice(colon+1,o):"unknown",x=f.slice(o+1,c).trim();return{r,p:x?x.split(",").map(s=>s.trim()):[]}}
+function err(t){return/(Error|Exception|Failure|Throwable)/i.test(t||"")}
+function ctor(f){let m=methods.get(f);return m&&(m.name==="<init>"||m.name==="<clinit>")}
+function targets(c){let a=(c.dispatchTargets||[]).length?[...c.dispatchTargets]:(c.declaredTarget&&methods.has(c.declaredTarget)?[c.declaredTarget]:[...(c.possibleTargets||[])]);a=[...new Set(a)];return $("ctors").checked?a:a.filter(x=>!ctor(x))}
+function node(m){let s=sig(m.fullName),chips=a=>a.length?a.map(t=>`<span class="chip ${err(t)?"err":""}">${esc(t)}</span>`).join(""):'<span class="chip">none</span>';return `<div class="node"><div class="head"><div class="folder">${esc(folder(m))}</div><div class="owner">${esc(m.owner)}</div><div class="method">${esc(m.name)}</div></div><div class="body"><div>args ${chips(s.p)}</div><div>returns ${chips([s.r])}</div><div class="src">${esc(sourceRoot+"\\"+(m.file||""))}${m.line?":"+m.line:""}</div><div class="pending">branches: pending CFG/control-flow extraction</div></div></div>`}
+function edge(c){return `<div class="edge">${esc(c.code)}<div class="meta">${esc(c.file)}${c.line?":"+c.line:""} · ${esc(c.resolution)}</div>${c.declaredTarget?`<div class="meta">declared → ${esc(c.declaredTarget)}</div>`:""}</div>`}
+function down(f,d,path){let m=methods.get(f);if(!m)return"";let h=node(m);if(d<=0)return h+'<div class="limit">depth limit</div>';let xs=(out.get(f)||[]).map(c=>[c,targets(c)]).filter(x=>x[1].length);if(!xs.length)return h+'<div class="none">no further application calls</div>';h+='<div class="children">';for(const [c,ts] of xs){h+=edge(c);for(const t of ts){if(path.has(t)){h+=`<div class="cycle">↻ ${esc(t)}</div>`;continue}let n=new Set(path);n.add(t);h+=down(t,d-1,n)}}return h+"</div>"}
+function up(f,d,path){let m=methods.get(f);if(!m)return"";let h=node(m);if(d<=0)return h+'<div class="limit">depth limit</div>';let xs=inc.get(f)||[];if(!xs.length)return h+'<div class="none">no incoming application calls</div>';h+='<div class="children">';for(const c of xs){h+=edge(c);let t=c.caller;if(path.has(t)){h+=`<div class="cycle">↻ ${esc(t)}</div>`;continue}let n=new Set(path);n.add(t);h+=up(t,d-1,n)}return h+"</div>"}
+let selected=[...methods.values()].find(m=>m.fullName.includes("CopyNoteMaterialFeature.copyMany"))||[...methods.values()][0];
+function renderMain(){if(!selected)return;$("main").innerHTML=`<div class="notice"><b>Static trace:</b> possible application paths, not runtime execution. Branch membership is intentionally absent until CFG extraction is added.</div><h2>${esc(selected.owner)}.${esc(selected.name)}</h2>${$("dir").value==="up"?up(selected.fullName,+$("depth").value,new Set([selected.fullName])):down(selected.fullName,+$("depth").value,new Set([selected.fullName]))}<div class="incoming"><h3>Direct incoming callers</h3>${(inc.get(selected.fullName)||[]).map(c=>{let m=methods.get(c.caller);return m?`<div class="row" data-f="${esc(m.fullName)}"><div class="folder">${esc(folder(m))}</div>${esc(m.owner+"."+m.name)} — ${esc(c.code)}</div>`:""}).join("")||'<div class="none">none</div>'}</div>`;document.querySelectorAll(".row").forEach(x=>x.onclick=()=>{selected=methods.get(x.dataset.f);renderList();renderMain()})}
+function renderList(){let q=$("q").value.toLowerCase();let xs=[...methods.values()].filter(m=>($("ctors").checked||!ctor(m.fullName))&&(!q||[m.name,m.owner,m.file,folder(m)].join(" ").toLowerCase().includes(q))).sort((a,b)=>folder(a).localeCompare(folder(b))||a.owner.localeCompare(b.owner)||a.name.localeCompare(b.name)).slice(0,600);$("list").innerHTML=xs.map(m=>`<div class="item ${selected?.fullName===m.fullName?"sel":""}" data-f="${esc(m.fullName)}"><div class="folder">${esc(folder(m))}</div><div class="owner">${esc(m.owner)}</div><div class="name">${esc(m.name)}</div></div>`).join("");document.querySelectorAll(".item").forEach(x=>x.onclick=()=>{selected=methods.get(x.dataset.f);renderList();renderMain()})}
+$("q").oninput=renderList;$("dir").onchange=renderMain;$("depth").onchange=renderMain;$("ctors").onchange=()=>{renderList();renderMain()};renderList();renderMain();
+</script>

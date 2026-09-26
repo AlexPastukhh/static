@@ -1,0 +1,458 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Static Trace Explorer V2</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#0f1115;--panel:#15181d;--panel2:#1b1f26;--line:#2b3038;--text:#e8eaf0;--muted:#929aa7}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--text);font:14px Inter,"Segoe UI",Arial,sans-serif;display:grid;grid-template-rows:62px 1fr}
+header{display:flex;align-items:center;gap:12px;padding:0 16px;background:#171a20;border-bottom:1px solid var(--line)}
+.logo{font-weight:700;white-space:nowrap}
+input,select,button{font:inherit}
+input[type=search],input[type=number],select{background:#101319;color:#eee;border:1px solid #3a414d;border-radius:7px;padding:8px}
+#search{width:420px;max-width:34vw}
+button{background:#242a33;color:#e6e8ec;border:1px solid #3a414d;border-radius:7px;padding:8px 11px;cursor:pointer}
+button:hover{background:#2e3540}
+.tool{font-size:12px;color:#aab1bd;white-space:nowrap}
+.layout{display:grid;grid-template-columns:360px 1fr;min-height:0}
+.sidebar{overflow:auto;min-height:0;background:var(--panel);border-right:1px solid var(--line)}
+.side-title{position:sticky;top:0;z-index:5;background:var(--panel);padding:11px 13px;border-bottom:1px solid var(--line);font-size:11px;font-weight:700;letter-spacing:.08em;color:#858e9b}
+.folder-group{border-bottom:1px solid #22272e}
+.folder-head{position:sticky;top:36px;z-index:3;display:flex;align-items:center;gap:8px;padding:8px 11px;background:#171b20;cursor:pointer;font-size:12px;font-weight:650}
+.folder-dot{width:9px;height:9px;border-radius:999px;flex:0 0 auto}
+.folder-count{margin-left:auto;color:#77808e;font-size:10px}
+.folder-methods.collapsed{display:none}
+.method-item{padding:8px 12px 8px 25px;border-top:1px solid #20242b;cursor:pointer}
+.method-item:hover,.method-item.selected{background:#292f39}
+.mi-owner{font-size:11px;color:#9ca5b2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mi-name{font-weight:600;margin-top:2px}
+.main{overflow:auto;min-height:0;padding:22px 30px 100px}
+.notice{max-width:1100px;padding:11px 13px;border:1px solid #3c414c;border-radius:8px;background:#171b21;color:#a0a8b4;margin-bottom:16px;line-height:1.45}
+.notice strong{color:#e8eaf0}
+.branch-warning{border-color:#735b2f;background:#211c13;color:#d7c393}
+.branch-chip{display:inline-block;background:#5f451a;color:#ffe0a4;border-radius:5px;padding:2px 6px;margin-right:5px;font-size:10px;font-weight:700}
+.title h1{margin:0 0 4px;font-size:22px}.title .full{font-size:11px;color:#818a97;word-break:break-all}
+.trace{max-width:1250px;margin-top:18px}
+.node{max-width:780px;border:1px solid #353b45;border-left-width:5px;border-radius:9px;background:#191d23;overflow:hidden;margin:6px 0}
+.node-head{padding:11px 13px;border-bottom:1px solid #303640}
+.folder-badge{display:inline-block;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.02em;margin-bottom:7px}
+.node-owner{font-size:12px;color:#b9c0ca}.node-method{font-size:15px;font-weight:700;margin-top:2px}
+.node-body{padding:10px 13px;font-size:12px}
+.sig-row{display:grid;grid-template-columns:72px 1fr;gap:8px;margin:3px 0}.sig-key{color:#7f8794}
+.type-chip{display:inline-block;background:#2b3038;border-radius:5px;padding:2px 6px;margin:1px 4px 1px 0;font:11px Consolas,monospace}
+.type-chip.err{background:#542d2d;color:#ffd0d0}
+.source{margin-top:7px;color:#7d8693;font:11px Consolas,monospace}
+.metrics{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}.metric{padding:2px 6px;border-radius:5px;background:#2a3038;color:#adb5c0;font-size:10px}
+.branch-state{margin-top:8px;padding:6px 8px;border:1px dashed #735b2f;border-radius:6px;color:#c7af7d;font-size:10px}
+.children{margin-left:30px;padding-left:25px;border-left:1px solid #39404a}
+.call-folder-group{margin:10px 0 15px}
+.call-folder-head{display:flex;align-items:center;gap:7px;margin:4px 0 7px;font-size:11px;font-weight:700;color:#c7ccd4}
+.call-folder-head .line{height:1px;background:#2f3540;flex:1}
+.edge{max-width:750px;background:#14181e;border:1px solid #2e343e;border-radius:7px;padding:8px 10px;margin:6px 0}
+.edge-code{font:12px Consolas,monospace;color:#e0e4e9;word-break:break-word}
+.edge-meta{font-size:10px;color:#7e8794;margin-top:4px}
+.dispatch{margin-top:6px;padding-top:6px;border-top:1px solid #2b3038;color:#d3c28b;font-size:10px}
+.cycle,.limit,.none{padding:6px 0;color:#7e8794;font-size:11px}
+.incoming{margin-top:30px;max-width:1000px}.incoming h3{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#8c95a1}
+.incoming-row{padding:8px 10px;border:1px solid #2c323c;border-radius:6px;margin:5px 0;background:#161a20;cursor:pointer}.incoming-row:hover{background:#20262e}
+.settings{position:fixed;right:0;top:62px;bottom:0;width:420px;max-width:92vw;background:#171a20;border-left:1px solid #3a414c;z-index:50;transform:translateX(100%);transition:transform .16s ease;display:flex;flex-direction:column}
+.settings.open{transform:translateX(0)}
+.settings-head{display:flex;align-items:center;padding:13px 14px;border-bottom:1px solid #303640}.settings-head b{flex:1}
+.settings-body{overflow:auto;padding:14px}.settings-note{font-size:11px;color:#8f98a5;line-height:1.45;margin-bottom:14px}
+.color-row{display:grid;grid-template-columns:1fr 58px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #252a31}
+.color-label{font:12px Consolas,monospace;color:#c6ccd5;overflow:hidden;text-overflow:ellipsis}
+.color-row input[type=color]{width:56px;height:30px;padding:1px;background:#101319;border:1px solid #3a414d;border-radius:5px}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 4px}
+.legend-item{display:flex;align-items:center;gap:5px;padding:3px 6px;border:1px solid #2e343e;border-radius:999px;font-size:10px;color:#aeb6c1}
+.legend-dot{width:8px;height:8px;border-radius:999px}
+@media(max-width:1000px){.layout{grid-template-columns:300px 1fr}#search{width:250px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Static Trace Explorer V2</div>
+  <input id="search" type="search" placeholder="Search method, class, folder...">
+  <label class="tool">direction <select id="direction"><option value="downstream">downstream</option><option value="upstream">upstream</option></select></label>
+  <label class="tool">depth <input id="depth" type="number" min="1" max="8" value="3" style="width:58px"></label>
+  <label class="tool"><input id="constructors" type="checkbox"> constructors</label>
+  <label class="tool"><input id="external" type="checkbox"> external</label>
+  <button id="settingsBtn">Folder colors</button>
+  <button id="exportBtn">Export current result</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="side-title">METHODS BY FOLDER</div>
+    <div id="sidebar"></div>
+  </aside>
+  <main class="main" id="main"></main>
+</div>
+
+<aside class="settings" id="settingsPanel">
+  <div class="settings-head"><b>Folder colors</b><button id="closeSettings">Close</button></div>
+  <div class="settings-body">
+    <div class="settings-note">
+      Changes here are browser-local overrides (localStorage). The reproducible project defaults live in
+      <code>config/static-trace-viewer.config.json</code>.
+    </div>
+    <div id="colorRows"></div>
+    <p><button id="resetColors">Reset browser overrides</button></p>
+  </div>
+</aside>
+
+<script id="modelData" type="application/json">__MODEL_JSON__</script>
+<script id="configData" type="application/json">__CONFIG_JSON__</script>
+<script>
+const model=JSON.parse(document.getElementById("modelData").textContent);
+const config=JSON.parse(document.getElementById("configData").textContent);
+const sourceRoot=__SOURCE_ROOT__;
+
+const $=id=>document.getElementById(id);
+const methods=new Map(model.methods.map(m=>[m.fullName,m]));
+const out=new Map(),incoming=new Map(),externalByCaller=new Map();
+
+for(const c of model.calls){
+  if(!out.has(c.caller))out.set(c.caller,[]);
+  out.get(c.caller).push(c);
+  for(const t of c.possibleTargets||[]){
+    if(!incoming.has(t))incoming.set(t,[]);
+    incoming.get(t).push(c);
+  }
+}
+for(const c of model.externalCalls||[]){
+  if(!externalByCaller.has(c.caller))externalByCaller.set(c.caller,[]);
+  externalByCaller.get(c.caller).push(c);
+}
+
+function esc(v){return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;")}
+function folderOf(m){
+  let f=String(m?.file||"").replaceAll("\\","/");
+
+  // Keep only the directory part.
+  const i=f.lastIndexOf("/");
+  let folder=i>=0?f.slice(0,i):"(root)";
+
+  // Normalize absolute / prefixed paths to the application-relative part.
+  // Examples:
+  //   C:/gd-cap/java-src/gdcap/features/copy -> features/copy
+  //   java-src/gdcap/ui/main                 -> ui/main
+  //   gdcap/shared/notepersistence           -> shared/notepersistence
+  const marker="/gdcap/";
+  const pos=folder.toLowerCase().lastIndexOf(marker);
+
+  if(pos>=0){
+    folder=folder.slice(pos+marker.length);
+  }else{
+    folder=folder.replace(/^gdcap\//i,"");
+  }
+
+  return folder||"(root)";
+}
+function parseSig(full){
+  const o=full.lastIndexOf("("),c=full.lastIndexOf(")");
+  if(o<0||c<o)return{returnType:"unknown",params:[]};
+  const colon=full.lastIndexOf(":",o);
+  const returnType=colon>=0?full.slice(colon+1,o):"unknown";
+  const inner=full.slice(o+1,c).trim();
+  if(!inner)return{returnType,params:[]};
+  let p=[],cur="",a=0,s=0,n=0;
+  for(const ch of inner){
+    if(ch==="<")a++; if(ch===">"&&a)a--;
+    if(ch==="[")s++; if(ch==="]"&&s)s--;
+    if(ch==="(")n++; if(ch===")"&&n)n--;
+    if(ch===","&&a===0&&s===0&&n===0){p.push(cur.trim());cur="";continue}
+    cur+=ch;
+  }
+  if(cur.trim())p.push(cur.trim());
+  return{returnType,params:p};
+}
+function isCtor(f){const m=methods.get(f);return m&&(m.name==="<init>"||m.name==="<clinit>")}
+function isErrorType(t){return (config.errorTypePatterns||[]).some(x=>String(t||"").includes(x))}
+function rgba(hex,a){
+  let h=hex.replace("#",""); if(h.length===3)h=h.split("").map(x=>x+x).join("");
+  const n=parseInt(h,16); return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`;
+}
+let overrides={};
+try{overrides=JSON.parse(localStorage.getItem("staticTraceFolderColors")||"{}")}catch{}
+function configuredColorRules(){return {...(config.folderColors||{}),...overrides}}
+function colorForFolder(folder){
+  const rules=configuredColorRules();
+  const normalized=String(folder||"").replaceAll("\\","/").replace(/^\/+/,"");
+
+  let best=null;
+
+  for(const prefix of Object.keys(rules)){
+    if(prefix==="(root)" && normalized==="(root)"){
+      best=prefix;
+      continue;
+    }
+
+    const p=String(prefix).replaceAll("\\","/").replace(/^\/+/,"");
+
+    // Match either from the beginning or as a complete path segment.
+    const matches =
+      normalized.startsWith(p) ||
+      normalized.includes("/"+p);
+
+    if(matches && (!best || p.length>best.length)){
+      best=prefix;
+    }
+  }
+
+  return best ? rules[best] : "#6e7681";
+}
+function targets(c){
+  let arr=(c.dispatchTargets||[]).length?[...c.dispatchTargets]:
+          (c.declaredTarget&&methods.has(c.declaredTarget)?[c.declaredTarget]:[...(c.possibleTargets||[])]);
+  arr=[...new Set(arr)];
+  if(!$("constructors").checked)arr=arr.filter(x=>!isCtor(x));
+  return arr;
+}
+function typeChips(types){
+  if(!types.length)return'<span class="type-chip">none</span>';
+  return types.map(t=>`<span class="type-chip ${isErrorType(t)?"err":""}">${esc(t)}</span>`).join("");
+}
+function nodeHtml(m){
+  const sig=parseSig(m.fullName),folder=folderOf(m),color=colorForFolder(folder);
+  const incomingCount=(incoming.get(m.fullName)||[]).length;
+  const outgoingCount=(out.get(m.fullName)||[]).filter(c=>targets(c).length).length;
+  return `<div class="node" style="border-left-color:${color}">
+    <div class="node-head" style="background:${rgba(color,.12)}">
+      <div class="folder-badge" style="background:${rgba(color,.18)};color:${color}">${esc(folder)}</div>
+      <div class="node-owner">${esc(m.owner)}</div>
+      <div class="node-method">${esc(m.name)}</div>
+    </div>
+    <div class="node-body">
+      <div class="sig-row"><div class="sig-key">args</div><div>${typeChips(sig.params)}</div></div>
+      <div class="sig-row"><div class="sig-key">returns</div><div>${typeChips([sig.returnType])}</div></div>
+      <div class="source">${esc(sourceRoot+"\\"+String(m.file||"").replaceAll("/","\\"))}${m.line?":"+m.line:""}</div>
+      <div class="metrics"><span class="metric">incoming ${incomingCount}</span><span class="metric">outgoing ${outgoingCount}</span>${m.line?`<span class="metric">line ${m.line}</span>`:""}</div>
+      ${config.ui?.showBranchStatus?'<div class="branch-state">branch membership unavailable in schema v3 — do not interpret sibling calls as sequential execution</div>':""}
+    </div>
+  </div>`;
+}
+function edgeHtml(c,targetCount){
+  return `<div class="edge">
+    <div class="edge-code">${esc(c.code)}</div>
+    <div class="edge-meta">${esc(c.file)}${c.line?":"+c.line:""} · ${esc(c.resolution)}</div>
+    ${c.declaredTarget?`<div class="edge-meta">declared → ${esc(c.declaredTarget)}</div>`:""}
+    ${(c.dispatchTargets||[]).length?`<div class="dispatch">dispatch alternatives ${targetCount}<br>${c.dispatchTargets.map(esc).join("<br>")}</div>`:""}
+  </div>`;
+}
+function groupedUsableCalls(fullName){
+  const groups=new Map();
+  for(const c of out.get(fullName)||[]){
+    const ts=targets(c);
+    if(!ts.length)continue;
+    if(!config.ui?.groupCallsByTargetFolder){
+      if(!groups.has("calls"))groups.set("calls",[]);
+      groups.get("calls").push({call:c,targets:ts});
+      continue;
+    }
+    const byFolder=new Map();
+    for(const t of ts){
+      const m=methods.get(t),f=m?folderOf(m):"(unknown)";
+      if(!byFolder.has(f))byFolder.set(f,[]);
+      byFolder.get(f).push(t);
+    }
+    for(const [f,subset] of byFolder){
+      if(!groups.has(f))groups.set(f,[]);
+      groups.get(f).push({call:c,targets:subset});
+    }
+  }
+  return groups;
+}
+function externalHtml(f){
+  if(!$("external").checked)return"";
+  const xs=externalByCaller.get(f)||[];
+  if(!xs.length)return"";
+  return `<div class="call-folder-group"><div class="call-folder-head"><span>external</span><span class="line"></span><span>${xs.length}</span></div>${xs.slice(0,30).map(c=>`<div class="edge"><div class="edge-code">${esc(c.code)}</div><div class="edge-meta">${esc(c.target||"")}</div></div>`).join("")}</div>`;
+}
+function renderDown(f,d,path){
+  const m=methods.get(f); if(!m)return"";
+  let h=nodeHtml(m)+externalHtml(f);
+  if(d<=0)return h+'<div class="limit">depth limit reached</div>';
+  const groups=groupedUsableCalls(f);
+  if(!groups.size)return h+'<div class="none">no further application calls</div>';
+  h+='<div class="children">';
+  for(const [folder,items] of [...groups.entries()].sort((a,b)=>a[0].localeCompare(b[0]))){
+    const color=colorForFolder(folder);
+    h+=`<div class="call-folder-group"><div class="call-folder-head"><span class="folder-dot" style="background:${color}"></span><span>${esc(folder)}</span><span class="line"></span><span>${items.length}</span></div>`;
+    for(const item of items){
+      h+=edgeHtml(item.call,item.targets.length);
+      for(const t of item.targets){
+        if(path.has(t)){h+=`<div class="cycle">↻ cycle to ${esc(t)}</div>`;continue}
+        const next=new Set(path);next.add(t);
+        h+=renderDown(t,d-1,next);
+      }
+    }
+    h+='</div>';
+  }
+  return h+'</div>';
+}
+function renderUp(f,d,path){
+  const m=methods.get(f); if(!m)return"";
+  let h=nodeHtml(m);
+  if(d<=0)return h+'<div class="limit">depth limit reached</div>';
+  const xs=incoming.get(f)||[];
+  if(!xs.length)return h+'<div class="none">no incoming application calls</div>';
+  const grouped=new Map();
+  for(const c of xs){
+    const cm=methods.get(c.caller),folder=cm?folderOf(cm):"(unknown)";
+    if(!grouped.has(folder))grouped.set(folder,[]);
+    grouped.get(folder).push(c);
+  }
+  h+='<div class="children">';
+  for(const [folder,calls] of [...grouped.entries()].sort((a,b)=>a[0].localeCompare(b[0]))){
+    const color=colorForFolder(folder);
+    h+=`<div class="call-folder-group"><div class="call-folder-head"><span class="folder-dot" style="background:${color}"></span><span>${esc(folder)}</span><span class="line"></span><span>${calls.length}</span></div>`;
+    for(const c of calls){
+      h+=edgeHtml(c,1);
+      if(path.has(c.caller)){h+=`<div class="cycle">↻ cycle to ${esc(c.caller)}</div>`;continue}
+      const next=new Set(path);next.add(c.caller);
+      h+=renderUp(c.caller,d-1,next);
+    }
+    h+='</div>';
+  }
+  return h+'</div>';
+}
+
+let selected=[...methods.values()].find(m=>m.fullName.includes("CopyNoteMaterialFeature.copyMany"))||[...methods.values()][0];
+
+function legendHtml(){
+  const rules=configuredColorRules();
+  return `<div class="legend">${Object.entries(rules).map(([k,v])=>`<span class="legend-item"><span class="legend-dot" style="background:${v}"></span>${esc(k)}</span>`).join("")}</div>`;
+}
+function renderMain(){
+  if(!selected)return;
+  const depth=Math.max(1,Math.min(8,Number($("depth").value)||3));
+  const path=new Set([selected.fullName]);
+  const trace=$("direction").value==="upstream"?renderUp(selected.fullName,depth,path):renderDown(selected.fullName,depth,path);
+  const inc=incoming.get(selected.fullName)||[];
+  $("main").innerHTML=`
+    <div class="notice"><strong>Static trace:</strong> possible application paths, not observed runtime execution.</div>
+    <div class="notice branch-warning"><span class="branch-chip">BRANCHES NOT EXTRACTED YET</span>
+      Current schema v3 does not tell us which call belongs to TRUE/FALSE, case, catch, loop, etc. Sibling calls must not be read as “executed one after another”.
+    </div>
+    ${legendHtml()}
+    <div class="title"><h1>${esc(selected.owner)}.${esc(selected.name)}</h1><div class="full">${esc(selected.fullName)}</div></div>
+    <div class="trace">${trace}</div>
+    <div class="incoming"><h3>Direct incoming callers (${inc.length})</h3>
+      ${inc.length?inc.slice(0,80).map(c=>{const m=methods.get(c.caller);if(!m)return"";const f=folderOf(m),color=colorForFolder(f);return `<div class="incoming-row" data-method="${esc(m.fullName)}" style="border-left:4px solid ${color}"><div class="folder" style="color:${color}">${esc(f)}</div><div>${esc(m.owner+"."+m.name)} — ${esc(c.code)}</div></div>`}).join(""):'<div class="none">none</div>'}
+    </div>`;
+  document.querySelectorAll(".incoming-row").forEach(el=>el.onclick=()=>{const m=methods.get(el.dataset.method);if(m){selected=m;renderSidebar();renderMain();$("main").scrollTop=0}});
+}
+
+function renderSidebar(){
+  const q=$("search").value.trim().toLowerCase();
+  const groups=new Map();
+  for(const m of methods.values()){
+    if(!$("constructors").checked&&isCtor(m.fullName))continue;
+    const f=folderOf(m);
+    const hay=[m.name,m.owner,m.fullName,m.file,f].join(" ").toLowerCase();
+    if(q&&!hay.includes(q))continue;
+    if(!groups.has(f))groups.set(f,[]);
+    groups.get(f).push(m);
+  }
+  $("sidebar").innerHTML=[...groups.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([folder,ms])=>{
+    ms.sort((a,b)=>a.owner.localeCompare(b.owner)||a.name.localeCompare(b.name));
+    const color=colorForFolder(folder);
+    return `<section class="folder-group">
+      <div class="folder-head" data-folder="${esc(folder)}" style="border-left:4px solid ${color}">
+        <span class="folder-dot" style="background:${color}"></span>
+        <span>${esc(folder)}</span><span class="folder-count">${ms.length}</span>
+      </div>
+      <div class="folder-methods">
+        ${ms.map(m=>`<div class="method-item ${selected?.fullName===m.fullName?"selected":""}" data-method="${esc(m.fullName)}">
+          <div class="mi-owner">${esc(m.owner)}</div><div class="mi-name">${esc(m.name)}</div>
+        </div>`).join("")}
+      </div>
+    </section>`;
+  }).join("");
+  document.querySelectorAll(".folder-head").forEach(h=>h.onclick=()=>h.nextElementSibling.classList.toggle("collapsed"));
+  document.querySelectorAll(".method-item").forEach(el=>el.onclick=()=>{const m=methods.get(el.dataset.method);if(m){selected=m;renderSidebar();renderMain();$("main").scrollTop=0}});
+}
+
+function renderSettings(){
+  const rules=configuredColorRules();
+  $("colorRows").innerHTML=Object.entries(rules).sort((a,b)=>a[0].localeCompare(b[0])).map(([prefix,color])=>`
+    <div class="color-row">
+      <div class="color-label">${esc(prefix)}</div>
+      <input type="color" data-prefix="${esc(prefix)}" value="${color}">
+    </div>`).join("");
+  document.querySelectorAll("#colorRows input[type=color]").forEach(inp=>inp.oninput=()=>{
+    overrides[inp.dataset.prefix]=inp.value;
+    localStorage.setItem("staticTraceFolderColors",JSON.stringify(overrides));
+    renderSidebar();renderMain();
+  });
+}
+
+$("settingsBtn").onclick=()=>{$("settingsPanel").classList.add("open");renderSettings()};
+$("closeSettings").onclick=()=>$("settingsPanel").classList.remove("open");
+$("resetColors").onclick=()=>{overrides={};localStorage.removeItem("staticTraceFolderColors");renderSettings();renderSidebar();renderMain()};
+$("search").oninput=renderSidebar;
+$("direction").onchange=renderMain;
+$("depth").onchange=renderMain;
+$("constructors").onchange=()=>{renderSidebar();renderMain()};
+$("external").onchange=renderMain;
+
+$("direction").value=config.defaults?.direction||"downstream";
+$("depth").value=config.defaults?.depth||3;
+$("constructors").checked=!!config.defaults?.showConstructors;
+$("external").checked=!!config.defaults?.showExternal;
+
+
+function buildCurrentExport(){
+  const depth=Math.max(1,Math.min(8,Number($("depth").value)||3));
+
+  const payload={
+    viewerVersion:"2.3",
+    exportedAt:new Date().toISOString(),
+    selectedMethod:selected ? selected.fullName : null,
+    settings:{
+      direction:$("direction").value,
+      depth,
+      showConstructors:$("constructors").checked,
+      showExternal:$("external").checked,
+      search:$("search").value
+    },
+    selectedMethodData:selected || null,
+    directOutgoingCalls:selected ? (out.get(selected.fullName)||[]) : [],
+    directIncomingCalls:selected ? (incoming.get(selected.fullName)||[]) : [],
+    directExternalCalls:selected ? (externalByCaller.get(selected.fullName)||[]) : [],
+    renderedText:$("main").innerText,
+    renderedHtml:$("main").innerHTML
+  };
+
+  return payload;
+}
+
+function safeFileName(value){
+  return String(value||"trace")
+    .replace(/[^a-zA-Z0-9._-]+/g,"_")
+    .replace(/^_+|_+$/g,"")
+    .slice(0,120) || "trace";
+}
+
+$("exportBtn").onclick=()=>{
+  const payload=buildCurrentExport();
+  const json=JSON.stringify(payload,null,2);
+  const blob=new Blob([json],{type:"application/json;charset=utf-8"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+
+  a.href=url;
+  a.download=`static-trace-${safeFileName(selected?.owner)}-${safeFileName(selected?.name)}.json`;
+
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+renderSidebar();renderMain();
+</script>
+</body>
+</html>

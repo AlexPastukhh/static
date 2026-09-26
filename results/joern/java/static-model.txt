@@ -1,0 +1,237 @@
+STATIC APPLICATION MODEL
+========================
+
+Types:   10
+Methods: 20
+Calls:   30
+
+TYPES
+-----
+
+lab.AuditService
+  file: lab\Main.java
+  inherits/implements: java.lang.Object
+
+lab.BankGateway
+  file: lab\Main.java
+  inherits/implements: java.lang.Object, lab.PaymentGateway
+
+lab.CardGateway
+  file: lab\Main.java
+  inherits/implements: java.lang.Object, lab.PaymentGateway
+
+lab.Main
+  file: lab\Main.java
+  inherits/implements: java.lang.Object
+
+lab.Order
+  file: lab\Main.java
+  inherits/implements: java.lang.Record
+
+lab.OrderRepository
+  file: lab\Main.java
+  inherits/implements: java.lang.Object
+
+lab.OrderService
+  file: lab\Main.java
+  inherits/implements: java.lang.Object
+
+lab.PaymentGateway
+  file: lab\Main.java
+  inherits/implements: java.lang.Object
+
+lab.PaymentGatewayFactory
+  file: lab\Main.java
+  inherits/implements: java.lang.Object
+
+lab.UnsafeCli
+  file: lab\Main.java
+  inherits/implements: java.lang.Object
+
+
+METHODS AND CALLS
+-----------------
+
+lab.AuditService.<init>:void()
+  source: lab\Main.java:31
+
+lab.AuditService.flagLargeOrder:void(lab.Order)
+  source: lab\Main.java:32
+  -> java.io.PrintStream.println:void(java.lang.String) @ line 33
+     code: System.out.println("AUDIT " + order.id())
+     possible targets:
+       - java.io.PrintStream.println:void(java.lang.String)
+  -> lab.Order.id:java.lang.String() @ line 33
+     code: order.id()
+     possible targets:
+       - lab.Order.id:java.lang.String()
+
+lab.BankGateway.<init>:void()
+  source: lab\Main.java:18
+
+lab.BankGateway.pay:void(lab.Order)
+  source: lab\Main.java:19
+  -> java.io.PrintStream.printf:java.io.PrintStream(java.lang.String,java.lang.Object[]) @ line 21
+     code: System.out.printf("BankGateway.pay order=%s amount=%.0f%n", order.id(), order.amount())
+     possible targets:
+       - java.io.PrintStream.printf:java.io.PrintStream(java.lang.String,java.lang.Object[])
+  -> lab.Order.id:java.lang.String() @ line 21
+     code: order.id()
+     possible targets:
+       - lab.Order.id:java.lang.String()
+  -> lab.Order.amount:double() @ line 21
+     code: order.amount()
+     possible targets:
+       - lab.Order.amount:double()
+
+lab.CardGateway.<init>:void()
+  source: lab\Main.java:11
+
+lab.CardGateway.pay:void(lab.Order)
+  source: lab\Main.java:12
+  -> java.io.PrintStream.printf:java.io.PrintStream(java.lang.String,java.lang.Object[]) @ line 14
+     code: System.out.printf("CardGateway.pay order=%s amount=%.0f%n", order.id(), order.amount())
+     possible targets:
+       - java.io.PrintStream.printf:java.io.PrintStream(java.lang.String,java.lang.Object[])
+  -> lab.Order.id:java.lang.String() @ line 14
+     code: order.id()
+     possible targets:
+       - lab.Order.id:java.lang.String()
+  -> lab.Order.amount:double() @ line 14
+     code: order.amount()
+     possible targets:
+       - lab.Order.amount:double()
+
+lab.Main.<init>:void()
+  source: lab\Main.java:75
+
+lab.Main.main:void(java.lang.String[])
+  source: lab\Main.java:76
+  condition: if (args.length >= 2 && "--unsafe".equals(args[0]))
+  -> lab.OrderService.<init>:void(lab.PaymentGateway,lab.AuditService,lab.OrderRepository) @ line 84
+     code: new OrderService(gateway, new AuditService(), new OrderRepository())
+     possible targets:
+       - lab.OrderService.<init>:void(lab.PaymentGateway,lab.AuditService,lab.OrderRepository)
+  -> lab.Order.<init>:void(java.lang.String,double) @ line 85
+     code: new Order("ORD-42", 125.0)
+     possible targets:
+       - lab.Order.<init>:void(java.lang.String,double)
+  -> lab.OrderService.placeOrder:void(lab.Order) @ line 87
+     code: service.placeOrder(order)
+     possible targets:
+       - lab.OrderService.placeOrder:void(lab.Order)
+  -> java.io.PrintStream.println:void(java.lang.String) @ line 88
+     code: System.out.println("DONE " + order.id())
+     possible targets:
+       - java.io.PrintStream.println:void(java.lang.String)
+  -> lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String) @ line 82
+     code: PaymentGatewayFactory.create("card")
+     possible targets:
+       - lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)
+  -> java.lang.String.equals:boolean(java.lang.Object) @ line 77
+     code: this.equals(args[0])
+     possible targets:
+       - java.lang.String.equals:boolean(java.lang.Object)
+  -> lab.UnsafeCli.run:void(java.lang.String) @ line 78
+     code: UnsafeCli.run(args[1])
+     possible targets:
+       - lab.UnsafeCli.run:void(java.lang.String)
+  -> lab.AuditService.<init>:void() @ line 84
+     code: new AuditService()
+     possible targets:
+       - lab.AuditService.<init>:void()
+  -> lab.OrderRepository.<init>:void() @ line 84
+     code: new OrderRepository()
+     possible targets:
+       - lab.OrderRepository.<init>:void()
+  -> lab.Order.id:java.lang.String() @ line 88
+     code: order.id()
+     possible targets:
+       - lab.Order.id:java.lang.String()
+
+lab.Order.<init>:void(java.lang.String,double)
+  source: lab\Main.java:5
+
+lab.Order.amount:double()
+  source: lab\Main.java:5
+
+lab.Order.id:java.lang.String()
+  source: lab\Main.java:5
+
+lab.OrderRepository.<init>:void()
+  source: lab\Main.java:37
+
+lab.OrderRepository.save:void(lab.Order)
+  source: lab\Main.java:38
+  -> java.io.PrintStream.println:void(java.lang.String) @ line 39
+     code: System.out.println("OrderRepository.save " + order.id())
+     possible targets:
+       - java.io.PrintStream.println:void(java.lang.String)
+  -> lab.Order.id:java.lang.String() @ line 39
+     code: order.id()
+     possible targets:
+       - lab.Order.id:java.lang.String()
+
+lab.OrderService.<init>:void(lab.PaymentGateway,lab.AuditService,lab.OrderRepository)
+  source: lab\Main.java:48
+
+lab.OrderService.placeOrder:void(lab.Order)
+  source: lab\Main.java:54
+  condition: if (order.amount() > 1000.0)
+  -> lab.PaymentGateway.pay:void(lab.Order) @ line 55
+     code: this.gateway.pay(order)
+     possible targets:
+       - lab.BankGateway.pay:void(lab.Order)
+       - lab.CardGateway.pay:void(lab.Order)
+       - lab.PaymentGateway.pay:void(lab.Order)
+  -> lab.OrderRepository.save:void(lab.Order) @ line 61
+     code: this.repository.save(order)
+     possible targets:
+       - lab.OrderRepository.save:void(lab.Order)
+  -> lab.Order.amount:double() @ line 57
+     code: order.amount()
+     possible targets:
+       - lab.Order.amount:double()
+  -> lab.AuditService.flagLargeOrder:void(lab.Order) @ line 58
+     code: this.audit.flagLargeOrder(order)
+     possible targets:
+       - lab.AuditService.flagLargeOrder:void(lab.Order)
+
+lab.PaymentGateway.pay:void(lab.Order)
+  source: lab\Main.java:8
+
+lab.PaymentGatewayFactory.<init>:void()
+  source: lab\Main.java:25
+
+lab.PaymentGatewayFactory.create:lab.PaymentGateway(java.lang.String)
+  source: lab\Main.java:26
+  -> java.lang.String.equals:boolean(java.lang.Object) @ line 27
+     code: this.equals(kind)
+     possible targets:
+       - java.lang.String.equals:boolean(java.lang.Object)
+  -> lab.BankGateway.<init>:void() @ line 27
+     code: new BankGateway()
+     possible targets:
+       - lab.BankGateway.<init>:void()
+  -> lab.CardGateway.<init>:void() @ line 27
+     code: new CardGateway()
+     possible targets:
+       - lab.CardGateway.<init>:void()
+
+lab.UnsafeCli.<init>:void()
+  source: lab\Main.java:66
+
+lab.UnsafeCli.run:void(java.lang.String)
+  source: lab\Main.java:69
+  -> java.lang.Process.waitFor:int() @ line 71
+     code: process.waitFor()
+     possible targets:
+       - java.lang.Process.waitFor:int()
+  -> java.lang.Runtime.exec:java.lang.Process(java.lang.String[]) @ line 70
+     code: Runtime.getRuntime().exec(new String[] { "/bin/sh", "-c", userInput })
+     possible targets:
+       - java.lang.Runtime.exec:java.lang.Process(java.lang.String[])
+  -> java.lang.Runtime.getRuntime:java.lang.Runtime() @ line 70
+     code: Runtime.getRuntime()
+     possible targets:
+       - java.lang.Runtime.getRuntime:java.lang.Runtime()
