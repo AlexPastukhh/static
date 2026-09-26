@@ -1,0 +1,538 @@
+{
+  "schemaVersion": 4,
+  "language": "java",
+  "scope": "production",
+  "summary": {
+    "types": 1,
+    "methods": 1,
+    "callSites": 5,
+    "externalCallSites": 5,
+    "expressions": 13,
+    "controls": 3,
+    "excludedTestTypes": 0,
+    "excludedTestMethods": 0
+  },
+  "types": [
+    {
+      "name": "TraceFixture",
+      "fullName": "example.TraceFixture",
+      "file": "example/TraceFixture.java",
+      "inheritsFrom": [],
+      "unresolvedBases": []
+    }
+  ],
+  "methods": [
+    {
+      "name": "run",
+      "fullName": "example.TraceFixture.run:void(java.util.List)",
+      "owner": "example.TraceFixture",
+      "kind": "METHOD",
+      "signature": "void(java.util.List)",
+      "returnType": "void",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 10,
+        "column": 5,
+        "endLine": 22,
+        "endColumn": 6
+      },
+      "parameters": [
+        {
+          "name": "items",
+          "type": "java.util.List",
+          "index": 0,
+          "source": {
+            "file": "example/TraceFixture.java",
+            "line": 10,
+            "column": 14,
+            "endLine": 10,
+            "endColumn": 32
+          }
+        }
+      ],
+      "body": [
+        {
+          "kind": "CONTROL",
+          "id": "ctrl-if"
+        },
+        {
+          "kind": "CONTROL",
+          "id": "ctrl-foreach"
+        },
+        {
+          "kind": "CONTROL",
+          "id": "ctrl-return"
+        }
+      ]
+    }
+  ],
+  "callSites": [
+    {
+      "id": "call-a",
+      "caller": "example.TraceFixture.run:void(java.util.List)",
+      "expressionId": "expr-call-a",
+      "declaredTarget": "lib.Conditions.a:boolean(java.lang.String)",
+      "dispatchTargets": [],
+      "possibleTargets": [
+        "lib.Conditions.a:boolean(java.lang.String)"
+      ],
+      "unresolvedTargets": [],
+      "resolution": "joern",
+      "classification": "external",
+      "internalOwner": null,
+      "unresolvedBaseHints": [],
+      "rawNodeIds": []
+    },
+    {
+      "id": "call-b",
+      "caller": "example.TraceFixture.run:void(java.util.List)",
+      "expressionId": "expr-call-b",
+      "declaredTarget": "lib.Conditions.b:boolean(java.lang.String)",
+      "dispatchTargets": [],
+      "possibleTargets": [
+        "lib.Conditions.b:boolean(java.lang.String)"
+      ],
+      "unresolvedTargets": [],
+      "resolution": "joern",
+      "classification": "external",
+      "internalOwner": null,
+      "unresolvedBaseHints": [],
+      "rawNodeIds": []
+    },
+    {
+      "id": "call-id",
+      "caller": "example.TraceFixture.run:void(java.util.List)",
+      "expressionId": "expr-call-id",
+      "declaredTarget": "example.Element.id:java.lang.String()",
+      "dispatchTargets": [],
+      "possibleTargets": [
+        "example.Element.id:java.lang.String()"
+      ],
+      "unresolvedTargets": [],
+      "resolution": "joern",
+      "classification": "external",
+      "internalOwner": null,
+      "unresolvedBaseHints": [],
+      "rawNodeIds": []
+    },
+    {
+      "id": "call-key",
+      "caller": "example.TraceFixture.run:void(java.util.List)",
+      "expressionId": "expr-call-key",
+      "declaredTarget": "example.TraceFixture.key:java.lang.String(java.lang.String)",
+      "dispatchTargets": [],
+      "possibleTargets": [
+        "example.TraceFixture.key:java.lang.String(java.lang.String)"
+      ],
+      "unresolvedTargets": [],
+      "resolution": "joern",
+      "classification": "external",
+      "internalOwner": null,
+      "unresolvedBaseHints": [],
+      "rawNodeIds": []
+    },
+    {
+      "id": "call-process",
+      "caller": "example.TraceFixture.run:void(java.util.List)",
+      "expressionId": "expr-call-process",
+      "declaredTarget": "example.TraceFixture.process:void(example.Element)",
+      "dispatchTargets": [],
+      "possibleTargets": [
+        "example.TraceFixture.process:void(example.Element)"
+      ],
+      "unresolvedTargets": [],
+      "resolution": "joern",
+      "classification": "external",
+      "internalOwner": null,
+      "unresolvedBaseHints": [],
+      "rawNodeIds": []
+    }
+  ],
+  "expressions": [
+    {
+      "id": "expr-value-a",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "VALUE",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 11,
+        "column": 15,
+        "endLine": 11,
+        "endColumn": 19,
+        "text": "value"
+      },
+      "type": "java.lang.String",
+      "operator": null,
+      "callSiteId": null,
+      "children": [],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-value-b",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "VALUE",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 11,
+        "column": 27,
+        "endLine": 11,
+        "endColumn": 31,
+        "text": "value"
+      },
+      "type": "java.lang.String",
+      "operator": null,
+      "callSiteId": null,
+      "children": [],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-source-element",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "VALUE",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 12,
+        "column": 13,
+        "endLine": 12,
+        "endColumn": 25,
+        "text": "sourceElement"
+      },
+      "type": "example.Element",
+      "operator": null,
+      "callSiteId": null,
+      "children": [],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-items",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "VALUE",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 16,
+        "column": 34,
+        "endLine": 16,
+        "endColumn": 38,
+        "text": "items"
+      },
+      "type": "java.util.List",
+      "operator": null,
+      "callSiteId": null,
+      "children": [],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-item",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "VALUE",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 16,
+        "column": 18,
+        "endLine": 16,
+        "endColumn": 21,
+        "text": "item"
+      },
+      "type": "example.Element",
+      "operator": null,
+      "callSiteId": null,
+      "children": [],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-return-value",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "VALUE",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 21,
+        "column": 16,
+        "endLine": 21,
+        "endColumn": 20,
+        "text": "value"
+      },
+      "type": "java.lang.String",
+      "operator": null,
+      "callSiteId": null,
+      "children": [],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-call-a",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "CALL",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 11,
+        "column": 13,
+        "endLine": 11,
+        "endColumn": 20,
+        "text": "a(value)"
+      },
+      "type": "boolean",
+      "operator": null,
+      "callSiteId": "call-a",
+      "children": [
+        {
+          "expressionId": "expr-value-a",
+          "role": "ARGUMENT",
+          "index": 0
+        }
+      ],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-call-b",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "CALL",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 11,
+        "column": 25,
+        "endLine": 11,
+        "endColumn": 32,
+        "text": "b(value)"
+      },
+      "type": "boolean",
+      "operator": null,
+      "callSiteId": "call-b",
+      "children": [
+        {
+          "expressionId": "expr-value-b",
+          "role": "ARGUMENT",
+          "index": 0
+        }
+      ],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-and",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "OPERATOR",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 11,
+        "column": 13,
+        "endLine": 11,
+        "endColumn": 32,
+        "text": "a(value) && b(value)"
+      },
+      "type": "boolean",
+      "operator": "logical-and",
+      "callSiteId": null,
+      "children": [
+        {
+          "expressionId": "expr-call-a",
+          "role": "OPERAND",
+          "index": 0
+        },
+        {
+          "expressionId": "expr-call-b",
+          "role": "OPERAND",
+          "index": 1
+        }
+      ],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-call-id",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "CALL",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 12,
+        "column": 13,
+        "endLine": 12,
+        "endColumn": 30,
+        "text": "sourceElement.id()"
+      },
+      "type": "java.lang.String",
+      "operator": null,
+      "callSiteId": "call-id",
+      "children": [
+        {
+          "expressionId": "expr-source-element",
+          "role": "RECEIVER",
+          "index": 0
+        }
+      ],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-call-key",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "CALL",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 12,
+        "column": 9,
+        "endLine": 12,
+        "endColumn": 31,
+        "text": "key(sourceElement.id())"
+      },
+      "type": "java.lang.String",
+      "operator": null,
+      "callSiteId": "call-key",
+      "children": [
+        {
+          "expressionId": "expr-call-id",
+          "role": "ARGUMENT",
+          "index": 0
+        }
+      ],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-call-process",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "CALL",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 17,
+        "column": 13,
+        "endLine": 17,
+        "endColumn": 25,
+        "text": "process(item)"
+      },
+      "type": "void",
+      "operator": null,
+      "callSiteId": "call-process",
+      "children": [
+        {
+          "expressionId": "expr-item",
+          "role": "ARGUMENT",
+          "index": 0
+        }
+      ],
+      "rawNodeIds": []
+    },
+    {
+      "id": "expr-false-value",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "VALUE",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 14,
+        "column": 13,
+        "endLine": 14,
+        "endColumn": 20,
+        "text": "fallback"
+      },
+      "type": "java.lang.String",
+      "operator": null,
+      "callSiteId": null,
+      "children": [],
+      "rawNodeIds": []
+    }
+  ],
+  "controls": [
+    {
+      "id": "ctrl-if",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "IF",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 11,
+        "column": 9,
+        "endLine": 11,
+        "endColumn": 33,
+        "text": "if (a(value) && b(value))"
+      },
+      "conditionExpressionId": "expr-and",
+      "valueExpressionId": null,
+      "iterableExpressionId": null,
+      "iterationBinding": null,
+      "initExpressionIds": [],
+      "updateExpressionIds": [],
+      "branches": [
+        {
+          "id": "branch-if-true",
+          "kind": "TRUE",
+          "label": null,
+          "source": null,
+          "body": [
+            {
+              "kind": "EXPRESSION",
+              "id": "expr-call-key"
+            }
+          ]
+        },
+        {
+          "id": "branch-if-false",
+          "kind": "FALSE",
+          "label": null,
+          "source": null,
+          "body": [
+            {
+              "kind": "EXPRESSION",
+              "id": "expr-false-value"
+            }
+          ]
+        }
+      ],
+      "rawNodeIds": []
+    },
+    {
+      "id": "ctrl-foreach",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "FOREACH",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 16,
+        "column": 9,
+        "endLine": 16,
+        "endColumn": 34,
+        "text": "for (Element item : items)"
+      },
+      "conditionExpressionId": null,
+      "valueExpressionId": null,
+      "iterableExpressionId": "expr-items",
+      "iterationBinding": {
+        "file": "example/TraceFixture.java",
+        "line": 16,
+        "column": 14,
+        "endLine": 16,
+        "endColumn": 25,
+        "text": "Element item"
+      },
+      "initExpressionIds": [],
+      "updateExpressionIds": [],
+      "branches": [
+        {
+          "id": "branch-foreach-body",
+          "kind": "BODY",
+          "label": null,
+          "source": null,
+          "body": [
+            {
+              "kind": "EXPRESSION",
+              "id": "expr-call-process"
+            }
+          ]
+        }
+      ],
+      "rawNodeIds": []
+    },
+    {
+      "id": "ctrl-return",
+      "method": "example.TraceFixture.run:void(java.util.List)",
+      "kind": "RETURN",
+      "source": {
+        "file": "example/TraceFixture.java",
+        "line": 21,
+        "column": 9,
+        "endLine": 21,
+        "endColumn": 21,
+        "text": "return value;"
+      },
+      "conditionExpressionId": null,
+      "valueExpressionId": "expr-return-value",
+      "iterableExpressionId": null,
+      "iterationBinding": null,
+      "initExpressionIds": [],
+      "updateExpressionIds": [],
+      "branches": [],
+      "rawNodeIds": []
+    }
+  ]
+}

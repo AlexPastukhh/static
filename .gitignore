@@ -1,4 +1,4 @@
-﻿# Joern / generated CPG
+# Joern / generated CPG
 tools/joern/
 workspace/
 *.cpg
@@ -7,6 +7,9 @@ cpg.bin
 
 # Generated standalone viewers with embedded models
 viewer/gd-cap*.html
+
+# Structural probe scratch output
+results/structural-probe/
 
 # Java
 **/target/

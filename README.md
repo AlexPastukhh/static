@@ -2,23 +2,25 @@
 
 Static Trace Explorer is an AppMap-like browser for **static end-to-end traces of possible execution paths**.
 
-The user selects an entry method and explores what can happen from that point without rendering the entire application graph by default.
+Select an entry method and explore what can happen from that point without rendering the whole application graph by default.
 
-## Core idea
+## Architecture
 
 ```text
-source code
+source
   ↓
 Joern / CPG
   ↓
-extractor
+raw structural extraction
   ↓
-normalized static execution model
+source-semantic normalization
+  ↓
+Static Execution Model
   ↓
 Static Trace Explorer
 ```
 
-The explorer is static:
+Static means:
 
 ```text
 what CAN happen
@@ -32,54 +34,63 @@ what DID happen
 
 A runtime-observed overlay may be added later.
 
-## Current scope
+## Languages
 
-The repository contains experiments and normalization work for:
+Current lab/normalization scope:
 
 - Java
 - Python
 - TypeScript / Node
 - C# / .NET
 
-The current schema v3 is useful for methods, calls, ownership, polymorphic targets, and multi-hop traversal, but it does not yet provide the structural branch/expression relationships required for the final trace model.
+## Model status
 
-The next backend milestone is to validate and extract the structural information required for schema v4:
+Schema v3 remains the stable existing call/type pipeline.
 
-- unique call-site identity;
-- source position/order;
-- AST parent/expression relationships;
-- condition calls;
-- control structures;
-- branch membership;
-- loops;
-- try/catch/finally/throw context;
-- evaluation ordering for nested/chained expressions.
+The cross-language structural probe is complete enough to define the first source-semantic v4 contract:
 
-## Product documents
+```text
+schema/static-execution-model-v4.schema.json
+docs/STATIC_EXECUTION_MODEL_V4.md
+docs/STRUCTURAL_PROBE_FINDINGS_CROSS_LANGUAGE.md
+```
 
-- [`docs/PRODUCT_REQUIREMENTS.md`](docs/PRODUCT_REQUIREMENTS.md) — current product requirements and scope.
-- [`docs/STATIC_TRACE_EXPLORER_DECISIONS.md`](docs/STATIC_TRACE_EXPLORER_DECISIONS.md) — accepted product/UI/model decisions.
-- [`docs/STATIC_TRACE_EXPLORER_VISION.md`](docs/STATIC_TRACE_EXPLORER_VISION.md) — concise product direction.
+The probe confirmed that frontend lowering differs materially across languages, so raw CPG structure is normalized before reaching the viewer.
 
-When documents disagree, `STATIC_TRACE_EXPLORER_DECISIONS.md` is the decision record and has precedence until the other document is reconciled.
+Examples include Java/Python/TypeScript foreach loops being lowered differently from C# foreach, and Python `raise` differing from Java/TS/C# `THROW`.
+
+## Next backend milestone
+
+Implement v4 for all production methods:
+
+1. raw structural export;
+2. source-semantic normalization;
+3. four-language fixture validation;
+4. real `gd-cap` validation;
+5. viewer migration from V2.4 heuristics to v4 relationships.
 
 ## Important UI rule
 
-Folder/module ownership is visual metadata. It may group the sidebar or architecture/dependency views, but it must **not reorder the downstream execution trace**.
+Folder/module ownership is visual metadata.
 
-The execution trace follows source/control-flow/evaluation structure.
+It may group the sidebar or architecture/dependency views, but it must **not reorder the execution trace**.
+
+## Product documents
+
+- `docs/PRODUCT_REQUIREMENTS.md`
+- `docs/STATIC_TRACE_EXPLORER_DECISIONS.md` — authoritative decision record
+- `docs/STATIC_TRACE_EXPLORER_VISION.md`
+- `docs/STATIC_EXECUTION_MODEL_V4.md`
+- `docs/STRUCTURAL_PROBE_FINDINGS_CROSS_LANGUAGE.md`
 
 ## Repository areas
 
 ```text
 config/      viewer configuration
-docs/        product direction and decisions
+docs/        product/model direction and evidence
 schema/      normalized model schemas
 scripts/     Joern export, normalization, validation, viewer generation
 viewer/      browser viewer templates
-java-lab/    Java synthetic lab
-python-lab/  Python synthetic lab
-node-lab/    TypeScript/Node synthetic lab
-dotnet-lab/  C#/.NET synthetic lab
-results/     generated analysis results kept in the repository
+fixtures/    focused structural regression fixtures
+results/     generated analysis results
 ```

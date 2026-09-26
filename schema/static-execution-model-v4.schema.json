@@ -1,0 +1,697 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local/static-execution-model-v4.schema.json",
+  "title": "Static Execution Model v4",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "language",
+    "scope",
+    "summary",
+    "types",
+    "methods",
+    "callSites",
+    "expressions",
+    "controls"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 4
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "enum": [
+        "production",
+        "all"
+      ]
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "types",
+        "methods",
+        "callSites",
+        "externalCallSites",
+        "expressions",
+        "controls",
+        "excludedTestTypes",
+        "excludedTestMethods"
+      ],
+      "properties": {
+        "types": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "methods": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "callSites": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "externalCallSites": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expressions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excludedTestTypes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excludedTestMethods": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/typeDecl"
+      }
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/method"
+      }
+    },
+    "callSites": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/callSite"
+      }
+    },
+    "expressions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/expression"
+      }
+    },
+    "controls": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/control"
+      }
+    }
+  },
+  "$defs": {
+    "sourceLocation": {
+      "type": "object",
+      "required": [
+        "file",
+        "line",
+        "column"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "line": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "column": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "endLine": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "endColumn": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "sourceSnippet": {
+      "type": "object",
+      "required": [
+        "file",
+        "line",
+        "column",
+        "text"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "line": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "column": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "endLine": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "endColumn": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "stepRef": {
+      "type": "object",
+      "required": [
+        "kind",
+        "id"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "EXPRESSION",
+            "CONTROL"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "typeDecl": {
+      "type": "object",
+      "required": [
+        "name",
+        "fullName",
+        "file",
+        "inheritsFrom",
+        "unresolvedBases"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inheritsFrom": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "unresolvedBases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "parameter": {
+      "type": "object",
+      "required": [
+        "name",
+        "type",
+        "index",
+        "source"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source": {
+          "$ref": "#/$defs/sourceLocation"
+        }
+      },
+      "additionalProperties": false
+    },
+    "method": {
+      "type": "object",
+      "required": [
+        "name",
+        "fullName",
+        "owner",
+        "kind",
+        "signature",
+        "returnType",
+        "source",
+        "parameters",
+        "body"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "METHOD",
+            "FUNCTION",
+            "CONSTRUCTOR",
+            "LAMBDA",
+            "UNKNOWN"
+          ]
+        },
+        "signature": {
+          "type": "string"
+        },
+        "returnType": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/sourceLocation"
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/parameter"
+          }
+        },
+        "body": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/stepRef"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "callSite": {
+      "type": "object",
+      "required": [
+        "id",
+        "caller",
+        "expressionId",
+        "declaredTarget",
+        "dispatchTargets",
+        "possibleTargets",
+        "unresolvedTargets",
+        "resolution",
+        "classification",
+        "internalOwner",
+        "unresolvedBaseHints"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "caller": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expressionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "declaredTarget": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dispatchTargets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "possibleTargets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "unresolvedTargets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "resolution": {
+          "enum": [
+            "joern",
+            "joern+hierarchy",
+            "unresolved"
+          ]
+        },
+        "classification": {
+          "enum": [
+            "internal",
+            "external",
+            "unresolved-on-internal-type"
+          ]
+        },
+        "internalOwner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "unresolvedBaseHints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "rawNodeIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "expressionChild": {
+      "type": "object",
+      "required": [
+        "expressionId",
+        "role",
+        "index"
+      ],
+      "properties": {
+        "expressionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": [
+            "RECEIVER",
+            "ARGUMENT",
+            "OPERAND",
+            "BASE",
+            "INDEX",
+            "CONDITION",
+            "TRUE",
+            "FALSE",
+            "VALUE",
+            "OTHER"
+          ]
+        },
+        "index": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "expression": {
+      "type": "object",
+      "required": [
+        "id",
+        "method",
+        "kind",
+        "source",
+        "type",
+        "operator",
+        "callSiteId",
+        "children"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "CALL",
+            "OPERATOR",
+            "VALUE",
+            "OTHER"
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/sourceSnippet"
+        },
+        "type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "operator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "callSiteId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/expressionChild"
+          }
+        },
+        "rawNodeIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "branch": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "label",
+        "source",
+        "body"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "TRUE",
+            "FALSE",
+            "CASE",
+            "DEFAULT",
+            "BODY",
+            "TRY",
+            "CATCH",
+            "FINALLY"
+          ]
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/sourceSnippet"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "body": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/stepRef"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "control": {
+      "type": "object",
+      "required": [
+        "id",
+        "method",
+        "kind",
+        "source",
+        "conditionExpressionId",
+        "valueExpressionId",
+        "iterableExpressionId",
+        "iterationBinding",
+        "initExpressionIds",
+        "updateExpressionIds",
+        "branches"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "IF",
+            "SWITCH",
+            "MATCH",
+            "FOR",
+            "FOREACH",
+            "WHILE",
+            "DO_WHILE",
+            "TRY",
+            "THROW",
+            "RETURN",
+            "BREAK",
+            "CONTINUE"
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/sourceSnippet"
+        },
+        "conditionExpressionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "valueExpressionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "iterableExpressionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "iterationBinding": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/sourceSnippet"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "initExpressionIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "updateExpressionIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "branches": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/branch"
+          }
+        },
+        "rawNodeIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

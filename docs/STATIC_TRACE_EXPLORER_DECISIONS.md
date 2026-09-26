@@ -1,371 +1,20 @@
 # Static Trace Explorer — Decisions
 
-This file records accepted product, visualization, and model decisions so the direction does not drift while iterating.
+This file is the authority for accepted product, visualization, and model decisions.
 
-## Authority
+If an older README, vision document, experiment, or viewer behavior conflicts with this file, this file wins until the other artifact is reconciled.
 
-This is the decision record.
+## 1. Product definition
 
-If an older vision, viewer experiment, README, or prototype conflicts with this file, this file has precedence until the conflicting document/code is reconciled.
+Static Trace Explorer is an AppMap-like explorer of **possible static execution paths**.
 
-Experimental viewer behavior is not automatically a product decision.
+The primary question is:
 
----
+> What can execute from here, in what structural/evaluation order, through which conditions/branches, and where does each step belong in the codebase?
 
-## 1. Trace ordering
+It is not primarily a whole-application graph renderer.
 
-The downstream execution trace must **not** be reordered by folder/package.
-
-Order should follow source/control-flow/evaluation structure.
-
-Folder/package remains visual metadata:
-
-- folder badge;
-- folder color;
-- architectural ownership;
-- sidebar grouping;
-- optional dependency-oriented views.
-
-The sidebar may group methods by folder. Architecture/dependency views may group by folder. The execution trace may not be reordered by folder.
-
----
-
-## 2. Full expression + nested calls
-
-For nested expressions, keep the full outer source expression.
-
-Example:
-
-```java
-key(sourceElement.id())
-```
-
-The outer call is shown as the **full expression**:
-
-```text
-OUTER / FULL EXPRESSION
-key(sourceElement.id())
-```
-
-The nested call is also shown explicitly:
-
-```text
-INNER / NESTED CALL
-sourceElement.id()
-```
-
-The UI should make the relationship obvious rather than displaying the two calls as unrelated siblings.
-
-Preferred conceptual representation:
-
-```text
-FULL EXPRESSION
-key(sourceElement.id())
-
-evaluation:
-  1 · INNER
-      sourceElement.id()
-
-  2 · OUTER
-      key(<result>)
-```
-
-The original full expression must never be lost.
-
----
-
-## 3. Fluent / chained calls
-
-For expressions such as:
-
-```java
-something.another().again()
-```
-
-keep the original expression visible:
-
-```text
-FULL EXPRESSION
-something.another().again()
-```
-
-When structural information is available, also show the internal evaluation chain:
-
-```text
-something
-   ↓
-another()
-   ↓
-again()
-```
-
-This should be derived from AST/call structure, not guessed from text in the final model.
-
----
-
-## 4. Same-line repeated calls
-
-Do **not** blindly deduplicate calls using only:
-
-```text
-caller + line + code + target
-```
-
-Two calls on the same line may be distinct AST call-sites.
-
-The final execution model should preserve enough structural identity to distinguish them, targeting at least:
-
-```text
-callNodeId
-source line
-source column / order
-AST parent id
-```
-
-Until those identifiers exist, UI heuristics must be marked as heuristics.
-
----
-
-## 5. Conditions are first-class nodes
-
-Conditions must be represented explicitly.
-
-Example source:
-
-```java
-if (!FileNameRules.isSafeNoteName(sourceNote)
-    || !FileNameRules.isSafeNoteName(targetNote)) {
-    throw new IOException(...);
-}
-```
-
-Target visualization:
-
-```text
-IF
-!isSafeNoteName(sourceNote)
-|| !isSafeNoteName(targetNote)
-
-condition evaluation:
-  1 · CONDITION CALL
-      FileNameRules.isSafeNoteName(sourceNote)
-
-  2 · CONDITION CALL
-      FileNameRules.isSafeNoteName(targetNote)
-
-        ┌─ TRUE  → ERROR BRANCH → throw IOException
-        └─ FALSE → continue
-```
-
-Calls used to evaluate the condition must be marked as condition calls, not ordinary sequential calls.
-
----
-
-## 6. Short-circuit conditions
-
-Boolean operators such as `&&` and `||` should preserve short-circuit semantics when the backend provides enough structure.
-
-Example:
-
-```text
-A()
- │
- ├─ short-circuit branch
- │
- └─ evaluate B()
-```
-
-Do not present all condition calls as if all of them always execute.
-
----
-
-## 7. Branches
-
-Branches must never be flattened into a plain list.
-
-Required branch/control concepts:
-
-- if / else;
-- switch / case;
-- ternary;
-- loop condition/body;
-- continue / break;
-- try / catch / finally;
-- throw;
-- early return.
-
-Target shape:
-
-```text
-IF condition
-├─ TRUE
-│   └─ ...
-└─ FALSE
-    └─ ...
-```
-
-Sibling calls must not imply sequential execution unless the execution model actually establishes that order.
-
----
-
-## 8. Call roles
-
-A call-site should eventually have an explicit semantic role when it can be derived structurally.
-
-Candidate roles:
-
-```text
-NORMAL_CALL
-CONDITION_CALL
-LOOP_CONDITION_CALL
-NESTED_ARGUMENT_CALL
-CHAIN_CALL
-RETURN_EXPRESSION_CALL
-ERROR_PATH_CALL
-CATCH_PATH_CALL
-```
-
-These roles are semantic/UI metadata derived from AST + control-flow structure.
-
-The exact stored enum may change after the Joern structural probe; the product requirement is the ability to distinguish these meanings in the resulting model/UI.
-
----
-
-## 9. Error paths
-
-Error paths should be visually distinguishable.
-
-Control-flow error paths must come from structural information such as `throw`, `catch`, branch membership, or other explicit flow.
-
-Separately, error-like types may use configurable style rules. Default examples:
-
-```text
-*Error
-*Exception
-*Failure
-Throwable
-```
-
-Type-name styling belongs to our configurable UI/model layer.
-
-Type-name patterns must **not** be used as a substitute for determining control-flow error paths.
-
-Error branch styling must not be hard-coded to one language.
-
----
-
-## 10. Folder ownership
-
-Folder/package ownership should be immediately visible on every method card.
-
-Example:
-
-```text
-features/copy
-CopyNoteMaterialFeature.copyMany
-```
-
-Folder colors are configurable.
-
-The same ownership metadata should be usable by both humans and AI.
-
-Folder grouping is appropriate for the sidebar and architecture/dependency views, but not for reordering the downstream execution trace.
-
----
-
-## 11. Current V2.4 heuristics
-
-V2.4 may temporarily infer nested expressions by same-line text containment, for example:
-
-```text
-sourceElement.id()
-key(sourceElement.id())
-```
-
-This is only an experiment.
-
-The final implementation must use structural relations from the CPG/AST.
-
----
-
-## 12. Backend target for schema v4
-
-Schema v4 should be created only after the structural probe demonstrates what Joern can reliably provide.
-
-The target is the minimum model needed to represent the accepted UI semantics without fabricating structure.
-
-### Call site target
-
-```text
-callNodeId
-line
-column / order
-code
-declaredTarget
-possibleTargets
-AST parent id
-parent expression id
-controlNodeId
-controlRole
-```
-
-### Control node target
-
-```text
-controlNodeId
-kind
-source text
-line/range
-condition AST
-parentControlNodeId
-branches[]
-```
-
-### Expression relationships target
-
-```text
-parentExpressionId
-childExpressionIds[]
-evaluationOrder
-```
-
-### Branch membership target
-
-```text
-TRUE
-FALSE
-CASE
-LOOP_BODY
-CATCH
-FINALLY
-ERROR
-RETURN
-```
-
-These are target fields/concepts, not a promise that every language frontend exposes every field identically.
-
-Do not add redundant representations until a concrete need is demonstrated.
-
----
-
-## 13. UI principle
-
-The trace should answer:
-
-> What can execute from here, in what structural/evaluation order, through which conditions/branches, and where does every step belong in the codebase?
-
-The UI should preserve both:
-
-1. the original source expression;
-2. the decomposed structural/evaluation view.
-
-Neither should replace the other.
-
----
-
-## 14. Runtime semantics
-
-This remains a static trace:
+It is static:
 
 ```text
 what CAN happen
@@ -377,17 +26,259 @@ not:
 what DID happen
 ```
 
+## 2. Trace ordering
+
+The downstream trace follows source/control-flow/evaluation structure.
+
+It must not be reordered by folder/package/module.
+
+Folder ownership remains visual/architectural metadata for:
+
+- badges/colors;
+- sidebar grouping;
+- architecture/dependency views.
+
+## 3. Full expression + nested calls
+
+Keep the original full outer source expression and also expose nested calls.
+
+Example:
+
+```text
+FULL EXPRESSION
+key(sourceElement.id())
+
+evaluation
+  INNER  sourceElement.id()
+  OUTER  key(<result>)
+```
+
+Final relationships come from normalized AST/expression structure, not text containment.
+
+The same principle applies to fluent/chained calls.
+
+## 4. Same-line repeated calls
+
+Never deduplicate by only:
+
+```text
+caller + line + code + target
+```
+
+Distinct source call sites need distinct normalized identity.
+
+The probe proved that CPG/AST structure can distinguish repeated identical same-line calls.
+
+## 5. Conditions are first-class
+
+Conditions are explicit control/expression structure.
+
+Calls used by conditions are derived as condition calls from containment.
+
+They are not shown as ordinary unconditional sibling calls.
+
+## 6. Short circuit
+
+`&&` / `||` and language equivalents preserve short-circuit semantics.
+
+The UI must not imply that every operand always executes.
+
+V4 stores semantic logical operator expressions with ordered children; no duplicate `evaluationOrder` field is required.
+
+## 7. Branches
+
+Branches are never flattened into a plain sequential list.
+
+Required source-semantic controls:
+
+- if / else;
+- switch / case;
+- Python match;
+- ternary expression;
+- classic for;
+- foreach / for-in / for-of;
+- while / do-while where supported;
+- break / continue;
+- try / catch / finally;
+- throw / raise;
+- early return.
+
+## 8. Error paths
+
+Structural error paths come from actual control structure such as:
+
+- THROW;
+- CATCH;
+- branch membership;
+- explicit structured result/error branches where available.
+
+Separately, configurable type-name patterns may style error-like types:
+
+```text
+*Error
+*Exception
+*Failure
+Throwable
+```
+
+Type styling never substitutes for control-flow detection.
+
+## 9. Polymorphism
+
+Declared target and possible runtime implementations remain separate.
+
+Do not collapse interface/base declaration and possible dispatch implementations into one target.
+
+## 10. Ownership
+
+Folder/module ownership must be obvious on method cards.
+
+Folder colors are configurable.
+
+Ownership grouping is valid for sidebar/architecture views, not for execution-trace reordering.
+
+## 11. Raw CPG vs source semantics
+
+The structural probe proved that Joern frontends lower equivalent source constructs differently.
+
+Therefore the architecture is:
+
+```text
+source
+  ↓
+Joern / CPG
+  ↓
+raw structural extraction
+  ↓
+source-semantic normalization
+  ↓
+Static Execution Model v4
+  ↓
+viewer
+```
+
+Frontend lowering artifacts are not ordinary trace steps.
+
+Examples:
+
+```text
+$iterLocal0
+hasNext()
+next()
+__next__()
+_result_0
+$obj*
+<operator>.alloc
+```
+
+## 12. Source normalization
+
+V4 public source paths are project-relative with `/` separators.
+
+V4 public line/column coordinates are 1-based.
+
+Raw offsets are provenance only because they are not consistently available across frontends.
+
+Raw `sourceCode` is not blindly trusted; source text is recovered from the project source when Joern supplies placeholders, lowering text, or truncation.
+
+## 13. FOREACH is source-semantic
+
+Java enhanced-for, Python for-in, TypeScript for-of, and C# foreach are all normalized to:
+
+```text
+FOREACH
+  iterationBinding
+  iterableExpression
+  BODY
+```
+
+The raw frontend representation (`WHILE`, `FOR`, iterator calls, etc.) is not the public semantic kind.
+
+## 14. Ternary remains an expression
+
+The probe showed `<operator>.conditional` with ordered condition/true/false arguments across all four current languages.
+
+Ternary is therefore modeled as an expression-level conditional, not a fabricated control structure.
+
+## 15. TRY owns catch/finally branches
+
+One normalized TRY control owns ordered branches:
+
+```text
+TRY
+CATCH...
+FINALLY
+```
+
+Catch/finally are not duplicated as unrelated top-level controls.
+
+## 16. Throw / raise normalization
+
+Java/TypeScript/C# THROW controls and Python `<operator>.raise` normalize to the same source-semantic `THROW`.
+
+## 17. Return normalization
+
+Source Return AST nodes normalize to `RETURN` controls, including early returns.
+
+## 18. Stable normalized identity
+
+Raw CPG node ids may be kept as provenance but are not the public stability contract.
+
+Call/expression/control/branch ids are deterministic normalized ids derived from source/structural identity.
+
+## 19. No redundant context/order fields
+
+The structural probe did not demonstrate a need for:
+
+- separate `sourceOrder`;
+- separate `evaluationOrder`;
+- duplicate `controlContext[]`;
+- mandatory branch merge/join ids.
+
+Authoritative order comes from ordered bodies and ordered expression children.
+
+Parent/control context can be derived from containment.
+
+## 20. Call roles are derived
+
+Semantic call roles are computed from normalized containment rather than stored twice.
+
+Examples:
+
+- condition call;
+- loop-condition call;
+- nested argument call;
+- return-expression call;
+- error-path call;
+- catch-path call.
+
+## 21. V2.4 viewer heuristics
+
+V2.4 text-containment grouping remains an experiment only.
+
+Once a real v4 model is available, the viewer must use normalized structural relationships.
+
+## 22. Schema status
+
+Schema v3 remains the stable existing model during migration.
+
+The first v4 source-semantic contract is:
+
+```text
+schema/static-execution-model-v4.schema.json
+docs/STATIC_EXECUTION_MODEL_V4.md
+```
+
+Do not remove the v3 pipeline until v4 has passed fixtures and the real `gd-cap` model.
+
+## 23. Known remaining structural gap
+
+Switch/match case extraction is validated structurally, but legal case fallthrough behavior has not yet received a dedicated regression fixture.
+
+Do not claim complete switch fallthrough fidelity until that focused test passes.
+
+## 24. Runtime overlay
+
 A later runtime overlay may mark observed paths separately.
 
----
-
-## 15. Things not yet promoted to requirements
-
-The following may become useful, but are **not** current mandatory schema requirements until validated by the structural probe:
-
-- a separate `sourceOrder` field in addition to source position and `evaluationOrder`;
-- a duplicated `controlContext[]` stack if `parentControlNodeId` relationships are sufficient;
-- an explicit branch merge/join-point field;
-- additional detail-level modes beyond the existing application/external/constructor/depth controls.
-
-Do not add them preemptively.
+It must not replace or rewrite the static possible-path semantics.
