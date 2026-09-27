@@ -11,6 +11,9 @@ viewer/gd-cap*.html
 # Structural probe scratch output
 results/structural-probe/
 
+# V4 fixture/build scratch output
+results/v4-fixtures/
+
 # Java
 **/target/
 **/*.class

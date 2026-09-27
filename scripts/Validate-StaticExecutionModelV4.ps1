@@ -28,7 +28,7 @@ function Add-Unique {
     }
 
     if (-not $Set.Add($Value)) {
-        Add-Error "Duplicate $Kind: $Value"
+        Add-Error "Duplicate ${Kind}: $Value"
     }
 }
 
@@ -47,6 +47,10 @@ $expressionIds = [System.Collections.Generic.HashSet[string]]::new()
 $controlIds = [System.Collections.Generic.HashSet[string]]::new()
 $branchIds = [System.Collections.Generic.HashSet[string]]::new()
 
+# O(1) lookup maps. The old validator searched the entire expressions array
+# once per call site, which becomes extremely slow on whole-project models.
+$expressionById = @{}
+
 foreach ($type in @($model.types)) {
     Add-Unique $typeNames ([string]$type.fullName) "type"
 }
@@ -60,7 +64,12 @@ foreach ($call in @($model.callSites)) {
 }
 
 foreach ($expression in @($model.expressions)) {
-    Add-Unique $expressionIds ([string]$expression.id) "expression"
+    $expressionId = [string]$expression.id
+    Add-Unique $expressionIds $expressionId "expression"
+
+    if (-not [string]::IsNullOrWhiteSpace($expressionId)) {
+        $expressionById[$expressionId] = $expression
+    }
 }
 
 foreach ($control in @($model.controls)) {
@@ -107,16 +116,16 @@ function Test-StepRefs {
         switch ([string]$step.kind) {
             "EXPRESSION" {
                 if (-not $expressionIds.Contains($id)) {
-                    Add-Error "Dangling expression step in $Context`: $id"
+                    Add-Error "Dangling expression step in ${Context}: $id"
                 }
             }
             "CONTROL" {
                 if (-not $controlIds.Contains($id)) {
-                    Add-Error "Dangling control step in $Context`: $id"
+                    Add-Error "Dangling control step in ${Context}: $id"
                 }
             }
             default {
-                Add-Error "Invalid step kind in $Context`: $($step.kind)"
+                Add-Error "Invalid step kind in ${Context}: $($step.kind)"
             }
         }
     }
@@ -133,7 +142,7 @@ function Test-Source {
     }
 
     if ($Source.file -match "\\") {
-        Add-Error "Source path must use / separators in $Context`: $($Source.file)"
+        Add-Error "Source path must use / separators in ${Context}: $($Source.file)"
     }
 
     if ($null -ne $Source.line -and [int]$Source.line -lt 1) {
@@ -150,12 +159,15 @@ foreach ($method in @($model.methods)) {
     Test-Source $method.source "method $($method.fullName)"
 
     $indexes = @($method.parameters | ForEach-Object { [int]$_.index })
-    if (($indexes | Sort-Object -Unique).Count -ne $indexes.Count) {
+    $sortedIndexes = @($indexes | Sort-Object)
+    $uniqueIndexes = @($sortedIndexes | Select-Object -Unique)
+
+    if ($uniqueIndexes.Count -ne $indexes.Count) {
         Add-Error "Duplicate parameter index in method: $($method.fullName)"
     }
 
-    for ($i = 0; $i -lt $indexes.Count; $i++) {
-        if (($indexes | Sort-Object)[$i] -ne $i) {
+    for ($i = 0; $i -lt $sortedIndexes.Count; $i++) {
+        if ($sortedIndexes[$i] -ne $i) {
             Add-Error "Parameter indexes must be normalized to 0..N-1: $($method.fullName)"
             break
         }
@@ -214,10 +226,12 @@ foreach ($call in @($model.callSites)) {
         Add-Error "Call expression does not exist: $id -> $($call.expressionId)"
     }
 
-    $expr = @(
-        $model.expressions |
-            Where-Object { $_.id -eq $call.expressionId }
-    ) | Select-Object -First 1
+    $expr = $null
+    $callExpressionId = [string]$call.expressionId
+
+    if ($expressionById.ContainsKey($callExpressionId)) {
+        $expr = $expressionById[$callExpressionId]
+    }
 
     if ($expr -and $expr.callSiteId -ne $id) {
         Add-Error "Call/expression back-reference mismatch: $id <-> $($call.expressionId)"
