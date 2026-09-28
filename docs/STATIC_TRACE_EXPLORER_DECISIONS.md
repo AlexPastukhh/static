@@ -256,29 +256,57 @@ Examples:
 
 V2.4 text-containment grouping remains an experiment only.
 
-Once a real v4 model is available, the viewer must use normalized structural relationships.
+The real v4 backend is now available; new product viewer work must use normalized structural relationships rather than V2 text-containment heuristics.
 
 ## 22. Schema status
 
-Schema v3 remains the stable existing model during migration.
+Schema v3 remains available as the legacy/migration baseline.
 
-The first v4 source-semantic contract is:
+The v4 source-semantic backend is now the frozen product structural baseline after fixture, fallthrough, target-resolution parity and GD-CAP gates. Its public contract is:
 
 ```text
 schema/static-execution-model-v4.schema.json
 docs/STATIC_EXECUTION_MODEL_V4.md
 ```
 
-Do not remove the v3 pipeline until v4 has passed fixtures and the real `gd-cap` model.
+Retain the v3 pipeline as a migration/regression baseline until the product-facing v4 analysis/viewer path is established and no current regression workflow depends on v3.
 
-## 23. Known remaining structural gap
+## 23. Switch fallthrough gate resolved
 
-Switch/match case extraction is validated structurally, but legal case fallthrough behavior has not yet received a dedicated regression fixture.
+A dedicated Java/TypeScript/C# fallthrough regression gate now passes.
 
-Do not claim complete switch fallthrough fidelity until that focused test passes.
+The existing v4 SWITCH/MATCH representation remains unchanged. Implicit fallthrough is derived in the viewer/path layer from ordered CASE branches plus the absence of terminating BREAK/RETURN/THROW in the preceding branch. C# explicit `goto case` remains explicit source control rather than being reclassified as implicit fallthrough.
 
 ## 24. Runtime overlay
 
 A later runtime overlay may mark observed paths separately.
 
 It must not replace or rewrite the static possible-path semantics.
+
+
+## 22. Architectural roles and orchestration
+
+Architectural labels such as:
+
+```text
+FEATURE
+DOMAIN
+SHARED
+INFRASTRUCTURE
+ORCHESTRATION
+```
+
+are viewer/configuration metadata, not Static Execution Model v4 facts.
+
+A useful conceptual presentation may look like:
+
+```text
+UI
+  -> FEATURE / ORCHESTRATION
+  -> DOMAIN
+  -> SHARED / INFRASTRUCTURE
+```
+
+but repositories use different naming/layout conventions, so role mapping is configurable and optional. The viewer may use folder/package/namespace patterns plus actual call/control structure to make orchestration recognizable.
+
+Do **not** add `architecturalRole: ORCHESTRATION` (or any other guessed architecture role) to the v4 backend schema merely for viewer convenience. Architectural grouping must never reorder the execution trace or turn ownership interpretation into execution semantics.

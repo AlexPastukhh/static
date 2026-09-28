@@ -349,16 +349,17 @@ Structural additions are:
 - ordered method/branch bodies;
 - stable normalized call-site identity.
 
-## Next implementation milestone
+## Current implementation status / next consumer milestone
 
-Do not redesign the viewer again yet.
+The all-method exporter/normalizer/validator milestone is complete. Four-language fixtures, switch/fallthrough, v3/v4 target-resolution parity and the GD-CAP whole-project gate pass.
 
-Implement in this order:
+The next consumer milestone is therefore:
 
-1. extend raw Joern export from one probe method to all production methods;
-2. implement source-semantic v4 normalization;
-3. generate v4 models for Java/Python/TypeScript/C# fixtures;
-4. validate them with `Validate-StaticExecutionModelV4.ps1`;
-5. generate a real `gd-cap` v4 model;
-6. replace V2.4 nested-call/control heuristics with v4 relationships;
-7. then iterate the branch UI using exported viewer result JSON.
+1. one reusable arbitrary-project v4 analysis entrypoint;
+2. safe CPG fingerprint/reuse;
+3. viewer v4 indexing and method selection;
+4. replacement of V2 nested-call/control heuristics with v4 relationships;
+5. lazy branch-aware inter-method expansion;
+6. viewer result export and application shell.
+
+See `NEXT_MILESTONE_VIEWER_V4.md` and `../CURRENT_WORK.md`.

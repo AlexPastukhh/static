@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "project": "Static Trace Explorer",
+  "snapshot": {
+    "sourceRepository": "https://github.com/AlexPastukhh/static",
+    "sourceArchiveSha256": "c8d9da5e48dd196e7359cc90e6c0f04d4bbc6ccd52af089d6062e602b46a0a92",
+    "handoffRefreshDate": "2026-09-28",
+    "repositoryBaseCommit": "f3b86399972a662e866e010bd0c6983f9412f506",
+    "repositoryBaseCommitMessage": "Freeze v4 backend after GD-CAP whole-project gate",
+    "handoffOverlay": {
+      "status": "SNAPSHOT_LOCAL_UNCOMMITTED_OVERLAY",
+      "createdDate": "2026-09-28",
+      "baseCommit": "f3b86399972a662e866e010bd0c6983f9412f506",
+      "note": "CURRENT_WORK/trace/plan/manifest/evidence overlay is not part of the base commit until the user commits and pushes it."
+    }
+  },
+  "currentPhase": "product-v4-pipeline-and-viewer",
+  "currentWorkAuthority": "CURRENT_WORK.md",
+  "historyAuthority": "docs/PROJECT_TRACE.md",
+  "currentPlanAuthority": "docs/NEXT_MILESTONE_VIEWER_V4.md",
+  "backend": {
+    "model": "Static Execution Model v4",
+    "status": "FROZEN_BASELINE",
+    "contract": [
+      "schema/static-execution-model-v4.schema.json",
+      "docs/STATIC_EXECUTION_MODEL_V4.md"
+    ],
+    "implementation": [
+      "scripts/joern-structural-export-v4.sc",
+      "scripts/Export-StructuralModelV4.ps1",
+      "scripts/Normalize-StaticExecutionModelV4.ps1",
+      "scripts/Validate-StaticExecutionModelV4.ps1"
+    ],
+    "gates": [
+      {
+        "id": "polyglot-v4-normalization",
+        "status": "PASS",
+        "runner": "scripts/Run-V4NormalizationSlice.ps1"
+      },
+      {
+        "id": "switch-fallthrough",
+        "status": "PASS",
+        "runner": "scripts/Run-V4SwitchFallthroughGate.ps1"
+      },
+      {
+        "id": "v3-v4-target-resolution",
+        "status": "PASS",
+        "runner": "scripts/Run-V3V4TargetResolutionGate.ps1"
+      },
+      {
+        "id": "gd-cap-whole-project-v4",
+        "status": "PASS",
+        "runner": "scripts/Run-GdCapV4Gate.ps1"
+      }
+    ],
+    "gdCapFinal": {
+      "types": 103,
+      "methods": 715,
+      "callSites": 3939,
+      "expressions": 20036,
+      "controls": 1563,
+      "unmappedCalls": 0,
+      "unmappedControls": 0,
+      "excludedTestTypes": 44,
+      "excludedTestMethods": 106,
+      "evidence": {
+        "path": "evidence/gd-cap/gd-cap-v4-gate-report.json",
+        "sha256": "04cd00f84b5c503b4b449a94891eb23a5c35fbe4383f8b8a4b2e486fba349975",
+        "gate": "gd-cap-v4-whole-project",
+        "result": "PASS",
+        "originalFinalPassBundleSha256": "b1123726bd31f3c7972614bbcae9748b611a8a5985404a0ee1c9d562a098c01f"
+      }
+    },
+    "changeRule": "Do not change public v4 backend semantics without a reproducible regression fixture and full regression revalidation."
+  },
+  "product": {
+    "semanticsAuthority": "docs/STATIC_TRACE_EXPLORER_DECISIONS.md",
+    "requirements": "docs/PRODUCT_REQUIREMENTS.md",
+    "vision": "docs/STATIC_TRACE_EXPLORER_VISION.md",
+    "viewerStatus": "V1/V2 are historical experiments; product viewer must consume v4 directly",
+    "primaryGap": "No single product-grade arbitrary-project v4 analysis entrypoint and no finished v4 viewer/application shell",
+    "architecturalRoles": {
+      "layer": "viewer-config",
+      "knownRoles": [
+        "FEATURE",
+        "DOMAIN",
+        "SHARED",
+        "INFRASTRUCTURE",
+        "ORCHESTRATION"
+      ],
+      "rule": "Roles are optional/configurable presentation metadata; never fabricate architecturalRole in Static Execution Model v4 or reorder trace execution.",
+      "conceptualFlow": "UI -> FEATURE / ORCHESTRATION -> DOMAIN -> SHARED / INFRASTRUCTURE"
+    }
+  },
+  "nextWork": [
+    {
+      "order": 1,
+      "id": "unified-v4-analysis-entrypoint",
+      "status": "PENDING",
+      "deliverable": "Validated reusable v4 analysis bundle; viewer rendering begins in Slice 3."
+    },
+    {
+      "order": 2,
+      "id": "cpg-fingerprint-cache",
+      "status": "PENDING"
+    },
+    {
+      "order": 3,
+      "id": "viewer-v4-skeleton",
+      "status": "PENDING"
+    },
+    {
+      "order": 4,
+      "id": "expression-rendering",
+      "status": "PENDING"
+    },
+    {
+      "order": 5,
+      "id": "control-branch-loop-try-rendering",
+      "status": "PENDING"
+    },
+    {
+      "order": 6,
+      "id": "lazy-inter-method-expansion",
+      "status": "PENDING"
+    },
+    {
+      "order": 7,
+      "id": "polymorphic-target-presentation",
+      "status": "PENDING"
+    },
+    {
+      "order": 8,
+      "id": "ownership-folder-context-config",
+      "status": "PENDING"
+    },
+    {
+      "order": 9,
+      "id": "search-and-export-current-result",
+      "status": "PENDING"
+    },
+    {
+      "order": 10,
+      "id": "application-shell",
+      "status": "PENDING"
+    },
+    {
+      "order": 11,
+      "id": "multi-project-regression-corpus",
+      "status": "PENDING"
+    },
+    {
+      "order": 12,
+      "id": "large-model-performance",
+      "status": "PENDING"
+    }
+  ],
+  "historicalPlans": [
+    "docs/NEXT_STEP_V4_BACKEND_PLAN.md",
+    "docs/V4_BACKEND_PHASE_A.md",
+    "docs/V4_BACKEND_PHASE_B1.md",
+    "docs/V4_BACKEND_PHASE_B2.md",
+    "docs/V4_BACKEND_PHASE_B2_FIX1.md",
+    "docs/V4_BACKEND_PHASE_B2_FIX2.md"
+  ],
+  "maintenance": {
+    "onMaterialProgress": [
+      "Append a concise event to docs/PROJECT_TRACE.md",
+      "Update CURRENT_WORK.md current truth",
+      "Synchronize docs/work-manifest.json",
+      "Update docs/NEXT_MILESTONE_VIEWER_V4.md acceptance/current ordering",
+      "Change product/backend authority docs only when their semantics actually change"
+    ],
+    "historyPolicy": "Append/correct with basis; do not silently rewrite prior engineering history into current state."
+  },
+  "environment": {
+    "primaryShell": "Windows PowerShell 5.1",
+    "powershellCompatibilityRequired": true,
+    "notes": [
+      "Avoid unsupported PowerShell 7 syntax",
+      "Avoid risky $var: interpolation; use ${var}: when a colon follows",
+      "Do not assume pwsh is installed"
+    ]
+  },
+  "handoffReadOrder": [
+    "CURRENT_WORK.md",
+    "docs/work-manifest.json",
+    "docs/PROJECT_TRACE.md",
+    "docs/PRODUCT_REQUIREMENTS.md",
+    "docs/STATIC_TRACE_EXPLORER_DECISIONS.md",
+    "docs/STATIC_EXECUTION_MODEL_V4.md",
+    "docs/NEXT_MILESTONE_VIEWER_V4.md"
+  ]
+}

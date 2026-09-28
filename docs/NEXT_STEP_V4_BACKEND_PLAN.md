@@ -1,5 +1,13 @@
 # Next Step Plan — Production v4 Backend
 
+> **HISTORICAL / COMPLETED MILESTONE PLAN**
+>
+> The production v4 backend milestone described below has been completed. The unchecked boxes and future-tense wording are retained as historical planning context and must not be used as the current work queue.
+>
+> Current state: `../CURRENT_WORK.md`  
+> Current forward plan: `NEXT_MILESTONE_VIEWER_V4.md`  
+> Engineering history: `PROJECT_TRACE.md`
+
 ## Status
 
 This plan starts from repository state after commit:

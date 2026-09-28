@@ -91,13 +91,27 @@ trace / architecture / impact / AI
 
 ## Current status
 
-Schema v3 remains the stable existing call/type baseline.
+The all-method Static Execution Model v4 backend is implemented and frozen after:
 
-The four-language structural probe is complete enough to freeze the first source-semantic v4 contract.
+- four-language fixture validation;
+- focused switch/fallthrough validation;
+- v3/v4 target-resolution parity validation;
+- real GD-CAP whole-project validation with zero unmapped calls/controls.
 
-The next milestone is implementation of the all-method v4 exporter/normalizer and validation on the language fixtures plus real `gd-cap`.
+The current milestone is to make v4 the product-facing analysis/viewer path:
 
-Viewer V2.4 remains an experiment until it consumes v4 structure.
+```text
+unified project analysis entrypoint
+  -> safe CPG reuse/cache
+  -> viewer v4
+  -> lazy inter-method paths
+  -> ownership/search/export
+  -> application shell
+```
+
+Viewer V1/V2 remains historical/experimental. New viewer semantics must come from v4 structural relationships rather than text-containment heuristics.
+
+Current work/handoff authority: `../CURRENT_WORK.md`.
 
 ## Product documents
 

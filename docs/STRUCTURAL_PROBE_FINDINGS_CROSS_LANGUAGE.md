@@ -206,8 +206,8 @@ Order is represented by ordered method/branch bodies and ordered expression chil
 
 Nesting is represented by those same containment relations.
 
-## Remaining focused regression gap
+## Former focused regression gap — resolved
 
-The fixture contains switch/match cases but does not specifically validate legal case fallthrough behavior.
+The original structural probe did not validate legal case fallthrough. That gap was subsequently closed by `SWITCH_FALLTHROUGH_GATE.md` and `scripts/Run-V4SwitchFallthroughGate.ps1` for Java/TypeScript/C#.
 
-Before claiming complete switch-path fidelity, add one small fallthrough regression fixture for Java/TypeScript/C#.
+The result retained the existing schema: implicit fallthrough is a path/viewer derivation over ordered case branches and terminating-control evidence.

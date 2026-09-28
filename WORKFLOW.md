@@ -1,5 +1,7 @@
 # Our workflow
 
+> **Historical research workflow.** This file records the early analyzer-comparison lab. It is not the current product work queue. For current continuation read `CURRENT_WORK.md` and `docs/NEXT_MILESTONE_VIEWER_V4.md`.
+
 ## Phase 0 — Environment inventory
 Record OS and versions:
 

@@ -121,7 +121,7 @@ Frontend precision may differ. Preserve available information without fabricatin
 
 ### v3
 
-Schema v3 remains the stable current call/type baseline and continues to support:
+Schema v3 remains the retained legacy/migration call-type baseline while product-facing viewer migration to v4 is still in progress. It continues to support:
 
 - types/methods;
 - direct/multi-hop calls;
@@ -132,7 +132,7 @@ Schema v3 remains the stable current call/type baseline and continues to support
 
 ### v4 contract
 
-The four-language structural probe is complete enough to define the first source-semantic v4 contract.
+The four-language structural probe established the first source-semantic v4 contract, and the subsequent production backend implementation/gates validated that contract at real-project scale.
 
 See:
 
@@ -152,15 +152,29 @@ V4 adds:
 - source-semantic loop normalization;
 - try/catch/finally/throw/return structure.
 
-## NEXT — implementation
+## Implementation status / NEXT
 
-Implement and validate the v4 backend before another major viewer redesign:
+The v4 backend implementation milestone is complete and frozen.
 
-1. export raw structural data for all production methods;
-2. normalize raw frontend structures to v4 source semantics;
-3. validate the four language fixtures;
-4. validate real `gd-cap`;
-5. migrate the viewer from V2.4 heuristics to v4 relationships.
+Completed:
+
+1. all-method raw structural export;
+2. source-semantic v4 normalization;
+3. four-language fixture validation;
+4. focused switch/fallthrough validation;
+5. v3/v4 target-resolution parity validation;
+6. real GD-CAP whole-project validation with zero unmapped calls/controls.
+
+Current product work:
+
+1. add one reusable arbitrary-project v4 analysis entrypoint;
+2. add safe CPG fingerprint/cache behavior;
+3. migrate the viewer from V2 heuristics to v4 relationships;
+4. add expression/control/branch rendering;
+5. add lazy inter-method expansion and polymorphic alternatives;
+6. add ownership/search/export and a minimal application shell.
+
+See `NEXT_MILESTONE_VIEWER_V4.md`.
 
 ## Acceptance
 
@@ -193,6 +207,6 @@ return
 
 For frontend limitations, record the limitation explicitly rather than fabricating precision.
 
-## Current known limitation
+## Switch/fallthrough status
 
-Switch/match case structure is available, but exact legal case-fallthrough behavior still needs a focused regression fixture before complete switch-path fidelity is claimed.
+The focused Java/TypeScript/C# fallthrough gate now passes. The current v4 representation is sufficient; implicit fallthrough is derived by the viewer/path layer from ordered CASE branches plus absence of terminating BREAK/RETURN/THROW rather than by adding a new schema edge.

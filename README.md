@@ -43,31 +43,33 @@ Current lab/normalization scope:
 - TypeScript / Node
 - C# / .NET
 
-## Model status
+## Current status
 
-Schema v3 remains the stable existing call/type pipeline.
+The Static Execution Model v4 backend is now the frozen product baseline for structural analysis.
 
-The cross-language structural probe is complete enough to define the first source-semantic v4 contract:
+Completed gates:
 
 ```text
-schema/static-execution-model-v4.schema.json
-docs/STATIC_EXECUTION_MODEL_V4.md
-docs/STRUCTURAL_PROBE_FINDINGS_CROSS_LANGUAGE.md
+four-language v4 fixtures       PASS
+switch/fallthrough gate         PASS
+v3/v4 target-resolution parity PASS
+GD-CAP whole-project v4         PASS
+unmapped calls                  0
+unmapped controls               0
 ```
 
-The probe confirmed that frontend lowering differs materially across languages, so raw CPG structure is normalized before reaching the viewer.
+The current product phase is **v4 application/viewer integration**, not more backend redesign by default.
 
-Examples include Java/Python/TypeScript foreach loops being lowered differently from C# foreach, and Python `raise` differing from Java/TS/C# `THROW`.
+Start here before changing the repository:
 
-## Next backend milestone
+```text
+CURRENT_WORK.md
+docs/work-manifest.json
+docs/PROJECT_TRACE.md
+docs/NEXT_MILESTONE_VIEWER_V4.md
+```
 
-Implement v4 for all production methods:
-
-1. raw structural export;
-2. source-semantic normalization;
-3. four-language fixture validation;
-4. real `gd-cap` validation;
-5. viewer migration from V2.4 heuristics to v4 relationships.
+The older v3 pipeline and V1/V2 viewer remain useful migration/history artifacts, but new product work should consume the v4 model directly.
 
 ## Important UI rule
 
@@ -75,8 +77,12 @@ Folder/module ownership is visual metadata.
 
 It may group the sidebar or architecture/dependency views, but it must **not reorder the execution trace**.
 
-## Product documents
+## Product and handoff documents
 
+- `CURRENT_WORK.md` — current work/handoff authority
+- `docs/PROJECT_TRACE.md` — engineering history
+- `docs/NEXT_MILESTONE_VIEWER_V4.md` — current forward plan
+- `docs/work-manifest.json` — machine-readable current state
 - `docs/PRODUCT_REQUIREMENTS.md`
 - `docs/STATIC_TRACE_EXPLORER_DECISIONS.md` — authoritative decision record
 - `docs/STATIC_TRACE_EXPLORER_VISION.md`
