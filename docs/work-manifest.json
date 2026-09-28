@@ -4,14 +4,18 @@
   "snapshot": {
     "sourceRepository": "https://github.com/AlexPastukhh/static",
     "sourceArchiveSha256": "c8d9da5e48dd196e7359cc90e6c0f04d4bbc6ccd52af089d6062e602b46a0a92",
-    "handoffRefreshDate": "2026-09-28",
-    "repositoryBaseCommit": "f3b86399972a662e866e010bd0c6983f9412f506",
-    "repositoryBaseCommitMessage": "Freeze v4 backend after GD-CAP whole-project gate",
-    "handoffOverlay": {
-      "status": "SNAPSHOT_LOCAL_UNCOMMITTED_OVERLAY",
-      "createdDate": "2026-09-28",
-      "baseCommit": "f3b86399972a662e866e010bd0c6983f9412f506",
-      "note": "CURRENT_WORK/trace/plan/manifest/evidence overlay is not part of the base commit until the user commits and pushes it."
+    "handoffRefreshDate": "2026-09-29",
+    "repositoryBaseCommit": "630af119d05695e01ffde38661920a8e8a4e38ff",
+    "repositoryBaseCommitMessage": "Add transferable project trace and current work handoff",
+    "backendFreezeCommit": "f3b86399972a662e866e010bd0c6983f9412f506",
+    "backendFreezeCommitMessage": "Freeze v4 backend after GD-CAP whole-project gate",
+    "handoffState": {
+      "status": "COMMITTED",
+      "commit": "630af119d05695e01ffde38661920a8e8a4e38ff",
+      "commitMessage": "Add transferable project trace and current work handoff",
+      "committedDate": "2026-09-28",
+      "snapshotMetadataRefreshDate": "2026-09-29",
+      "note": "The handoff/trace/evidence artifact set is repository-tracked from this commit. A transfer archive may include metadata-only corrections newer than the recorded handoff commit; backend semantics are unchanged."
     }
   },
   "currentPhase": "product-v4-pipeline-and-viewer",
@@ -65,10 +69,12 @@
       "excludedTestMethods": 106,
       "evidence": {
         "path": "evidence/gd-cap/gd-cap-v4-gate-report.json",
-        "sha256": "04cd00f84b5c503b4b449a94891eb23a5c35fbe4383f8b8a4b2e486fba349975",
+        "sha256": "d6dfbb2ce1daf4f82fd18440e5003a774ad0d8e079e909f6ee01abef5d39b047",
         "gate": "gd-cap-v4-whole-project",
         "result": "PASS",
-        "originalFinalPassBundleSha256": "b1123726bd31f3c7972614bbcae9748b611a8a5985404a0ee1c9d562a098c01f"
+        "originalFinalPassBundleSha256": "b1123726bd31f3c7972614bbcae9748b611a8a5985404a0ee1c9d562a098c01f",
+        "sha256Basis": "repository-normalized LF file",
+        "originalUploadedReportSha256": "04cd00f84b5c503b4b449a94891eb23a5c35fbe4383f8b8a4b2e486fba349975"
       }
     },
     "changeRule": "Do not change public v4 backend semantics without a reproducible regression fixture and full regression revalidation."

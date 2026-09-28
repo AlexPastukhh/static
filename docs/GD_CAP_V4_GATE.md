@@ -27,11 +27,17 @@ The final successful user-run gate artifact is retained in this transfer snapsho
 evidence/gd-cap/gd-cap-v4-gate-report.json
 ```
 
-SHA256:
+Byte-level provenance:
 
 ```text
-04cd00f84b5c503b4b449a94891eb23a5c35fbe4383f8b8a4b2e486fba349975
+Repository-normalized SHA256 (LF):
+  d6dfbb2ce1daf4f82fd18440e5003a774ad0d8e079e909f6ee01abef5d39b047
+
+Original uploaded report SHA256 (Windows/CRLF):
+  04cd00f84b5c503b4b449a94891eb23a5c35fbe4383f8b8a4b2e486fba349975
 ```
+
+The hash difference is line-ending normalization only; the parsed JSON content and accepted gate result are unchanged.
 
 The report itself records:
 

@@ -1,9 +1,10 @@
 # Static Trace Explorer — Current Work / Handoff
 
 Status: **CURRENT handoff authority for work state**  
-Repository base commit: `f3b86399972a662e866e010bd0c6983f9412f506` (`Freeze v4 backend after GD-CAP whole-project gate`)  
-Handoff overlay status: **snapshot-local documentation/evidence overlay** created `2026-09-28`; these handoff files are not part of the base commit unless the user later commits/pushes them.  
-Snapshot handoff refresh: `2026-09-28`
+Backend freeze commit: `f3b86399972a662e866e010bd0c6983f9412f506` (`Freeze v4 backend after GD-CAP whole-project gate`)  
+Repository handoff commit: `630af119d05695e01ffde38661920a8e8a4e38ff` (`Add transferable project trace and current work handoff`)  
+Handoff state: **COMMITTED** — the handoff/trace/evidence artifact set is repository-tracked from the handoff commit above.  
+Transfer snapshot refresh: `2026-09-29` — this archive may contain metadata-only handoff corrections newer than the recorded handoff commit; backend semantics are unchanged.
 
 This file is the first document a new chat or maintainer should read.
 
@@ -128,10 +129,11 @@ Retained final PASS evidence:
 
 ```text
 evidence/gd-cap/gd-cap-v4-gate-report.json
-SHA256: 04cd00f84b5c503b4b449a94891eb23a5c35fbe4383f8b8a4b2e486fba349975
+Repository-normalized SHA256 (LF): d6dfbb2ce1daf4f82fd18440e5003a774ad0d8e079e909f6ee01abef5d39b047
+Original uploaded report SHA256 (Windows/CRLF): 04cd00f84b5c503b4b449a94891eb23a5c35fbe4383f8b8a4b2e486fba349975
 ```
 
-The retained report says `result: PASS`, contains no gate `failures` or `warnings`, and records the same final counts above. The original user-provided final-pass bundle SHA256 is `b1123726bd31f3c7972614bbcae9748b611a8a5985404a0ee1c9d562a098c01f`; the large generated CPG/raw/model files remain build artifacts and are not copied into the handoff repository snapshot.
+The retained report says `result: PASS`, contains no gate `failures` or `warnings`, and records the same final counts above. Git line-ending normalization changes only the retained report's byte-level SHA256 (`04cd...` original Windows/CRLF -> `d6df...` repository LF); its JSON meaning is unchanged. The original user-provided final-pass bundle SHA256 is `b1123726bd31f3c7972614bbcae9748b611a8a5985404a0ee1c9d562a098c01f`; the large generated CPG/raw/model files remain build artifacts and are not copied into the handoff repository snapshot.
 
 Primary gate artifacts/scripts:
 

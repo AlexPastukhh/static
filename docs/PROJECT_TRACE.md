@@ -323,7 +323,7 @@ Unmapped controls:  0
 
 The focused `CopyNoteMaterialFeature.copyMany` acceptance also passed.
 
-Retained acceptance evidence is now stored at `../evidence/gd-cap/gd-cap-v4-gate-report.json` (SHA256 `04cd00f84b5c503b4b449a94891eb23a5c35fbe4383f8b8a4b2e486fba349975`). The report records `result: PASS`, zero unmapped calls/controls, no gate failures, and the accepted whole-project counts above.
+Retained acceptance evidence is now stored at `../evidence/gd-cap/gd-cap-v4-gate-report.json`. The repository-normalized LF file has SHA256 `d6dfbb2ce1daf4f82fd18440e5003a774ad0d8e079e909f6ee01abef5d39b047`; the original uploaded Windows/CRLF report had SHA256 `04cd00f84b5c503b4b449a94891eb23a5c35fbe4383f8b8a4b2e486fba349975`. The JSON meaning is unchanged. The report records `result: PASS`, zero unmapped calls/controls, no gate failures, and the accepted whole-project counts above.
 
 This closes the production v4 backend milestone.
 
@@ -352,9 +352,24 @@ PROJECT_TRACE.md
 NEXT_MILESTONE_VIEWER_V4.md
 ```
 
-Older backend phase plans are retained as history but are explicitly no longer the current work queue. This handoff layer is a snapshot-local overlay on repository base commit `f3b86399972a662e866e010bd0c6983f9412f506` until the user commits/pushes it.
+Older backend phase plans are retained as history but are explicitly no longer the current work queue. The handoff/trace/evidence artifact set was committed to `main` as `630af119d05695e01ffde38661920a8e8a4e38ff` (`Add transferable project trace and current work handoff`), on top of backend-freeze commit `f3b86399972a662e866e010bd0c6983f9412f506`.
 
 The transfer refresh also made the accepted architecture-visibility rule explicit: `FEATURE`, `DOMAIN`, `SHARED`, `INFRASTRUCTURE`, and `ORCHESTRATION` are viewer/config roles. `ORCHESTRATION` must not be invented as a v4 backend field; it is interpreted from configuration together with real call/control structure.
+
+---
+
+## 2026-09-29 — Handoff provenance metadata corrected
+
+**Result:** `DONE` in the transfer snapshot
+
+The transfer metadata was reconciled with repository state after the handoff commit was pushed:
+
+- handoff artifacts are no longer described as an uncommitted overlay;
+- committed handoff origin is `630af119d05695e01ffde38661920a8e8a4e38ff`;
+- backend-freeze origin remains `f3b86399972a662e866e010bd0c6983f9412f506`;
+- the retained GD-CAP report now distinguishes the original Windows/CRLF SHA256 (`04cd00...`) from the Git/repository-normalized LF SHA256 (`d6dfbb...`).
+
+No backend semantics, schema, fixture, gate outcome, or forward-plan ordering changed in this correction.
 
 ---
 
