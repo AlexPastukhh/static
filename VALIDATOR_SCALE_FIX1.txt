@@ -1,0 +1,16 @@
+Static Execution Model v4 validator scale fix1
+
+Observed on GD-CAP:
+- 18,986 expressions
+- 3,798 call sites
+
+The previous validator performed a full scan of model.expressions for every call site:
+approximately 72 million PowerShell object comparisons, plus pipeline overhead.
+
+This patch builds expressionById once and uses O(1) hashtable lookup for the
+call/expression back-reference check. It also sorts parameter indexes once per method.
+
+No validation rule is removed or weakened.
+
+After applying, stop the currently stalled validator with Ctrl+C and rerun:
+  .\scripts\Run-GdCapV4Gate.ps1 -ReuseCpg

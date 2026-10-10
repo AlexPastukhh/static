@@ -1,0 +1,12 @@
+GD-CAP path fix1
+
+Joern can emit pseudo source filenames such as <empty>.
+On Windows, Test-Path throws for paths containing '<' or '>'.
+
+This fix:
+- treats angle-bracket pseudo filenames as non-filesystem provenance;
+- rejects other invalid Windows path characters before filesystem access;
+- uses System.IO.File.Exists instead of Test-Path for source files;
+- keeps sourceCode/code fallback behavior unchanged.
+
+Use the existing GD-CAP CPG with -ReuseCpg after applying this patch.
